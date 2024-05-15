@@ -1,0 +1,8 @@
+0.001 gdsReso
+0.01 shapeReso
+2 layer
+<StraightWaveguide struct>
+
+            <0 0 3000.0 0 0.43 1.5 0 0 0 waveguideInv>
+        
+

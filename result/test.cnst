@@ -1,0 +1,92 @@
+0.001 gdsReso
+0.01 shapeReso
+2 layer
+<EdgeCoupler struct>
+            <0 0 1500 0 0.1 0 0 0 waveguide>
+        
+
+            <1500 0 2000 0 0.1 0.43 0 linearTaper>
+        
+
+            <2000 0 2500 0 0.43 0 0 0 waveguide>
+        
+
+<TArray struct>
+            <EdgeCoupler 0 0 1 30 10 30 1 arrayRect>
+        
+
+            {30	0	Serif	10	0	0	3	3	0	-30	autoOutLett	labelMaker}
+        
+
+            {30	0	Serif	10	0	0	2003.0	3	0	-30	autoOutLett	labelMaker}
+        
+
+            {30	0	Serif	10	0	0	2453.0	3	0	-30	autoOutLett	labelMaker}
+        
+
+<IO struct>
+            <TArray 1000.0 0 N 1 0 instance>
+        
+
+            <TArray 9000.0 0 Y 1 0 instance>
+        
+
+<top struct>
+
+            <IO 0 0 N 1 0 instance>
+        
+<DirectionalCoupler struct>
+            <0 0 1000.0 0 0.43 0 0 0 waveguide>
+        
+
+            <0 0.53 1000.0 0.53 0.43 0 0 0 waveguide>
+        
+
+            <0 3.5300000000000002 1000.0 3.5300000000000002 0.43 0 0 0 waveguide>
+        
+
+            <0 4.16 1000.0 4.16 0.43 0 0 0 waveguide>
+        
+
+            <0 7.16 1000.0 7.16 0.43 0 0 0 waveguide>
+        
+
+            <0 7.890000000000001 1000.0 7.890000000000001 0.43 0 0 0 waveguide>
+        
+
+            <0 10.89 1000.0 10.89 0.43 0 0 0 waveguide>
+        
+
+            <0 11.72 1000.0 11.72 0.43 0 0 0 waveguide>
+        
+
+            <0 14.72 1000.0 14.72 0.43 0 0 0 waveguide>
+        
+
+            <0 15.65 1000.0 15.65 0.43 0 0 0 waveguide>
+        
+
+            <0 18.65 1000.0 18.65 0.43 0 0 0 waveguide>
+        
+
+            <0 19.68 1000.0 19.68 0.43 0 0 0 waveguide>
+        
+
+            <0 22.68 1000.0 22.68 0.43 0 0 0 waveguide>
+        
+
+            <0 23.810000000000002 1000.0 23.810000000000002 0.43 0 0 0 waveguide>
+        
+
+            <0 26.810000000000002 1000.0 26.810000000000002 0.43 0 0 0 waveguide>
+        
+
+            <0 28.04 1000.0 28.04 0.43 0 0 0 waveguide>
+        
+
+            <0 31.04 1000.0 31.04 0.43 0 0 0 waveguide>
+        
+
+            <0 32.370000000000005 1000.0 32.370000000000005 0.43 0 0 0 waveguide>
+        
+

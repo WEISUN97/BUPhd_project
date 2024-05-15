@@ -1,0 +1,99 @@
+0.001 gdsReso
+0.01 shapeReso
+<resonator_inv struct>
+30 layer
+
+            <0 0 20 0 0.43 0 0 0 waveguide>
+        
+
+            <10.0 5.529999999999999 3 0.43 4.785 0 50 raceTrack>
+        
+
+20 layer
+
+            <0 0 20 0 3.43 0 0 0 waveguide>
+        
+
+            <10.0 5.529999999999999 3 3.43 3.285 0 50 raceTrack>
+        
+
+
+            <20 0 40 0 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            <0 0 20 0 0.43 0 0 0 waveguide>
+        
+
+            <10.0 5.63 3 0.43 4.785 0 50 raceTrack>
+        
+
+20 layer
+
+            <0 0 20 0 3.43 0 0 0 waveguide>
+        
+
+            <10.0 5.63 3 3.43 3.285 0 50 raceTrack>
+        
+
+
+            <20 100 40 100 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            <0 0 20 0 0.43 0 0 0 waveguide>
+        
+
+            <10.0 5.7299999999999995 3 0.43 4.785 0 50 raceTrack>
+        
+
+20 layer
+
+            <0 0 20 0 3.43 0 0 0 waveguide>
+        
+
+            <10.0 5.7299999999999995 3 3.43 3.285 0 50 raceTrack>
+        
+
+
+            <20 200 40 200 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            <0 0 20 0 0.43 0 0 0 waveguide>
+        
+
+            <10.0 5.83 3 0.43 4.785 0 50 raceTrack>
+        
+
+20 layer
+
+            <0 0 20 0 3.43 0 0 0 waveguide>
+        
+
+            <10.0 5.83 3 3.43 3.285 0 50 raceTrack>
+        
+
+
+            <20 300 40 300 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            <0 0 20 0 0.43 0 0 0 waveguide>
+        
+
+            <10.0 5.93 3 0.43 4.785 0 50 raceTrack>
+        
+
+20 layer
+
+            <0 0 20 0 3.43 0 0 0 waveguide>
+        
+
+            <10.0 5.93 3 3.43 3.285 0 50 raceTrack>
+        
+
+
+            <20 400 40 400 0.43 1.5 0 0 0 waveguideInv>
+        
+

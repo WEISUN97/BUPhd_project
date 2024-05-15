@@ -1,0 +1,24 @@
+0.001 gdsReso
+0.01 shapeReso
+<Frame_box struct>
+
+            0 0 10000 300 0 rectangleLH
+        
+
+            0 0 300 10000 0 rectangleLH
+        
+
+            0 9700 10000 300 0 rectangleLH
+        
+
+            9700 0 300 10000 0 rectangleLH
+        
+
+<Frame struct>
+
+            <Frame_box 0 0 3 3 10000 10000 1 arrayRect>
+        
+
+<Top struct>
+<Frame 0 0 0 0 30000.0 30000.0 N 1 0 instanceSym>
+

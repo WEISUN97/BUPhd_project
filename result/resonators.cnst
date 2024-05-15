@@ -1,0 +1,504 @@
+0.001 gdsReso
+0.1 shapeReso
+<resonators struct>
+30 layer
+
+            <0 0 20 0 0.43 0 0 0 waveguide>
+        
+
+            <10.0 5.5 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 0 20 0 3.43 0 0 0 waveguide>
+        
+
+            <10.0 5.5 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 0 50 0 0.43 1.5 0 0 0 waveguideInv>
+        
+<{{g:70nm}} {{Calibri}} 10 23 5 textOutline>
+30 layer
+
+            <0 100 20 100 0.43 0 0 0 waveguide>
+        
+
+            <10.0 105.53 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 100 20 100 3.43 0 0 0 waveguide>
+        
+
+            <10.0 105.53 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 100 50 100 0.43 1.5 0 0 0 waveguideInv>
+        
+<{{g:100nm}} {{Calibri}} 10 23 105 textOutline>
+30 layer
+
+            <0 200 20 200 0.43 0 0 0 waveguide>
+        
+
+            <10.0 205.59 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 200 20 200 3.43 0 0 0 waveguide>
+        
+
+            <10.0 205.59 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 200 50 200 0.43 1.5 0 0 0 waveguideInv>
+        
+<{{g:160nm}} {{Calibri}} 10 23 205 textOutline>
+30 layer
+
+            <0 300 20 300 0.43 0 0 0 waveguide>
+        
+
+            <10.0 305.7 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 300 20 300 3.43 0 0 0 waveguide>
+        
+
+            <10.0 305.7 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 300 50 300 0.43 1.5 0 0 0 waveguideInv>
+        
+<{{g:270nm}} {{Calibri}} 10 23 305 textOutline>
+
+<gap160nm struct>
+30 layer
+
+            <0 0 20 0 0.43 0 0 0 waveguide>
+        
+
+            <10.0 5.59 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 0 20 0 3.43 0 0 0 waveguide>
+        
+
+            <10.0 5.59 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 0 50 0 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 11.045 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:160nm}} {{Calibri}} 10 23 5 textOutline>
+<{{c:60nm}} {{Calibri}} 10 23 12 textOutline>
+30 layer
+
+            <0 100 20 100 0.43 0 0 0 waveguide>
+        
+
+            <10.0 105.59 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 100 20 100 3.43 0 0 0 waveguide>
+        
+
+            <10.0 105.59 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 100 50 100 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 111.045 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:160nm}} {{Calibri}} 10 23 105 textOutline>
+<{{c:61nm}} {{Calibri}} 10 23 112 textOutline>
+30 layer
+
+            <0 200 20 200 0.43 0 0 0 waveguide>
+        
+
+            <10.0 205.59 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 200 20 200 3.43 0 0 0 waveguide>
+        
+
+            <10.0 205.59 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 200 50 200 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 211.04500000000002 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:160nm}} {{Calibri}} 10 23 205 textOutline>
+<{{c:62nm}} {{Calibri}} 10 23 212 textOutline>
+30 layer
+
+            <0 300 20 300 0.43 0 0 0 waveguide>
+        
+
+            <10.0 305.59000000000003 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 300 20 300 3.43 0 0 0 waveguide>
+        
+
+            <10.0 305.59000000000003 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 300 50 300 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 311.045 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:160nm}} {{Calibri}} 10 23 305 textOutline>
+<{{c:63nm}} {{Calibri}} 10 23 312 textOutline>
+30 layer
+
+            <0 400 20 400 0.43 0 0 0 waveguide>
+        
+
+            <10.0 405.59000000000003 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 400 20 400 3.43 0 0 0 waveguide>
+        
+
+            <10.0 405.59000000000003 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 400 50 400 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 411.045 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:160nm}} {{Calibri}} 10 23 405 textOutline>
+<{{c:30nm}} {{Calibri}} 10 23 412 textOutline>
+30 layer
+
+            <0 500 20 500 0.43 0 0 0 waveguide>
+        
+
+            <10.0 505.59000000000003 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 500 20 500 3.43 0 0 0 waveguide>
+        
+
+            <10.0 505.59000000000003 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 500 50 500 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 511.045 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:160nm}} {{Calibri}} 10 23 505 textOutline>
+<{{c:31nm}} {{Calibri}} 10 23 512 textOutline>
+30 layer
+
+            <0 600 20 600 0.43 0 0 0 waveguide>
+        
+
+            <10.0 605.5899999999999 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 600 20 600 3.43 0 0 0 waveguide>
+        
+
+            <10.0 605.5899999999999 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 600 50 600 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 611.045 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:160nm}} {{Calibri}} 10 23 605 textOutline>
+<{{c:32nm}} {{Calibri}} 10 23 612 textOutline>
+30 layer
+
+            <0 700 20 700 0.43 0 0 0 waveguide>
+        
+
+            <10.0 705.5899999999999 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 700 20 700 3.43 0 0 0 waveguide>
+        
+
+            <10.0 705.5899999999999 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 700 50 700 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 711.045 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:160nm}} {{Calibri}} 10 23 705 textOutline>
+<{{c:33nm}} {{Calibri}} 10 23 712 textOutline>
+
+<gap270nm struct>
+30 layer
+
+            <0 800 20 800 0.43 0 0 0 waveguide>
+        
+
+            <10.0 805.6999999999999 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 800 20 800 3.43 0 0 0 waveguide>
+        
+
+            <10.0 805.6999999999999 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 800 50 800 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 811.265 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:270nm}} {{Calibri}} 10 23 805 textOutline>
+<{{c:60nm}} {{Calibri}} 10 23 812 textOutline>
+30 layer
+
+            <0 900 20 900 0.43 0 0 0 waveguide>
+        
+
+            <10.0 905.6999999999999 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 900 20 900 3.43 0 0 0 waveguide>
+        
+
+            <10.0 905.6999999999999 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 900 50 900 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 911.265 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:270nm}} {{Calibri}} 10 23 905 textOutline>
+<{{c:61nm}} {{Calibri}} 10 23 912 textOutline>
+30 layer
+
+            <0 1000 20 1000 0.43 0 0 0 waveguide>
+        
+
+            <10.0 1005.6999999999999 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 1000 20 1000 3.43 0 0 0 waveguide>
+        
+
+            <10.0 1005.6999999999999 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 1000 50 1000 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 1011.265 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:270nm}} {{Calibri}} 10 23 1005 textOutline>
+<{{c:62nm}} {{Calibri}} 10 23 1012 textOutline>
+30 layer
+
+            <0 1100 20 1100 0.43 0 0 0 waveguide>
+        
+
+            <10.0 1105.7 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 1100 20 1100 3.43 0 0 0 waveguide>
+        
+
+            <10.0 1105.7 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 1100 50 1100 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 1111.2649999999999 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:270nm}} {{Calibri}} 10 23 1105 textOutline>
+<{{c:63nm}} {{Calibri}} 10 23 1112 textOutline>
+30 layer
+
+            <0 1200 20 1200 0.43 0 0 0 waveguide>
+        
+
+            <10.0 1205.7 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 1200 20 1200 3.43 0 0 0 waveguide>
+        
+
+            <10.0 1205.7 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 1200 50 1200 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 1211.2649999999999 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:270nm}} {{Calibri}} 10 23 1205 textOutline>
+<{{c:30nm}} {{Calibri}} 10 23 1212 textOutline>
+30 layer
+
+            <0 1300 20 1300 0.43 0 0 0 waveguide>
+        
+
+            <10.0 1305.7 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 1300 20 1300 3.43 0 0 0 waveguide>
+        
+
+            <10.0 1305.7 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 1300 50 1300 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 1311.2649999999999 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:270nm}} {{Calibri}} 10 23 1305 textOutline>
+<{{c:31nm}} {{Calibri}} 10 23 1312 textOutline>
+30 layer
+
+            <0 1400 20 1400 0.43 0 0 0 waveguide>
+        
+
+            <10.0 1405.7 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 1400 20 1400 3.43 0 0 0 waveguide>
+        
+
+            <10.0 1405.7 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 1400 50 1400 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 1411.2649999999999 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:270nm}} {{Calibri}} 10 23 1405 textOutline>
+<{{c:32nm}} {{Calibri}} 10 23 1412 textOutline>
+30 layer
+
+            <0 1500 20 1500 0.43 0 0 0 waveguide>
+        
+
+            <10.0 1505.7 3 0.43 4.785 0 100 raceTrack>
+        
+
+20 layer
+
+            <0 1500 20 1500 3.43 0 0 0 waveguide>
+        
+
+            <10.0 1505.7 3 3.43 3.285 0 100 raceTrack>
+        
+
+
+            <20 1500 50 1500 0.43 1.5 0 0 0 waveguideInv>
+        
+30 layer
+
+            10.0 1511.2649999999999 3 0.16 0 rectangleC
+        
+20 layer
+<{{g:270nm}} {{Calibri}} 10 23 1505 textOutline>
+<{{c:33nm}} {{Calibri}} 10 23 1512 textOutline>
+

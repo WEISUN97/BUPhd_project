@@ -1,0 +1,32 @@
+0.001 gdsReso
+0.01 shapeReso
+2 layer
+<EdgeCoupler struct>
+
+            <0 0 1500 0 0.1 1.5 0 0 0 waveguideInv>
+        
+
+            <1500 0 2000 0 3.1 3.43 0.1 0.43 0 linearTaperSlot>
+            
+
+            <2000 0 2500 0 0.43 1.5 0 0 0 waveguideInv>
+        
+
+
+<TArray struct>
+
+            <EdgeCoupler 0 0 0 80 0 100 1 arrayRect>
+        
+
+<IO struct>
+
+            <TArray 1000.0 1000.0 N 1 0 instance>
+        
+
+            <TArray 9000.0 1000.0 Y 1 0 instance>
+        
+
+<TextArray struct>
+1 shapeReso
+{80	0	Calibri	30	0	0	0	0	0	-100	autoOutLett	labelOutline}
+

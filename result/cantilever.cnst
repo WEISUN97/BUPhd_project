@@ -1,0 +1,481 @@
+0.001 gdsReso
+0.1 shapeReso
+<Cantilever struct>
+30 layer
+<13 2.0 2 0.01 2 50 180 exponentialTaper>
+
+            13 1.995 100.0 0.01 0 rectangleLH
+        
+<113.0 2.0 2 0.01 2 50 0 exponentialTaper>
+
+20 layer
+
+            10 0 106.0 4 0 rectangleLH
+        
+
+<{{L/t10k}} {{Calibri}} 10 10 5 textOutline>
+30 layer
+<13 22.0 2 0.01 2 50 180 exponentialTaper>
+
+            13 21.995 70.0 0.01 0 rectangleLH
+        
+<83.0 22.0 2 0.01 2 50 0 exponentialTaper>
+
+20 layer
+
+            10 20 76.0 4 0 rectangleLH
+        
+
+<{{L/t7k}} {{Calibri}} 10 10 25 textOutline>
+30 layer
+<13 42.0 2 0.01 2 50 180 exponentialTaper>
+
+            13 41.995 50.0 0.01 0 rectangleLH
+        
+<63.0 42.0 2 0.01 2 50 0 exponentialTaper>
+
+20 layer
+
+            10 40 56.0 4 0 rectangleLH
+        
+
+<{{L/t5k}} {{Calibri}} 10 10 45 textOutline>
+30 layer
+<13 62.0 2 0.01 2 50 180 exponentialTaper>
+
+            13 61.995 10.0 0.01 0 rectangleLH
+        
+<23.0 62.0 2 0.01 2 50 0 exponentialTaper>
+
+20 layer
+
+            10 60 16.0 4 0 rectangleLH
+        
+
+<{{L/t1k}} {{Calibri}} 10 10 65 textOutline>
+<{{t10}} {{Calibri}} 20 10 -25 textOutline>
+30 layer
+<123.0 2.0 2 0.02 2 50 180 exponentialTaper>
+
+            123.0 1.99 200.0 0.02 0 rectangleLH
+        
+<323.0 2.0 2 0.02 2 50 0 exponentialTaper>
+
+20 layer
+
+            120.0 0 206.0 4 0 rectangleLH
+        
+
+<{{L/t10k}} {{Calibri}} 10 120.0 5 textOutline>
+30 layer
+<123.0 22.0 2 0.02 2 50 180 exponentialTaper>
+
+            123.0 21.99 140.0 0.02 0 rectangleLH
+        
+<263.0 22.0 2 0.02 2 50 0 exponentialTaper>
+
+20 layer
+
+            120.0 20 146.0 4 0 rectangleLH
+        
+
+<{{L/t7k}} {{Calibri}} 10 120.0 25 textOutline>
+30 layer
+<123.0 42.0 2 0.02 2 50 180 exponentialTaper>
+
+            123.0 41.99 100.0 0.02 0 rectangleLH
+        
+<223.0 42.0 2 0.02 2 50 0 exponentialTaper>
+
+20 layer
+
+            120.0 40 106.0 4 0 rectangleLH
+        
+
+<{{L/t5k}} {{Calibri}} 10 120.0 45 textOutline>
+30 layer
+<123.0 62.0 2 0.02 2 50 180 exponentialTaper>
+
+            123.0 61.99 20.0 0.02 0 rectangleLH
+        
+<143.0 62.0 2 0.02 2 50 0 exponentialTaper>
+
+20 layer
+
+            120.0 60 26.0 4 0 rectangleLH
+        
+
+<{{L/t1k}} {{Calibri}} 10 120.0 65 textOutline>
+<{{t20}} {{Calibri}} 20 120.0 -25 textOutline>
+30 layer
+<333.0 2.0 2 0.03 2 50 180 exponentialTaper>
+
+            333.0 1.985 300.0 0.03 0 rectangleLH
+        
+<633.0 2.0 2 0.03 2 50 0 exponentialTaper>
+
+20 layer
+
+            330.0 0 306.0 4 0 rectangleLH
+        
+
+<{{L/t10k}} {{Calibri}} 10 330.0 5 textOutline>
+30 layer
+<333.0 22.0 2 0.03 2 50 180 exponentialTaper>
+
+            333.0 21.985 210.0 0.03 0 rectangleLH
+        
+<543.0 22.0 2 0.03 2 50 0 exponentialTaper>
+
+20 layer
+
+            330.0 20 216.0 4 0 rectangleLH
+        
+
+<{{L/t7k}} {{Calibri}} 10 330.0 25 textOutline>
+30 layer
+<333.0 42.0 2 0.03 2 50 180 exponentialTaper>
+
+            333.0 41.985 150.0 0.03 0 rectangleLH
+        
+<483.0 42.0 2 0.03 2 50 0 exponentialTaper>
+
+20 layer
+
+            330.0 40 156.0 4 0 rectangleLH
+        
+
+<{{L/t5k}} {{Calibri}} 10 330.0 45 textOutline>
+30 layer
+<333.0 62.0 2 0.03 2 50 180 exponentialTaper>
+
+            333.0 61.985 30.0 0.03 0 rectangleLH
+        
+<363.0 62.0 2 0.03 2 50 0 exponentialTaper>
+
+20 layer
+
+            330.0 60 36.0 4 0 rectangleLH
+        
+
+<{{L/t1k}} {{Calibri}} 10 330.0 65 textOutline>
+<{{t30}} {{Calibri}} 20 330.0 -25 textOutline>
+30 layer
+<643.0 2.0 2 0.04 2 50 180 exponentialTaper>
+
+            643.0 1.98 400.0 0.04 0 rectangleLH
+        
+<1043.0 2.0 2 0.04 2 50 0 exponentialTaper>
+
+20 layer
+
+            640.0 0 406.0 4 0 rectangleLH
+        
+
+<{{L/t10k}} {{Calibri}} 10 640.0 5 textOutline>
+30 layer
+<643.0 22.0 2 0.04 2 50 180 exponentialTaper>
+
+            643.0 21.98 280.0 0.04 0 rectangleLH
+        
+<923.0 22.0 2 0.04 2 50 0 exponentialTaper>
+
+20 layer
+
+            640.0 20 286.0 4 0 rectangleLH
+        
+
+<{{L/t7k}} {{Calibri}} 10 640.0 25 textOutline>
+30 layer
+<643.0 42.0 2 0.04 2 50 180 exponentialTaper>
+
+            643.0 41.98 200.0 0.04 0 rectangleLH
+        
+<843.0 42.0 2 0.04 2 50 0 exponentialTaper>
+
+20 layer
+
+            640.0 40 206.0 4 0 rectangleLH
+        
+
+<{{L/t5k}} {{Calibri}} 10 640.0 45 textOutline>
+30 layer
+<643.0 62.0 2 0.04 2 50 180 exponentialTaper>
+
+            643.0 61.98 40.0 0.04 0 rectangleLH
+        
+<683.0 62.0 2 0.04 2 50 0 exponentialTaper>
+
+20 layer
+
+            640.0 60 46.0 4 0 rectangleLH
+        
+
+<{{L/t1k}} {{Calibri}} 10 640.0 65 textOutline>
+<{{t40}} {{Calibri}} 20 640.0 -25 textOutline>
+30 layer
+<1053.0 2.0 2 0.05 2 50 180 exponentialTaper>
+
+            1053.0 1.975 500.0 0.05 0 rectangleLH
+        
+<1553.0 2.0 2 0.05 2 50 0 exponentialTaper>
+
+20 layer
+
+            1050.0 0 506.0 4 0 rectangleLH
+        
+
+<{{L/t10k}} {{Calibri}} 10 1050.0 5 textOutline>
+30 layer
+<1053.0 22.0 2 0.05 2 50 180 exponentialTaper>
+
+            1053.0 21.975 350.0 0.05 0 rectangleLH
+        
+<1403.0 22.0 2 0.05 2 50 0 exponentialTaper>
+
+20 layer
+
+            1050.0 20 356.0 4 0 rectangleLH
+        
+
+<{{L/t7k}} {{Calibri}} 10 1050.0 25 textOutline>
+30 layer
+<1053.0 42.0 2 0.05 2 50 180 exponentialTaper>
+
+            1053.0 41.975 250.0 0.05 0 rectangleLH
+        
+<1303.0 42.0 2 0.05 2 50 0 exponentialTaper>
+
+20 layer
+
+            1050.0 40 256.0 4 0 rectangleLH
+        
+
+<{{L/t5k}} {{Calibri}} 10 1050.0 45 textOutline>
+30 layer
+<1053.0 62.0 2 0.05 2 50 180 exponentialTaper>
+
+            1053.0 61.975 50.0 0.05 0 rectangleLH
+        
+<1103.0 62.0 2 0.05 2 50 0 exponentialTaper>
+
+20 layer
+
+            1050.0 60 56.0 4 0 rectangleLH
+        
+
+<{{L/t1k}} {{Calibri}} 10 1050.0 65 textOutline>
+<{{t50}} {{Calibri}} 20 1050.0 -25 textOutline>
+30 layer
+<1563.0 2.0 2 0.06 2 50 180 exponentialTaper>
+
+            1563.0 1.97 600.0 0.06 0 rectangleLH
+        
+<2163.0 2.0 2 0.06 2 50 0 exponentialTaper>
+
+20 layer
+
+            1560.0 0 606.0 4 0 rectangleLH
+        
+
+<{{L/t10k}} {{Calibri}} 10 1560.0 5 textOutline>
+30 layer
+<1563.0 22.0 2 0.06 2 50 180 exponentialTaper>
+
+            1563.0 21.97 420.0 0.06 0 rectangleLH
+        
+<1983.0 22.0 2 0.06 2 50 0 exponentialTaper>
+
+20 layer
+
+            1560.0 20 426.0 4 0 rectangleLH
+        
+
+<{{L/t7k}} {{Calibri}} 10 1560.0 25 textOutline>
+30 layer
+<1563.0 42.0 2 0.06 2 50 180 exponentialTaper>
+
+            1563.0 41.97 300.0 0.06 0 rectangleLH
+        
+<1863.0 42.0 2 0.06 2 50 0 exponentialTaper>
+
+20 layer
+
+            1560.0 40 306.0 4 0 rectangleLH
+        
+
+<{{L/t5k}} {{Calibri}} 10 1560.0 45 textOutline>
+30 layer
+<1563.0 62.0 2 0.06 2 50 180 exponentialTaper>
+
+            1563.0 61.97 60.0 0.06 0 rectangleLH
+        
+<1623.0 62.0 2 0.06 2 50 0 exponentialTaper>
+
+20 layer
+
+            1560.0 60 66.0 4 0 rectangleLH
+        
+
+<{{L/t1k}} {{Calibri}} 10 1560.0 65 textOutline>
+<{{t60}} {{Calibri}} 20 1560.0 -25 textOutline>
+30 layer
+<2173.0 2.0 2 0.07 2 50 180 exponentialTaper>
+
+            2173.0 1.965 700.0000000000001 0.07 0 rectangleLH
+        
+<2873.0 2.0 2 0.07 2 50 0 exponentialTaper>
+
+20 layer
+
+            2170.0 0 706.0000000000001 4 0 rectangleLH
+        
+
+<{{L/t10k}} {{Calibri}} 10 2170.0 5 textOutline>
+30 layer
+<2173.0 22.0 2 0.07 2 50 180 exponentialTaper>
+
+            2173.0 21.965 490.00000000000006 0.07 0 rectangleLH
+        
+<2663.0 22.0 2 0.07 2 50 0 exponentialTaper>
+
+20 layer
+
+            2170.0 20 496.00000000000006 4 0 rectangleLH
+        
+
+<{{L/t7k}} {{Calibri}} 10 2170.0 25 textOutline>
+30 layer
+<2173.0 42.0 2 0.07 2 50 180 exponentialTaper>
+
+            2173.0 41.965 350.00000000000006 0.07 0 rectangleLH
+        
+<2523.0 42.0 2 0.07 2 50 0 exponentialTaper>
+
+20 layer
+
+            2170.0 40 356.00000000000006 4 0 rectangleLH
+        
+
+<{{L/t5k}} {{Calibri}} 10 2170.0 45 textOutline>
+30 layer
+<2173.0 62.0 2 0.07 2 50 180 exponentialTaper>
+
+            2173.0 61.965 70.0 0.07 0 rectangleLH
+        
+<2243.0 62.0 2 0.07 2 50 0 exponentialTaper>
+
+20 layer
+
+            2170.0 60 76.0 4 0 rectangleLH
+        
+
+<{{L/t1k}} {{Calibri}} 10 2170.0 65 textOutline>
+<{{t70}} {{Calibri}} 20 2170.0 -25 textOutline>
+30 layer
+<2883.0 2.0 2 0.08 2 50 180 exponentialTaper>
+
+            2883.0 1.96 800.0 0.08 0 rectangleLH
+        
+<3683.0 2.0 2 0.08 2 50 0 exponentialTaper>
+
+20 layer
+
+            2880.0 0 806.0 4 0 rectangleLH
+        
+
+<{{L/t10k}} {{Calibri}} 10 2880.0 5 textOutline>
+30 layer
+<2883.0 22.0 2 0.08 2 50 180 exponentialTaper>
+
+            2883.0 21.96 560.0 0.08 0 rectangleLH
+        
+<3443.0 22.0 2 0.08 2 50 0 exponentialTaper>
+
+20 layer
+
+            2880.0 20 566.0 4 0 rectangleLH
+        
+
+<{{L/t7k}} {{Calibri}} 10 2880.0 25 textOutline>
+30 layer
+<2883.0 42.0 2 0.08 2 50 180 exponentialTaper>
+
+            2883.0 41.96 400.0 0.08 0 rectangleLH
+        
+<3283.0 42.0 2 0.08 2 50 0 exponentialTaper>
+
+20 layer
+
+            2880.0 40 406.0 4 0 rectangleLH
+        
+
+<{{L/t5k}} {{Calibri}} 10 2880.0 45 textOutline>
+30 layer
+<2883.0 62.0 2 0.08 2 50 180 exponentialTaper>
+
+            2883.0 61.96 80.0 0.08 0 rectangleLH
+        
+<2963.0 62.0 2 0.08 2 50 0 exponentialTaper>
+
+20 layer
+
+            2880.0 60 86.0 4 0 rectangleLH
+        
+
+<{{L/t1k}} {{Calibri}} 10 2880.0 65 textOutline>
+<{{t80}} {{Calibri}} 20 2880.0 -25 textOutline>
+30 layer
+<3693.0 2.0 2 0.09 2 50 180 exponentialTaper>
+
+            3693.0 1.955 900.0 0.09 0 rectangleLH
+        
+<4593.0 2.0 2 0.09 2 50 0 exponentialTaper>
+
+20 layer
+
+            3690.0 0 906.0 4 0 rectangleLH
+        
+
+<{{L/t10k}} {{Calibri}} 10 3690.0 5 textOutline>
+30 layer
+<3693.0 22.0 2 0.09 2 50 180 exponentialTaper>
+
+            3693.0 21.955 630.0 0.09 0 rectangleLH
+        
+<4323.0 22.0 2 0.09 2 50 0 exponentialTaper>
+
+20 layer
+
+            3690.0 20 636.0 4 0 rectangleLH
+        
+
+<{{L/t7k}} {{Calibri}} 10 3690.0 25 textOutline>
+30 layer
+<3693.0 42.0 2 0.09 2 50 180 exponentialTaper>
+
+            3693.0 41.955 450.0 0.09 0 rectangleLH
+        
+<4143.0 42.0 2 0.09 2 50 0 exponentialTaper>
+
+20 layer
+
+            3690.0 40 456.0 4 0 rectangleLH
+        
+
+<{{L/t5k}} {{Calibri}} 10 3690.0 45 textOutline>
+30 layer
+<3693.0 62.0 2 0.09 2 50 180 exponentialTaper>
+
+            3693.0 61.955 90.0 0.09 0 rectangleLH
+        
+<3783.0 62.0 2 0.09 2 50 0 exponentialTaper>
+
+20 layer
+
+            3690.0 60 96.0 4 0 rectangleLH
+        
+
+<{{L/t1k}} {{Calibri}} 10 3690.0 65 textOutline>
+<{{t90}} {{Calibri}} 20 3690.0 -25 textOutline>
+

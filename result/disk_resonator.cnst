@@ -1,0 +1,214 @@
+0.001 gdsReso
+0.01 shapeReso
+<DiskResonator struct>
+0.001 shapeReso
+30 layer
+1500.0 5.315 5 5 0 ellipseVector
+
+            <0 0.0 3000.0 0.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 5.315 6.5 6.5 0 ellipseVector
+
+            <0 0.0 3000.0 0.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:4um G:60.0nm}} {{Calibri}} 10 1510.0 5.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 1005.315 5 5 0 ellipseVector
+
+            <0 1000.0 3000.0 1000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 1005.315 6.5 6.5 0 ellipseVector
+
+            <0 1000.0 3000.0 1000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:4um G:87.5nm}} {{Calibri}} 10 1510.0 1005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 2005.3149999999998 5 5 0 ellipseVector
+
+            <0 2000.0 3000.0 2000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 2005.3149999999998 6.5 6.5 0 ellipseVector
+
+            <0 2000.0 3000.0 2000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:4um G:115.0nm}} {{Calibri}} 10 1510.0 2005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 3005.315 5 5 0 ellipseVector
+
+            <0 3000.0 3000.0 3000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 3005.315 6.5 6.5 0 ellipseVector
+
+            <0 3000.0 3000.0 3000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:4um G:142.5nm}} {{Calibri}} 10 1510.0 3005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 4005.315 5 5 0 ellipseVector
+
+            <0 4000.0 3000.0 4000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 4005.315 6.5 6.5 0 ellipseVector
+
+            <0 4000.0 3000.0 4000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:4um G:170.0nm}} {{Calibri}} 10 1510.0 4005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 5005.3150000000005 5 5 0 ellipseVector
+
+            <0 5000.0 3000.0 5000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 5005.3150000000005 6.5 6.5 0 ellipseVector
+
+            <0 5000.0 3000.0 5000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:5um G:60.0nm}} {{Calibri}} 10 1510.0 5005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 6005.3150000000005 5 5 0 ellipseVector
+
+            <0 6000.0 3000.0 6000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 6005.3150000000005 6.5 6.5 0 ellipseVector
+
+            <0 6000.0 3000.0 6000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:5um G:87.5nm}} {{Calibri}} 10 1510.0 6005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 7005.3150000000005 5 5 0 ellipseVector
+
+            <0 7000.0 3000.0 7000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 7005.3150000000005 6.5 6.5 0 ellipseVector
+
+            <0 7000.0 3000.0 7000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:5um G:115.0nm}} {{Calibri}} 10 1510.0 7005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 8005.3150000000005 5 5 0 ellipseVector
+
+            <0 8000.0 3000.0 8000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 8005.3150000000005 6.5 6.5 0 ellipseVector
+
+            <0 8000.0 3000.0 8000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:5um G:142.5nm}} {{Calibri}} 10 1510.0 8005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 9005.315 5 5 0 ellipseVector
+
+            <0 9000.0 3000.0 9000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 9005.315 6.5 6.5 0 ellipseVector
+
+            <0 9000.0 3000.0 9000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:5um G:170.0nm}} {{Calibri}} 10 1510.0 9005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 10005.315 5 5 0 ellipseVector
+
+            <0 10000.0 3000.0 10000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 10005.315 6.5 6.5 0 ellipseVector
+
+            <0 10000.0 3000.0 10000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:6um G:60.0nm}} {{Calibri}} 10 1510.0 10005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 11005.315 5 5 0 ellipseVector
+
+            <0 11000.0 3000.0 11000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 11005.315 6.5 6.5 0 ellipseVector
+
+            <0 11000.0 3000.0 11000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:6um G:87.5nm}} {{Calibri}} 10 1510.0 11005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 12005.315 5 5 0 ellipseVector
+
+            <0 12000.0 3000.0 12000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 12005.315 6.5 6.5 0 ellipseVector
+
+            <0 12000.0 3000.0 12000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:6um G:115.0nm}} {{Calibri}} 10 1510.0 12005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 13005.315 5 5 0 ellipseVector
+
+            <0 13000.0 3000.0 13000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 13005.315 6.5 6.5 0 ellipseVector
+
+            <0 13000.0 3000.0 13000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:6um G:142.5nm}} {{Calibri}} 10 1510.0 13005.0 textOutline>
+0.001 shapeReso
+30 layer
+1500.0 14005.315 5 5 0 ellipseVector
+
+            <0 14000.0 3000.0 14000.0 0.43 0 0 0 waveguide>
+        
+20 layer
+1500.0 14005.315 6.5 6.5 0 ellipseVector
+
+            <0 14000.0 3000.0 14000.0 3.43 0 0 0 waveguide>
+        
+
+0.1 shapeReso
+<{{R:6um G:170.0nm}} {{Calibri}} 10 1510.0 14005.0 textOutline>
+
