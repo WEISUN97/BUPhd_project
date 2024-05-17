@@ -1,13 +1,76 @@
 from .geo import Geo
+from geo import *
+from numpy import *
+
 
 class tJunction(Geo):
-    def __init__(self, x: float, y: float, w1: float, w2: float, L1:float, L2:float, r=0, N=0, theta=0):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        w1: float,
+        w2: float,
+        L1: float,
+        L2: float,
+        r=0,
+        N=0,
+        theta=0,
+    ):
         self.draw = f"""
             {x} {y} {w1} {w2} {L1} {L2} {r} {N} {theta} tJunction
         """
 
+
 class hJunction(Geo):
-    def __init__(self, x: float, y: float, w1: float, w2: float, L1:float, L2:float, r=0, N=0, theta=0):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        w1: float,
+        w2: float,
+        L1: float,
+        L2: float,
+        r=0,
+        N=0,
+        theta=0,
+    ):
         self.draw = f"""
             {x} {y} {w1} {w2} {L1} {L2} {r} {N} {theta} hJunction
+        """
+
+
+class roundedCorners(Geo):
+    def __init__(self, x: float, y: float, r: float, theta=180, N=10):
+        self.draw = ""
+        theta1 = theta / 180 * pi
+        theta2 = theta1 + pi / 2
+        p1 = [(x + r * cos(theta1), y + r * sin(theta1))]
+        p2 = [(x + r * cos(theta2), y + r * sin(theta2))]
+        p3 = [
+            (
+                x + sqrt(2) * r * cos(theta1 + pi / 4),
+                y + sqrt(2) * r * sin(theta1 + pi / 4),
+            )
+        ]
+        arcPointsTheta = linspace(theta1, theta2, N + 2)[1:-1]
+        arcPoints = []
+        for i in range(len(arcPointsTheta)):
+            x_n = x + r * cos(arcPointsTheta[i])
+            y_n = y + r * sin(arcPointsTheta[i])
+            arcPoints += [(x_n, y_n)]
+        self.add(Points2Shape(p1 + arcPoints + p2 + p3))
+
+
+class rectSUshape(Geo):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        L1: float,
+        L2: float,
+        W=0,
+        theta=0,
+    ):
+        self.draw = f"""
+            {x} {y} {L1} {L2} {W} {theta} rectSUshape
         """
