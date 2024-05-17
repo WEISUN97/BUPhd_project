@@ -12,4 +12,4 @@ for i in range(10):
 
 gen = CNSTGenerator(shapeReso=0.1)
 gen.add(connector)
-gen.generate('.\result\connector123.cnst', '.\result\connector123.gds', show=True)
+gen.generate('result_wei/connector123.cnst', 'result_wei/connector123.gds', show=True)
