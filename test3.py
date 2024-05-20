@@ -1,4 +1,6 @@
-from numpy import *
+import re
 
-print(linspace(1, 10, 5)[1:-1])
-print([1, 2] + [2, 3])
+
+result = "qdwdwqdq/Users/bubble/Desktop/PyProjects/layout/Xiangyu2Wei/CNSTPython/result_wei/XXX.gds"
+save_path = result[8 : 85 + 4]
+print(save_path)

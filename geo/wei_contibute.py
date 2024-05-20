@@ -68,9 +68,10 @@ class rectSUshape(Geo):
         y: float,
         L1: float,
         L2: float,
+        L3: float,
         W=0,
         theta=0,
     ):
         self.draw = f"""
-            {x} {y} {L1} {L2} {W} {theta} rectSUshape
+            {x} {y} {L1} {L2} {L3} {W} {theta} rectSUshape
         """
