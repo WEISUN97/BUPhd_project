@@ -75,3 +75,33 @@ class rectSUshape(Geo):
         self.draw = f"""
             {x} {y} {L1} {L2} {L3} {W} {theta} rectSUshape
         """
+
+
+class multyTextOutline(Geo):
+    def __init__(
+        self,
+        text: list[str],
+        font_name: str,
+        font_size: float,
+        spacing: float,
+        x: float,
+        y: float,
+    ):
+        self.draw = ""
+        for i in range(len(text)):
+            self.add(TextOutline(text[i], font_name, font_size, x, y - i * spacing))
+
+
+class Boolean(Geo):
+    def __init__(
+        self,
+        layer_1: float,
+        layer_2: float,
+        layer_3: float,
+        operation: str,
+    ):
+        self.draw = f"""
+            genArea1 devices {layer_1} genArea\n
+            genArea2 devices {layer_2} genArea\n
+            genArea1 genArea2 {layer_3} subtract {operation}
+        """
