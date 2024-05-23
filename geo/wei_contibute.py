@@ -161,3 +161,28 @@ class sBendLH(Geo):
         self.draw = f"""
             {x1} {y1} {L} {H} {w} {theta} sBendLH
         """
+
+
+class circlethree(Geo):
+    def __init__(
+        self, x1: float, y1: float, x2: float, y2: float, x3: float, y3: float, N: float
+    ):
+        self.draw = f"""
+        {x1} {y1} {x2} {y2} {x3} {y3} {N} circlethree
+    """
+
+
+class rectTaper(Geo):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        w1: float,
+        L1: float,
+        w2: float,
+        L2: float,
+        theta: float,
+    ):
+        self.draw = f"""
+       {x} {y} {w1} {L1} {w2} {L2} {theta} rectTaper 
+    """

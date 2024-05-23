@@ -16,6 +16,9 @@ from geo import (
     sBend,
     slash,
     sBendLH,
+    rectTaper,
+    circlethree,
+    Points2Shape,
     Boolean,
     Structure,
 )
@@ -35,7 +38,7 @@ for m in range(2):
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 50  # gap between electrodes in y direction
         gap_3 = 20  # gap between electrodes in x direction
-        gap_cell_x = 850  # gap between cells in x direction
+        gap_cell_x = 740  # gap between cells in x direction
         gap_actuators_x = 0.25  # gap between actuators
         gap_actuators_y = 0.2  # gap between actuators and beams
         L_actuators = [
@@ -50,34 +53,64 @@ for m in range(2):
         h_actuators = 3
         L_electrode = 350
         x_beam = (
-            k * gap_cell_x + gap_1 + L_electrode + w_support / 2 + 3 * m * gap_cell_x
+            -(w_support / 2 - L_electrode + gap_actuators_x + L_actuators[0][0])
+            + k * 740
+            + m * (3 * 740)
         )
-        y_beam = -L_support
+        y_beam = -L_support / 2 - gap_2 / 2 - L_electrode
 
         for i in range(7):
             # beams and supports
             if i != 2 and i != 3:
+                x1 = x_beam + w_support / 2 + L_beam
+                y1 = y_beam + (L_support - w_beam) / 2 - i * 740
+                p1 = [(x_beam + 2, y_beam - i * 850)]
+                p2 = [(p1[0][0] + 3, p1[0][1] + 4.9)]
+                p3 = [(p2[0][0], p2[0][1] + 0.2)]
+                p4 = [(p1[0][0], p1[0][1] + L_support)]
+                p5 = [(p4[0][0] - w_support, p4[0][1])]
+                p6 = [(p5[0][0], p5[0][1] - L_support)]
                 connector.add(
                     (
-                        tJunction(
-                            x_beam,
-                            y_beam - i * 850,
-                            w_support,
-                            w_beam,
-                            L_support,
+                        # def beam
+                        RectangleLH(
+                            x_beam + w_support / 2,
+                            y_beam - i * 850 + (L_support - w_beam) / 2,
                             L_beam,
+                            w_beam,
+                            0,
                         ),
-                        roundedCorners(
-                            x_beam + w_support / 2 + r,
-                            y_beam + (L_support + w_beam) / 2 + r - i * 850,
-                            r,
-                            180,
-                        ),
-                        roundedCorners(
-                            x_beam + w_support / 2 + r,
-                            y_beam + (L_support - w_beam) / 2 - r - i * 850,
-                            r,
-                            90,
+                        Points2Shape(p1 + p2 + p3 + p4 + p5 + p6),
+                        # tJunction(
+                        #     x_beam,
+                        #     y_beam - i * 850,
+                        #     w_support,
+                        #     w_beam,
+                        #     L_support,
+                        #     L_beam,
+                        # ),
+                        # roundedCorners(
+                        #     x_beam + w_support / 2 + r,
+                        #     y_beam + (L_support + w_beam) / 2 + r - i * 850,
+                        #     r,
+                        #     180,
+                        # ),
+                        # roundedCorners(
+                        #     x_beam + w_support / 2 + r,
+                        #     y_beam + (L_support - w_beam) / 2 - r - i * 850,
+                        #     r,
+                        #     90,
+                        # ),
+                        (
+                            circlethree(
+                                x1,
+                                y1,
+                                x1 + w_beam / 2,
+                                y1 + w_beam / 2,
+                                x1,
+                                y1 + w_beam,
+                                50,
+                            )
                         ),
                     ),
                 )
@@ -118,25 +151,6 @@ for m in range(2):
                         ),
                     ),
                 )
-            connector.add(
-                (
-                    tJunction(
-                        x_beam, y_beam - i * 850, w_support, w_beam, L_support, L_beam
-                    ),
-                    roundedCorners(
-                        x_beam + w_support / 2 + r,
-                        y_beam + (L_support + w_beam) / 2 + r - i * 850,
-                        r,
-                        180,
-                    ),
-                    roundedCorners(
-                        x_beam + w_support / 2 + r,
-                        y_beam + (L_support - w_beam) / 2 - r,
-                        r,
-                        90,
-                    ),
-                ),
-            )
         # electrodes
         for j in range(7):
             for i in range(2):
@@ -421,6 +435,27 @@ for m in range(2):
                     )
                 )
             )
+        if k == 2 and m == 1:
+            text = ["Zhou Lab", "Wei Sun 2024"]
+            fontSize = 50
+            spacing = 50
+            text_x = x_beam
+            text_y = (
+                y_beam
+                + L_support / 2
+                - gap_2 / 2
+                - j * 850
+                - L_electrode
+                - spacing * len(text)
+            )
+            connector.add(
+                (
+                    multyTextOutline(
+                        text, "Times New Roman", fontSize, spacing, text_x, text_y
+                    )
+                )
+            )
+
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add("2 layer")
 gen.add(connector)
