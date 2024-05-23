@@ -105,3 +105,59 @@ class Boolean(Geo):
             genArea2 devices {layer_2} genArea\n
             genArea1 genArea2 {layer_3} subtract {operation}
         """
+
+
+class roundrect(Geo):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        l: float,
+        h: float,
+        r_x: float,
+        r_y: float,
+        theta: float,
+    ):
+        self.draw = f"""
+            {x} {y} {l} {h} {r_x} {r_y} {theta} roundrect
+        """
+
+
+class sBend(Geo):
+    def __init__(
+        self,
+        x1: float,
+        y1: float,
+        x2: float,
+        y2: float,
+        w: float,
+        theta: float,
+    ):
+        self.draw = f"""
+            <{x1} {y1} {x2} {y2} {w} {theta} sBend>
+        """
+
+
+class slash(Geo):
+    def __init__(self, x1: float, y1: float, x2: float, y2: float, w: float):
+        self.draw = ""
+        p1 = [(x1 - w / 2, y1)]
+        p2 = [(x1 + w / 2, y1)]
+        p3 = [(x2 + w / 2, y2)]
+        p4 = [(x2 - w / 2, y2)]
+        self.add(Points2Shape(p1 + p2 + p3 + p4))
+
+
+class sBendLH(Geo):
+    def __init__(
+        self,
+        x1: float,
+        y1: float,
+        L: float,
+        H: float,
+        w: float,
+        theta: float,
+    ):
+        self.draw = f"""
+            {x1} {y1} {L} {H} {w} {theta} sBendLH
+        """
