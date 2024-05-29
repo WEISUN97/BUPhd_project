@@ -81,7 +81,8 @@ for m in range(1):
             )
             if i != 2 and i != 3:
                 x1 = x_beam + w_support / 2 + L_beam
-                y1 = y_beam + (L_support - w_beam) / 2 - i * 740
+                y1 = y_beam + (L_support - w_beam) / 2 - i * 850
+                print(y1)
                 p1 = [(x_beam + 2, y_beam - i * 850)]
                 p2 = [(p1[0][0] + 3, p1[0][1] + (w_support - w_beam) / 2)]
                 p3 = [(p2[0][0], p2[0][1] + w_beam)]
@@ -143,6 +144,8 @@ for m in range(1):
 
         # actuators
         for j in range(2):
+            gap_actuators_y = 0.2 + j * 0.2
+
             L_actuators_j = L_actuators[j]
             if j < 4 or j == 6:
                 gap_actuators_x_temp = gap_actuators_x
@@ -171,8 +174,8 @@ for m in range(1):
                     + h_actuators / 2
                     - L_actuators_j[0]
                     - gap_actuators_x
-                    - L_actuators_j[1],
-                )[0]
+                    - L_actuators_j[1]
+                )
                 connector.add(
                     (
                         roundrect(
@@ -222,6 +225,7 @@ for m in range(1):
 
         # cables
         for j in range(2):
+            gap_actuators_y = 0.2 + j * 0.2
             # cables of beam
             center_start_x = x_beam
             center_start_y = y_beam + L_support - j * 850
@@ -566,7 +570,7 @@ connector.add(
         -10,
         -1610,
         1480,
-        1630,
+        1620,
         0,
     )
 )
@@ -575,7 +579,7 @@ connector.add(
 # layer 21 - layer 20 = layer 2: for electrode
 """
 vary: 10, 0.2, 0.2 ; 15, 0.4, 0.2
-      10, 0.2, 0.4 ; 15, 0.4, 0.4
+      10, 0.2, 0.2 ; 15, 0.4, 0.2
         """
 
 gen = CNSTGenerator(shapeReso=0.01)
