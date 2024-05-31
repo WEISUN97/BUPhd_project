@@ -1,6 +1,8 @@
+from geo.xiangyu_contribute import *
 from .geo import Geo
 from geo import *
 from numpy import *
+from typing import Literal
 
 
 class tJunction(Geo):
@@ -186,3 +188,54 @@ class rectTaper(Geo):
         self.draw = f"""
        {x} {y} {w1} {L1} {w2} {L2} {theta} rectTaper 
     """
+
+
+class comb(Geo):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        L1: float,
+        w1: float,
+        L2: float,
+        w2: float,
+        d: float,
+        s: float,
+        N: int,
+        theta: float,
+    ):
+        self.draw = ""
+        # substrate of comb
+        self.add(RectangleLH(x, y, L1, w1, theta))
+        theta_pi = theta / 180 * pi
+        # comb teeth
+        for i in range(N):
+            # before rotation
+            x2 = x + d + (s + w2) * i
+            y2 = y + w1
+            # after rotation
+            x3 = (x2 - x) * cos(theta_pi) - (y2 - y) * sin(theta_pi) + x
+            # print(x3)
+            y3 = (x2 - x) * sin(theta_pi) + (y2 - y) * cos(theta_pi) + y
+            self.add(RectangleLH(x3, y3, w2, L2, theta))
+
+
+# class spring(Geo):
+#     def __init__(
+#         self,
+#         # (x, y) pos of left shuttle
+#         x: float,
+#         y: float,
+#         L: float,
+#         w: float,
+#     ):
+#         self.draw = ""
+#         # shuttles of springs
+#         self.add(RectangleLH(x, y, 0.22, 29, 0))
+#         self.add(RectangleLH(x, y, 1, 1, 0))
+#         self.add(RectangleLH(x, y, 1, 1, 0))
+
+
+#         # anchors of springs
+
+#         # folding truss of springs

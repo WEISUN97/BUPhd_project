@@ -31,25 +31,27 @@ for m in range(1):
         r_cable = 10
         w_support = 10
         L_support = 10
-        w_beam = 0.2
+        w_beam = 0.4
         L_beam = 100 + k * 5
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 50  # gap between electrodes in y direction
-        gap_3 = 20  # gap between electrodes in x direction
+        gap_3 = L_beam  # gap between electrodes in x direction
         gap_cell_x = 740  # gap between cells in x direction
-        gap_actuators_x = 5  # gap between actuators
-        gap_actuators_y = 0.2  # gap between actuators and beams
-        L_actuator = 20
-        h_actuators = 3
+        gap_actuators_x = 2  # gap between actuators
+        gap_actuators_y = 0.4  # gap between actuators and beams
+        L_actuator = L_beam - 2 * gap_actuators_x
+        h_actuators = 1
         L_electrode = 350
-        cable_in = 10  # length enter the electrode
+        cable_in = 10  # length enter the electrode in y direction
+        cable_offset = 10  # offset of cable in x direction
         x_beam = (
             -(w_support / 2 - L_electrode + gap_actuators_x + L_actuator)
             + k * 740
             + m * (3 * 740)
         )
         y_beam = -L_support / 2 - gap_2 / 2 - L_electrode
-
+        L_1 = 0  # length of rectaper
+        L_2 = 5  # length of rectaper
         for i in range(7):
             # def beam
             connector.add(
@@ -64,8 +66,6 @@ for m in range(1):
                 )
             )
             # beams and supports
-            x1 = x_beam + w_support / 2 + L_beam
-            y1 = y_beam + (L_support - w_beam) / 2 - i * 740
             p1_1 = [(x_beam + 2, y_beam - i * 850)]
             p2_1 = [(p1_1[0][0] + 3, p1_1[0][1] + (w_support - w_beam) / 2)]
             p3_1 = [(p2_1[0][0], p2_1[0][1] + w_beam)]
@@ -92,11 +92,9 @@ for m in range(1):
                     connector.add(
                         RectangleLH(
                             x_beam
-                            + w_support / 2
                             - L_electrode
-                            + p * (L_electrode + gap_3)
-                            + gap_actuators_x
-                            + L_actuator,
+                            + p * (L_electrode + gap_3 - cable_offset)
+                            + cable_offset,
                             y_beam
                             + L_support / 2
                             + gap_2 / 2
@@ -109,29 +107,35 @@ for m in range(1):
                     )
         # actuators
         for j in range(7):
+            x_actuator = x_beam + gap_actuators_x + w_support / 2
+            y_actuator = (
+                y_beam
+                + (L_support - w_beam) / 2
+                - gap_actuators_y
+                - h_actuators
+                - j * 850
+            )
+
             connector.add(
                 (
+                    # roundcorner of actuator d = 1
                     roundrect(
-                        x_beam + (w_support + L_beam - L_actuator) / 2,
-                        y_beam
-                        + (L_support - w_beam) / 2
-                        - gap_actuators_y
-                        - h_actuators
-                        - j * 850,
+                        x_actuator,
+                        y_actuator,
                         L_actuator,
                         h_actuators,
                         1,
                         1,
                         0,
                     ),
-                    roundrect(
-                        x_beam + (w_support + L_beam - L_actuator) / 2,
-                        y_beam + (L_support + w_beam) / 2 + gap_actuators_y - j * 850,
-                        L_actuator,
-                        h_actuators,
-                        1,
-                        1,
-                        0,
+                    rectTaper(
+                        x_actuator + L_actuator / 2,
+                        y_actuator - L_2,
+                        w_cable,
+                        L_1,
+                        L_actuator - 1,
+                        L_2,
+                        90,
                     ),
                 )
             )
@@ -150,36 +154,31 @@ for m in range(1):
             connector.add((BendWaveguide(point, r_cable, w_cable),))
             # cable of right support
             center_start_x = x_beam + w_support + L_beam
-            center_start_y = y_beam - j * 850
-            p2_y = center_start_y - 10
-            p3_x = (
-                x_beam
-                + w_support / 2
-                + L_beam
-                + gap_3
-                + gap_actuators_x
-                + L_actuator / 2
-                + 10
-            )
-            electrode_y = y_beam + L_support / 2 - gap_2 / 2 - j * 850 - cable_in
-            electrode_x = p3_x
             point = [
                 (center_start_x, center_start_y),
-                (center_start_x, p2_y),
-                (p3_x, p2_y),
+                (center_start_x, electrode_y),
+            ]
+            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            # cable of electrode
+            center_start_x = x_beam + w_support / 2 + gap_actuators_x + L_actuator / 2
+            center_start_y = (
+                y_beam
+                + (L_support - w_beam) / 2
+                - gap_actuators_y
+                - h_actuators
+                - L_2
+                - j * 850
+            )
+            electrode_y = y_beam + L_support / 2 - gap_2 / 2 - j * 850 - cable_in
+            electrode_x = x_beam
+            point = [
+                (center_start_x, center_start_y),
+                (center_start_x, electrode_y),
                 (electrode_x, electrode_y),
             ]
             connector.add((BendWaveguide(point, r_cable, w_cable),))
-            # cables of beam
-            # cable of lower electrode
-            center_start_x = x_beam + w_support / 2 + gap_actuators_x + L_actuator / 2
-            center_start_y = (
-                y_beam + (L_support - w_support) / 2 - gap_actuators_y - j * 850
-            )
 
-            # cable of upper electrode
-
-        # # Text
+        # Text
         for j in range(7):
             fontSize = 25
             spacing = 25
@@ -220,7 +219,7 @@ gen = CNSTGenerator(shapeReso=0.01)
 gen.add("2 layer")
 gen.add(connector)
 gen.generate(
-    "result_wei/tunable_device/Tunable.cnst",
-    "result_wei/tunable_device/Tunable.gds",
+    "result_wei/tunable_device/thermal/Tunable.cnst",
+    "result_wei/tunable_device/thermal/Tunable.gds",
     show=True,
 )
