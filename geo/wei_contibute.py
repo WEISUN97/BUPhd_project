@@ -220,22 +220,35 @@ class comb(Geo):
             self.add(RectangleLH(x3, y3, w2, L2, theta))
 
 
-# class spring(Geo):
-#     def __init__(
-#         self,
-#         # (x, y) pos of left shuttle
-#         x: float,
-#         y: float,
-#         L: float,
-#         w: float,
-#     ):
-#         self.draw = ""
-#         # shuttles of springs
-#         self.add(RectangleLH(x, y, 0.22, 29, 0))
-#         self.add(RectangleLH(x, y, 1, 1, 0))
-#         self.add(RectangleLH(x, y, 1, 1, 0))
+# rotate rectangle with respect to any point (x0, y0)
+class rotateRec(Geo):
+    def __init__(
+        self, x0: float, y0: float, x: float, y: float, L: float, w: float, theta: float
+    ):
+        self.draw = ""
+        theta_pi = theta / 180 * pi
+        x_rotate = (x - x0) * cos(theta_pi) - (y - y0) * sin(theta_pi) + x0
+        # print(x3)
+        y_rotate = (x - x0) * sin(theta_pi) + (y - y0) * cos(theta_pi) + y0
+        self.add(RectangleLH(x_rotate, y_rotate, L, w, theta))
 
 
-#         # anchors of springs
-
-#         # folding truss of springs
+class rotateRoundrect(Geo):
+    def __init__(
+        self,
+        x0: float,
+        y0: float,
+        x: float,
+        y: float,
+        L: float,
+        w: float,
+        rx: float,
+        ry: float,
+        theta: float,
+    ):
+        self.draw = ""
+        theta_pi = theta / 180 * pi
+        x_rotate = (x - x0) * cos(theta_pi) - (y - y0) * sin(theta_pi) + x0
+        # print(x3)
+        y_rotate = (x - x0) * sin(theta_pi) + (y - y0) * cos(theta_pi) + y0
+        self.add(roundrect(x_rotate, y_rotate, L, w, rx, ry, theta))
