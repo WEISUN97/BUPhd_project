@@ -32,7 +32,7 @@ for m in range(1):
         w_cable = 2
         r_cable = 10
         w_support = 1
-        L_support = 17
+        L_support = 14.7
         w_support2 = 10
         L_support2 = 10
         w_beam = 0.04
@@ -187,18 +187,21 @@ for m in range(1):
         # cables
         for j in range(6):
             # cables of beam
+            # cable of lefy support
+            center_start_x = x_beam - w_support / 2 - (d_comb + L_comb) - w_sub
+            center_start_y = y_beam + L_support / 2 + L_sub / 2 - j * 1050 - w_cable / 2
+            electrode_x = center_start_x - 10
+            electrode_y = y_beam + L_support / 2 + gap_2 / 2 - j * 1050 + cable_in
+            point = [
+                (center_start_x, center_start_y),
+                (electrode_x, center_start_y),
+                (electrode_x, electrode_y),
+            ]
+            connector.add((BendWaveguide(point, r_cable, w_cable),))
             # cable of right support
             center_start_x = x_beam + w_support / 2 + L_beam + w_support2 / 2
             center_start_y = y_beam + L_support / 2 + L_support2 / 2 - j * 1050
             electrode_y = y_beam + L_support / 2 + gap_2 / 2 - j * 1050 + cable_in
-            point = [
-                (center_start_x, center_start_y),
-                (center_start_x, electrode_y),
-            ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
-            # cable of right support
-            center_start_x = x_beam - w_support / 2 - L_comb - d_comb - w_sub / 2
-            center_start_y = y_beam + L_support + g_comb + b_comb - j * 1050
             point = [
                 (center_start_x, center_start_y),
                 (center_start_x, electrode_y),
@@ -227,18 +230,82 @@ for m in range(1):
         for j in range(6):
             t_spring = 0.22
             L_spring = 20
+            t_side = 0.28
+            L_top = 9
+            w_top = 0.5
+            L_side = 7.5
+            L_anchor = w_anchor = 5
+            gap_anchor = 2
+            # top spring
             x_start = x_beam + w_support / 2
-            y_start = y_beam + L_support - 8 - j * 1050
+            y_start = y_beam + L_support - 3 - j * 1050
 
             connector.add(
-                RectangleLH(
-                    x_start,
-                    y_start,
-                    t_spring,
-                    L_spring,
-                    0,
-                ),
+                (
+                    # left side
+                    RectangleLH(
+                        x_start,
+                        y_start,
+                        t_spring + t_side,
+                        L_side,
+                        0,
+                    ),
+                    # right side
+                    RectangleLH(
+                        x_start + L_top + t_spring + t_side,
+                        y_start,
+                        t_spring + t_side,
+                        L_side,
+                        0,
+                    ),
+                    # bottom
+                    RectangleLH(
+                        x_start + t_spring + t_side,
+                        y_start,
+                        L_top,
+                        w_top,
+                        0,
+                    ),
+                    # anchor
+                    RectangleLH(
+                        x_start + t_spring + t_side + gap_anchor,
+                        y_start + gap_anchor + w_top,
+                        L_anchor,
+                        w_anchor,
+                        0,
+                    ),
+                    # top side
+                    RectangleLH(
+                        x_start + t_side,
+                        y_start + L_side + L_spring,
+                        L_top + 2 * t_spring,
+                        w_top,
+                        0,
+                    ),
+                )
             )
+            # 4 springs
+            for i in range(4):
+                if i == 0:
+                    gap_spring = 0
+                elif i == 2:
+                    gap_spring += L_top / 3
+                else:
+                    gap_spring += t_spring / 2 + L_top / 3
+                x_start_p = x_start + t_side + gap_spring
+                y_start_p = y_start + L_side
+                connector.add(
+                    (
+                        # left side
+                        RectangleLH(
+                            x_start_p,
+                            y_start_p,
+                            t_spring,
+                            L_spring,
+                            0,
+                        ),
+                    )
+                )
 
         # Text
         for j in range(6):

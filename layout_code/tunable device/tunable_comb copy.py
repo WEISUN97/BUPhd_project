@@ -25,6 +25,7 @@ from geo import (
     Structure,
 )
 
+gen = CNSTGenerator(shapeReso=0.01)
 connector = Structure("Tunable")
 connector.add("10 layer")
 for m in range(1):
@@ -70,14 +71,14 @@ for m in range(1):
             y1 = y_beam + (L_support - w_beam) / 2 - j * 300
             p1 = [(x1, y1)]
             p2 = [(x1, y1 + w_beam)]
-            p3 = [(x1 + 3, y1 + (L_support2 - w_beam) / 2)]
-            p4 = [(x1 + w_support2, y1 + (L_support2 - w_beam) / 2)]
-            p5 = [(x1 + w_support2, y1 - (L_support2 + w_beam) / 2)]
-            p1 = [(x1 + 3, y1 - (L_support2 + w_beam) / 2)]
+            p3 = [(x1 + 3, y1 + (L_support2 + w_beam) / 2)]
+            p4 = [(x1 + w_support2, y1 + (L_support2 + w_beam) / 2)]
+            p5 = [(x1 + w_support2, y1 - (L_support2 - w_beam) / 2)]
+            p6 = [(x1 + 3, y1 - (L_support2 - w_beam) / 2)]
             connector.add(
                 (
                     # def support
-                    Points2Shape(p1 + p2 + p3 + p4 + p5 + p1),
+                    Points2Shape(p1 + p2 + p3 + p4 + p5 + p6),
                 ),
             )
             connector.add(
@@ -312,8 +313,11 @@ for k in range(3):
         y_text = y_beam + L_support / 2 - j * 300 - fontSize / 2
         connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 380, 25, 0),))
 
-gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)
+
+# result = Structure("result")
+# result.add(Boolean(11, 10, 2, "subtract"))
+# gen.add(result)
 gen.generate(
     "result_wei/tunable_device/comb/Tunable.cnst",
     "result_wei/tunable_device/comb/Tunable.gds",

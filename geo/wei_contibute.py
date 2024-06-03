@@ -103,9 +103,9 @@ class Boolean(Geo):
         operation: str,
     ):
         self.draw = f"""
-            genArea1 devices {layer_1} genArea\n
-            genArea2 devices {layer_2} genArea\n
-            genArea1 genArea2 {layer_3} subtract {operation}
+            <genArea1 devices {layer_1} genArea>\n
+            <genArea2 devices {layer_2} genArea>\n
+            <genArea1 genArea2 {layer_3} {operation}>
         """
 
 
