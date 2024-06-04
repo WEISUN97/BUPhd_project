@@ -20,19 +20,20 @@ from geo import (
     circlethree,
     Points2Shape,
     Boolean,
+    alignCustC1,
     Structure,
 )
 
 connector = Structure("Tunable")
-for m in range(1):
-    for k in range(1):
+for m in range(2):
+    for k in range(3):
         r = 0.5  # round corner of beam
         w_cable = 2
         r_cable = 10
         w_support = 10
         L_support = 10
-        w_beam = 0.4
-        L_beam = 100 + k * 5
+        w_beam_list = [0.03, 0.04, 0.05, 0.03, 0.04, 0.05]
+        L_beam = 100 + k * 50
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 50  # gap between electrodes in y direction
         gap_3 = L_beam  # gap between electrodes in x direction
@@ -46,19 +47,20 @@ for m in range(1):
         cable_offset = 10  # offset of cable in x direction
         x_beam = (
             -(w_support / 2 - L_electrode + gap_actuators_x + L_actuator)
-            + k * 740
-            + m * (3 * 740)
+            + k * 1000
+            + m * 3000
         )
         y_beam = -L_support / 2 - gap_2 / 2 - L_electrode
         L_1 = 0  # length of rectaper
         L_2 = 5  # length of rectaper
-        for i in range(7):
+        for j in range(6):
+            w_beam = w_beam_list[j]
             # def beam
             connector.add(
                 (
                     RectangleLH(
                         x_beam + w_support / 2,
-                        y_beam - i * 850 + (L_support - w_beam) / 2,
+                        y_beam - j * 850 + (L_support - w_beam) / 2,
                         L_beam,
                         w_beam,
                         0,
@@ -66,7 +68,7 @@ for m in range(1):
                 )
             )
             # beams and supports
-            p1_1 = [(x_beam + 2, y_beam - i * 850)]
+            p1_1 = [(x_beam + 2, y_beam - j * 850)]
             p2_1 = [(p1_1[0][0] + 3, p1_1[0][1] + (w_support - w_beam) / 2)]
             p3_1 = [(p2_1[0][0], p2_1[0][1] + w_beam)]
             p4_1 = [(p1_1[0][0], p1_1[0][1] + L_support)]
@@ -85,8 +87,7 @@ for m in range(1):
                     Points2Shape(p1_2 + p2_2 + p3_2 + p4_2 + p5_2 + p6_2),
                 ),
             )
-        # electrodes
-        for j in range(7):
+            # electrodes
             for i in range(2):
                 for p in range(2):
                     connector.add(
@@ -105,8 +106,7 @@ for m in range(1):
                             0,
                         ),
                     )
-        # actuators
-        for j in range(7):
+            # actuators
             x_actuator = x_beam + gap_actuators_x + w_support / 2
             y_actuator = (
                 y_beam
@@ -140,8 +140,7 @@ for m in range(1):
                 )
             )
 
-        # cables
-        for j in range(7):
+            # cables
             # cables of beam
             # cable of left support
             center_start_x = x_beam
@@ -178,14 +177,13 @@ for m in range(1):
             ]
             connector.add((BendWaveguide(point, r_cable, w_cable),))
 
-        # Text
-        for j in range(7):
+            # Text
             fontSize = 25
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam + 60
             y_text = y_beam + L_support / 2 - j * 850 - fontSize / 2
             text = [
-                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={L_beam/w_beam}",
+                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}",
             ]
             connector.add(
                 (
@@ -194,26 +192,29 @@ for m in range(1):
                     )
                 )
             )
-        if k == 2 and m == 1:
-            text = ["Zhou Lab", "Wei Sun 2024"]
-            fontSize = 50
-            spacing = 50
-            text_x = x_beam
-            text_y = (
-                y_beam
-                + L_support / 2
-                - gap_2 / 2
-                - j * 850
-                - L_electrode
-                - spacing * len(text)
-            )
-            connector.add(
-                (
-                    multyTextOutline(
-                        text, "Times New Roman", fontSize, spacing, text_x, text_y
-                    )
-                )
-            )
+        # if k == 2 and m == 1:
+        #     text = ["Zhou Lab", "Wei Sun 2024"]
+        #     fontSize = 50
+        #     spacing = 50
+        #     text_x = x_beam
+        #     text_y = (
+        #         y_beam
+        #         + L_support / 2
+        #         - gap_2 / 2
+        #         - j * 850
+        #         - L_electrode
+        #         - spacing * len(text)
+        #     )
+        #     connector.add(
+        #         (
+        #             multyTextOutline(
+        #                 text, "Times New Roman", fontSize, spacing, text_x, text_y
+        #             )
+        #         )
+        #     )
+# Alignment Marks
+connector.add(alignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
+connector.add(alignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
 
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add("2 layer")

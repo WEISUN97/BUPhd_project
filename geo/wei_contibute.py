@@ -252,3 +252,21 @@ class rotateRoundrect(Geo):
         # print(x3)
         y_rotate = (x - x0) * sin(theta_pi) + (y - y0) * cos(theta_pi) + y0
         self.add(roundrect(x_rotate, y_rotate, L, w, rx, ry, theta))
+
+
+class alignCustC1(Geo):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        L1: float,
+        w: float,
+        L2: float,
+        INV: float,
+        IL: float,
+        Iw: float,
+        theta: float,
+    ):
+        self.draw = f"""
+       <{x} {y} {L1} {w} {L2} {INV} {IL} {Iw} {theta} alignCustC1>
+    """

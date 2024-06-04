@@ -25,6 +25,7 @@ from geo import (
     rotateRec,
     rotateRoundrect,
     Structure,
+    alignCustC1,
 )
 
 connector = Structure("Tunable")
@@ -360,6 +361,9 @@ for m in range(2):
         #             )
         #         )
         #     )
+# Alignment Marks
+connector.add(alignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
+connector.add(alignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
 
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add("2 layer")
