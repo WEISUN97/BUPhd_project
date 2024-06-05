@@ -4,19 +4,14 @@ import math
 sys.path.append("/Users/bubble/Desktop/PyProjects/layout/Xiangyu2Wei/CNSTPython")
 
 from cnst_gen import CNSTGenerator
+
 from geo import (
-    tJunction,
-    hJunction,
     RectangleLH,
     roundrect,
     roundedCorners,
-    rectSUshape,
     BendWaveguide,
     TextOutline,
     multyTextOutline,
-    sBend,
-    slash,
-    sBendLH,
     rectTaper,
     circlethree,
     Points2Shape,
@@ -29,8 +24,8 @@ from geo import (
 )
 
 connector = Structure("Tunable")
-for m in range(2):
-    for k in range(3):
+for m in range(1):
+    for k in range(1):
         r = 1  # round corner of beam
         w_cable = 2
         r_cable = 10

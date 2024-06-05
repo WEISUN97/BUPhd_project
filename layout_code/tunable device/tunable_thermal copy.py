@@ -29,6 +29,7 @@ for m in range(1):
     L_beam_list = [100, 500, 1000]
     for k in range(3):
         r = 0.5  # round corner of beam
+        w_cable = 10
         r_cable = 10
         w_support = 20
         L_support = 20
@@ -36,46 +37,35 @@ for m in range(1):
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 50  # gap between electrodes in y direction
         gap_actuators_x = 2  # gap between actuators
-        gap_actuators_y_list = [
-            1,
-            1,
-            1,
-            1,
-            3,
-            3,
-            3,
-            3,
-        ]  # gap between actuators and beams
+        gap_actuators_y = 1  # gap between actuators and beams
         h_actuators = 1
-        L_electrode_1 = 250
-        L_electrode_2 = 350
+        L_electrode = 350
         cable_in = 10  # length enter the electrode in y direction
         cable_offset = 10  # offset of cable in x direction
-        temp_x = 0 if k == 0 else L_beam_list[k - 1]
-        x_beam = m * 3000 + k * 1000 + temp_x
-        y_beam = 0
-        L_1 = 150  # length of rectaper (rec part)
-        L_2 = 50  # length of rectaper
-
+        # x_beam = (
+        #     -(w_support / 2 - L_electrode + gap_actuators_x + L_actuator)
+        #     + k * 1000
+        #     + m * 3000
+        # )
+        x_beam = m * 3000 + k * 1500
+        y_beam = -L_support / 2 - gap_2 / 2 - L_electrode
+        L_1 = 0  # length of rectaper
+        L_2 = 10  # length of rectaper
         for j in range(8):
             L_beam = L_beam_list[k]
-            w_cable = 50 + (150 / 900) * (L_beam - 100)
-            if k > 0 and (j == 3 or j == 7):
+            if k > 0 and j > 0:
                 continue
             if k == 0 and (j == 3 or j == 7):
                 L_beam = 3000
-                w_cable = 200
             gap_3 = L_beam  # gap between electrodes in x direction
-            x_actuator = x_beam + gap_actuators_x + w_support / 2
             L_actuator = L_beam - 2 * gap_actuators_x
             w_beam = w_beam_list[j]
-            gap_actuators_y = gap_actuators_y_list[j]
             # def beam
             connector.add(
                 (
                     RectangleLH(
                         x_beam + w_support / 2,
-                        y_beam - j * 1200 + (L_support - w_beam) / 2,
+                        y_beam - j * 800 + (L_support - w_beam) / 2,
                         L_beam,
                         w_beam,
                         0,
@@ -84,7 +74,7 @@ for m in range(1):
             )
             # beams and supports
             temp = w_support / 4
-            p1_1 = [(x_beam + temp, y_beam - j * 1200)]
+            p1_1 = [(x_beam + temp, y_beam - j * 800)]
             p2_1 = [(p1_1[0][0] + temp, p1_1[0][1] + (w_support - w_beam) / 2)]
             p3_1 = [(p2_1[0][0], p2_1[0][1] + w_beam)]
             p4_1 = [(p1_1[0][0], p1_1[0][1] + L_support)]
@@ -105,120 +95,31 @@ for m in range(1):
             )
             # electrodes
             for i in range(2):
-                connector.add(
-                    (
-                        # left
-                        rectTaper(
-                            x_beam - w_support / 2,
-                            y_beam - j * 1200,
-                            L_electrode_1,
-                            0,
-                            L_electrode_2,
-                            300,
-                            180,
-                        ),
-                        # right
-                        rectTaper(
-                            x_beam + w_support / 2 * 3 + L_beam,
-                            y_beam - j * 1200,
-                            L_electrode_1,
-                            0,
-                            L_electrode_2,
-                            300,
-                            0,
-                        ),
-                        # top
-                        rectTaper(
-                            x_beam + w_support / 2 + L_beam / 2,
+                for p in range(2):
+                    connector.add(
+                        RectangleLH(
+                            x_beam
+                            - L_electrode
+                            + p * (L_electrode + gap_3 - cable_offset + w_support / 2)
+                            + cable_offset,
                             y_beam
-                            - j * 1200
-                            + (L_support + w_beam) / 2
-                            + gap_actuators_y
-                            + L_1
-                            + L_2
-                            + h_actuators,
-                            300,
+                            + L_support / 2
+                            + gap_2 / 2
+                            - i * (gap_2 + L_electrode)
+                            - j * 800,
+                            L_electrode,
+                            L_electrode,
                             0,
-                            L_electrode_2,
-                            300,
-                            90,
-                        ),
-                        # bottom
-                        rectTaper(
-                            x_beam + w_support / 2 + L_beam / 2,
-                            y_beam
-                            - j * 1200
-                            + (L_support - w_beam) / 2
-                            - gap_actuators_y
-                            - L_1
-                            - L_2
-                            - h_actuators,
-                            L_electrode_1,
-                            0,
-                            L_electrode_2,
-                            L_electrode_2,
-                            -90,
                         ),
                     )
-                )
-            # for i in range(2):
-            # connector.add(
-            #     (
-            #         # left
-            #         RectangleLH(
-            #             x_beam - w_support / 2 - L_electrode_2,
-            #             y_beam - j * 1200 - L_electrode_2 / 2,
-            #             L_electrode_2,
-            #             L_electrode_2,
-            #             0,
-            #         ),
-            #         # right
-            #         RectangleLH(
-            #             x_beam + w_support / 2 * 3 + L_beam,
-            #             y_beam - j * 1200 - L_electrode_2 / 2,
-            #             L_electrode_2,
-            #             L_electrode_2,
-            #             0,
-            #         ),
-            #         # top
-            #         RectangleLH(
-            #             x_beam + w_support / 2 + L_beam / 2 - L_electrode_2 / 2,
-            #             y_beam
-            #             - j * 1200
-            #             + (L_support + w_beam) / 2
-            #             + gap_actuators_y
-            #             + L_1
-            #             + L_2
-            #             + h_actuators,
-            #             L_electrode_2,
-            #             L_electrode_2,
-            #             0,
-            #         ),
-            #         # bottom
-            #         RectangleLH(
-            #             x_beam + w_support / 2 + L_beam / 2 - L_electrode_2 / 2,
-            #             y_beam
-            #             - j * 1200
-            #             + (L_support - w_beam) / 2
-            #             - gap_actuators_y
-            #             - L_1
-            #             - L_2
-            #             - h_actuators
-            #             - L_electrode_2,
-            #             L_electrode_2,
-            #             L_electrode_2,
-            #             0,
-            #         ),
-            #     )
-            # )
-
             # actuators
+            x_actuator = x_beam + gap_actuators_x + w_support / 2
             y_actuator = (
                 y_beam
                 + (L_support - w_beam) / 2
                 - gap_actuators_y
                 - h_actuators
-                - j * 1200
+                - j * 800
             )
             connector.add(
                 (
@@ -234,7 +135,7 @@ for m in range(1):
                     ),
                     rectTaper(
                         x_actuator + L_actuator / 2,
-                        y_actuator - L_2 - L_1,
+                        y_actuator - L_2,
                         w_cable,
                         L_1,
                         L_actuator - 1,
@@ -258,7 +159,7 @@ for m in range(1):
                     ),
                     rectTaper(
                         x_actuator + L_actuator / 2,
-                        y_actuator + L_2 + h_actuators + L_1,
+                        y_actuator + L_2 + h_actuators,
                         w_cable,
                         L_1,
                         L_actuator - 1,
@@ -267,23 +168,72 @@ for m in range(1):
                     ),
                 )
             )
+            # cables
+            # cables of beam
+            # cable of left support
+            center_start_x = x_beam
+            center_start_y = y_beam + L_support - j * 800
+            electrode_y = y_beam + L_support / 2 + gap_2 / 2 - j * 800 + cable_in
+            point = [
+                (center_start_x, center_start_y),
+                (center_start_x, electrode_y),
+            ]
+            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            # cable of right support
+            center_start_x = x_beam + w_support + L_beam
+            center_start_y = y_beam - j * 800
+            electrode_y = (
+                y_beam + L_support / 2 - gap_2 / 2 - j * 800 - w_cable / 2 - cable_in
+            )
+            point = [
+                (center_start_x, center_start_y),
+                (center_start_x, electrode_y),
+            ]
+            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            # cable of actuator below
+            center_start_x = x_beam + w_support / 2 + gap_actuators_x + L_actuator / 2
+            center_start_y = (
+                y_beam
+                + (L_support - w_beam) / 2
+                - gap_actuators_y
+                - h_actuators
+                - L_2
+                - j * 800
+            )
+            electrode_y = y_beam + L_support / 2 - gap_2 / 2 - j * 800 - cable_in
+            electrode_x = x_beam - w_support
+            point = [
+                (center_start_x, center_start_y),
+                (center_start_x, electrode_y),
+                (electrode_x, electrode_y),
+            ]
+            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            # cable of actuator up
+            center_start_y += 2 * (L_2 + h_actuators + gap_actuators_y) + w_beam
+            electrode_y = y_beam + L_support / 2 + gap_2 / 2 - j * 800 + cable_in
+            electrode_x = x_beam + 2 * w_support + L_beam
+            point = [
+                (center_start_x, center_start_y),
+                (center_start_x, electrode_y),
+                (electrode_x, electrode_y),
+            ]
+            connector.add((BendWaveguide(point, r_cable, w_cable),))
 
             # Text
             fontSize = 25
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam + 60
-            y_text = y_beam + L_support / 2 - j * 1200 - fontSize / 2
+            y_text = y_beam + L_support / 2 - j * 800 - fontSize / 2
             text = [
                 f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}",
             ]
-            # connector.add(
-            #     (
-            #         multyTextOutline(
-            #             text, "Times New Roman", fontSize, spacing, x_text, y_text
-            #         )
-            #     )
-            # )
-
+            connector.add(
+                (
+                    multyTextOutline(
+                        text, "Times New Roman", fontSize, spacing, x_text, y_text
+                    )
+                )
+            )
         # if k == 2 and m == 1:
         #     text = ["Zhou Lab", "Wei Sun 2024"]
         #     fontSize = 50
@@ -293,7 +243,7 @@ for m in range(1):
         #         y_beam
         #         + L_support / 2
         #         - gap_2 / 2
-        #         - j * 1200
+        #         - j * 800
         #         - L_electrode
         #         - spacing * len(text)
         #     )
