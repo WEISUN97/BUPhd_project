@@ -25,7 +25,8 @@ from geo import (
 )
 
 connector = Structure("Tunable")
-for m in range(1):
+connector.add("10 layer")
+for m in range(2):
     L_beam_list = [100, 500, 1000]
     for k in range(3):
         r = 0.5  # round corner of beam
@@ -52,7 +53,7 @@ for m in range(1):
         cable_in = 10  # length enter the electrode in y direction
         cable_offset = 10  # offset of cable in x direction
         temp_x = 0 if k == 0 else L_beam_list[k - 1]
-        x_beam = m * 3000 + k * 1000 + temp_x
+        x_beam = m * 4500 + k * 1000 + temp_x
         y_beam = 0
         L_1 = 150  # length of rectaper (rec part)
         L_2 = 50  # length of rectaper
@@ -104,63 +105,63 @@ for m in range(1):
                 ),
             )
             # electrodes
-            for i in range(2):
-                connector.add(
-                    (
-                        # left
-                        rectTaper(
-                            x_beam - w_support / 2,
-                            y_beam - j * 1200,
-                            L_electrode_1,
-                            0,
-                            L_electrode_2,
-                            300,
-                            180,
-                        ),
-                        # right
-                        rectTaper(
-                            x_beam + w_support / 2 * 3 + L_beam,
-                            y_beam - j * 1200,
-                            L_electrode_1,
-                            0,
-                            L_electrode_2,
-                            300,
-                            0,
-                        ),
-                        # top
-                        rectTaper(
-                            x_beam + w_support / 2 + L_beam / 2,
-                            y_beam
-                            - j * 1200
-                            + (L_support + w_beam) / 2
-                            + gap_actuators_y
-                            + L_1
-                            + L_2
-                            + h_actuators,
-                            300,
-                            0,
-                            L_electrode_2,
-                            300,
-                            90,
-                        ),
-                        # bottom
-                        rectTaper(
-                            x_beam + w_support / 2 + L_beam / 2,
-                            y_beam
-                            - j * 1200
-                            + (L_support - w_beam) / 2
-                            - gap_actuators_y
-                            - L_1
-                            - L_2
-                            - h_actuators,
-                            L_electrode_1,
-                            0,
-                            L_electrode_2,
-                            L_electrode_2,
-                            -90,
-                        ),
-                    )
-                )
+            # for i in range(2):
+            #     connector.add(
+            #         (
+            #             # left
+            #             rectTaper(
+            #                 x_beam - w_support / 2,
+            #                 y_beam - j * 1200,
+            #                 L_electrode_1,
+            #                 0,
+            #                 L_electrode_2,
+            #                 300,
+            #                 180,
+            #             ),
+            #             # right
+            #             rectTaper(
+            #                 x_beam + w_support / 2 * 3 + L_beam,
+            #                 y_beam - j * 1200,
+            #                 L_electrode_1,
+            #                 0,
+            #                 L_electrode_2,
+            #                 300,
+            #                 0,
+            #             ),
+            #             # top
+            #             rectTaper(
+            #                 x_beam + w_support / 2 + L_beam / 2,
+            #                 y_beam
+            #                 - j * 1200
+            #                 + (L_support + w_beam) / 2
+            #                 + gap_actuators_y
+            #                 + L_1
+            #                 + L_2
+            #                 + h_actuators,
+            #                 300,
+            #                 0,
+            #                 L_electrode_2,
+            #                 300,
+            #                 90,
+            #             ),
+            #             # bottom
+            #             rectTaper(
+            #                 x_beam + w_support / 2 + L_beam / 2,
+            #                 y_beam
+            #                 - j * 1200
+            #                 + (L_support - w_beam) / 2
+            #                 - gap_actuators_y
+            #                 - L_1
+            #                 - L_2
+            #                 - h_actuators,
+            #                 L_electrode_1,
+            #                 0,
+            #                 L_electrode_2,
+            #                 L_electrode_2,
+            #                 -90,
+            #             ),
+            #         )
+            #     )
             # for i in range(2):
             # connector.add(
             #     (
@@ -274,15 +275,16 @@ for m in range(1):
             x_text = x_beam + w_support / 2 + L_beam + 60
             y_text = y_beam + L_support / 2 - j * 1200 - fontSize / 2
             text = [
-                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}",
+                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}",
             ]
-            # connector.add(
-            #     (
-            #         multyTextOutline(
-            #             text, "Times New Roman", fontSize, spacing, x_text, y_text
-            #         )
-            #     )
-            # )
+            # L/t={int(L_beam/w_beam)}
+            connector.add(
+                (
+                    multyTextOutline(
+                        text, "Times New Roman", fontSize, spacing, x_text, y_text
+                    )
+                )
+            )
 
         # if k == 2 and m == 1:
         #     text = ["Zhou Lab", "Wei Sun 2024"]
@@ -305,11 +307,48 @@ for m in range(1):
         #         )
         #     )
 # Alignment Marks
-connector.add(alignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
-connector.add(alignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
+# connector.add(alignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
+# connector.add(alignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
+
+connector.add("11 layer")
+# frame for beam
+for m in range(2):
+    L_beam_list = [100, 500, 1000]
+    for k in range(3):
+        temp_x = 0 if k == 0 else L_beam_list[k - 1]
+        x_beam = m * 4500 + k * 1000 + temp_x
+        L_beam = L_beam_list[k]
+        w_beam_list = [0.05, 0.1, 0.2, 0.1, 0.05, 0.1, 0.2, 0.1]
+        for j in range(8):
+            w_beam = w_beam_list[j]
+            gap_actuators_y = gap_actuators_y_list[j]
+            L_beam = L_beam_list[k]
+            w_cable = 50 + (150 / 900) * (L_beam - 100)
+            if k > 0 and (j == 3 or j == 7):
+                continue
+            if k == 0 and (j == 3 or j == 7):
+                L_beam = 3000
+                w_cable = 200
+            frame_x = x_beam - w_support / 2
+            frame_y = y_beam + L_support / 2 - L_2 - j * 1200 - 10
+            frame_height = (L_2 + gap_actuators_y + h_actuators) * 2 + w_beam + 20
+            frame_length = 1.5 * w_support + L_beam
+            connector.add(
+                RectangleLH(
+                    frame_x,
+                    frame_y,
+                    frame_length + 10,
+                    frame_height,
+                    0,
+                ),
+            )
+            fontSize = 25
+            spacing = 25
+            x_text = x_beam + w_support / 2 + L_beam + 30
+            y_text = y_beam + L_support / 2 - j * 1200 - fontSize / 2
+            connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 380, 25, 0),))
 
 gen = CNSTGenerator(shapeReso=0.01)
-gen.add("2 layer")
 gen.add(connector)
 gen.generate(
     "result_wei/tunable_device/thermal/Tunable.cnst",

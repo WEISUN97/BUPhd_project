@@ -19,7 +19,7 @@ from geo import (
     rectTaper,
     circlethree,
     Points2Shape,
-    Boolean,
+    alignCustC1,
     Structure,
 )
 
@@ -28,8 +28,18 @@ from geo import (
 connector = Structure("logicgate")
 # E-beam structure part in layer 10
 connector.add("10 layer")
-for m in range(1):
-    for k in range(2):
+w_beam_list = [
+    [
+        0.2,
+        0.4,
+        0.6,
+    ],
+    [0.2, 0.4, 0.6],
+]
+gap_actuators_y_list = [0.5, 1]
+for m in range(2):
+    gap_actuators_y = gap_actuators_y_list[m]
+    for k in range(3):
         # m = 0
         # k = 0
         r = 0.5  # round corner of beam
@@ -37,22 +47,32 @@ for m in range(1):
         r_cable = 10
         w_support = 10
         L_support = 10
-        w_beam = 0.2 + k * 0.2
-        L_beam = 10 + k * 5
+        # w_beam = 0.2 + k * 0.2
+        # L_beam = 10 + k * 5
+        L_beam = 15
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 50  # gap between electrodes in y direction
         gap_3 = 20  # gap between electrodes in x direction
         gap_cell_x = 740  # gap between cells in x direction
         gap_actuators_x = 0.25  # gap between actuators
         # gap_actuators_y = 0.2 + k * 0.2  # gap between actuators and beams
+        # L_actuators = [
+        #     [3 + k * 2.5, 3 + k * 2.5, 3],
+        #     [3 + k * 2.5, 3 + k * 2.5, 3],
+        #     [3 + k * 2.5, 3, 3 + k * 2.5],
+        #     [3 + k * 2.5, 3, 3 + k * 2.5],
+        #     [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
+        #     [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
+        #     [4.75 + k * 2.5, 4.75 + k * 2.5],
+        # ]
         L_actuators = [
-            [3 + k * 2.5, 3 + k * 2.5, 3],
-            [3 + k * 2.5, 3 + k * 2.5, 3],
-            [3 + k * 2.5, 3, 3 + k * 2.5],
-            [3 + k * 2.5, 3, 3 + k * 2.5],
-            [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
-            [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
-            [4.75 + k * 2.5, 4.75 + k * 2.5],
+            [14 / 3, 14 / 3, 14 / 3],
+            [14 / 3, 14 / 3, 14 / 3],
+            [14 / 3, 14 / 3, 14 / 3],
+            [14 / 3, 14 / 3, 14 / 3],
+            [9.5, 6.5, 9.5],
+            [9.5, 6.5, 9.5],
+            [4.75 + 2.5, 4.75 + 2.5],
         ]
         h_actuators = 3
         L_electrode = 350
@@ -63,27 +83,26 @@ for m in range(1):
             + m * (3 * 740)
         )
         y_beam = -L_support / 2 - gap_2 / 2 - L_electrode
-
-        for i in range(2):
+        w_beam = w_beam_list[m][k]
+        for j in range(7):
             # beams and supports
-            gap_actuators_y = 0.2 + i * 0.2
+            # gap_actuators_y = 0.2 + j * 0.2
             # def beam
             connector.add(
                 (
                     RectangleLH(
                         x_beam + w_support / 2,
-                        y_beam - i * 850 + (L_support - w_beam) / 2,
+                        y_beam - j * 850 + (L_support - w_beam) / 2,
                         L_beam,
                         w_beam,
                         0,
                     ),
                 )
             )
-            if i != 2 and i != 3:
+            if j != 2 and j != 3:
                 x1 = x_beam + w_support / 2 + L_beam
-                y1 = y_beam + (L_support - w_beam) / 2 - i * 850
-                print(y1)
-                p1 = [(x_beam + 2, y_beam - i * 850)]
+                y1 = y_beam + (L_support - w_beam) / 2 - j * 850
+                p1 = [(x_beam + 2, y_beam - j * 850)]
                 p2 = [(p1[0][0] + 3, p1[0][1] + (w_support - w_beam) / 2)]
                 p3 = [(p2[0][0], p2[0][1] + w_beam)]
                 p4 = [(p1[0][0], p1[0][1] + L_support)]
@@ -107,7 +126,7 @@ for m in range(1):
             else:
                 x1 = x_beam + w_support / 2 + L_beam
                 y1 = y_beam + (L_support - w_beam) / 2 - i * 740
-                p1_1 = [(x_beam + 2, y_beam - i * 850)]
+                p1_1 = [(x_beam + 2, y_beam - j * 850)]
                 p2_1 = [(p1_1[0][0] + 3, p1_1[0][1] + (w_support - w_beam) / 2)]
                 p3_1 = [(p2_1[0][0], p2_1[0][1] + w_beam)]
                 p4_1 = [(p1_1[0][0], p1_1[0][1] + L_support)]
@@ -126,26 +145,8 @@ for m in range(1):
                         Points2Shape(p1_2 + p2_2 + p3_2 + p4_2 + p5_2 + p6_2),
                     ),
                 )
-            # Test
-            fontSize = 25
-            spacing = 25
-            x_text = x_beam + w_support / 2 + L_beam + 60
-            y_text = y_beam + L_support / 2 - i * 850 - fontSize / 2
-            text = [
-                f"L{L_beam} t{w_beam:.1f} G{gap_actuators_y:.1f}",
-            ]
-            connector.add(
-                (
-                    multyTextOutline(
-                        text, "Times New Roman", fontSize, spacing, x_text, y_text
-                    )
-                )
-            )
 
-        # actuators
-        for j in range(2):
-            gap_actuators_y = 0.2 + j * 0.2
-
+            # actuators
             L_actuators_j = L_actuators[j]
             if j < 4 or j == 6:
                 gap_actuators_x_temp = gap_actuators_x
@@ -222,10 +223,24 @@ for m in range(1):
                         ),
                     )
                 )
+            # Test
+            fontSize = 25
+            spacing = 25
+            x_text = x_beam + w_support / 2 + L_beam + 60
+            y_text = y_beam + L_support / 2 - j * 850 - fontSize / 2
+            text = [
+                f"L{L_beam} t{w_beam:.1f} G{gap_actuators_y:.1f}",
+            ]
+            connector.add(
+                (
+                    multyTextOutline(
+                        text, "Times New Roman", fontSize, spacing, x_text, y_text
+                    )
+                )
+            )
 
-        # cables
-        for j in range(2):
-            gap_actuators_y = 0.2 + j * 0.2
+            # cables
+            # gap_actuators_y = 0.2 + j * 0.2
             # cables of beam
             center_start_x = x_beam
             center_start_y = y_beam + L_support - j * 850
@@ -385,8 +400,11 @@ for m in range(1):
 
 # E-beam frame in layer 11
 connector.add("11 layer")
-for m in range(1):
-    for k in range(2):
+# Alignment Marks
+connector.add(alignCustC1(-200, -2925, 100, 2, 100, 0, 120, 120, 0))
+connector.add(alignCustC1(4620, -2925, 100, 2, 100, 0, 120, 120, 0))
+for m in range(2):
+    for k in range(3):
         # m = 0
         # k = 0
         r = 0.5  # round corner of beam
@@ -423,7 +441,7 @@ for m in range(1):
         gap_actuators_x_temp_2 = L_actuators_j[0] + gap_actuators_x + gap_actuators_x
         y_beam = -L_support / 2 - gap_2 / 2 - L_electrode
 
-        for j in range(2):
+        for j in range(7):
             L_actuators_j = L_actuators[j]
             center_start_x = (
                 x_beam + w_support / 2 + gap_actuators_x_temp_1 + L_actuators_j[i] / 2
@@ -452,7 +470,7 @@ for m in range(1):
                 ),
             )
         # text
-        for j in range(2):
+        for j in range(7):
             fontSize = 25
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam + 60
@@ -464,8 +482,8 @@ for m in range(1):
 # electrode in layer 20
 connector.add("20 layer")
 # electrodes
-for m in range(1):
-    for k in range(2):
+for m in range(2):
+    for k in range(3):
         # m = 0
         # k = 0
         r = 0.5  # round corner of beam
@@ -499,7 +517,7 @@ for m in range(1):
             + m * (3 * 740)
         )
         y_beam = -L_support / 2 - gap_2 / 2 - L_electrode
-        for j in range(2):
+        for j in range(7):
             for i in range(2):
                 for p in range(2):
                     connector.add(
@@ -528,7 +546,7 @@ for m in range(1):
         gap_actuators_x_temp_1 = gap_actuators_x
         y_beam = -L_support / 2 - gap_2 / 2 - L_electrode
 
-        for j in range(2):
+        for j in range(7):
             L_actuators_j = L_actuators[j]
             center_start_x = (
                 x_beam + w_support / 2 + gap_actuators_x_temp_1 + L_actuators_j[i] / 2
@@ -565,12 +583,14 @@ for m in range(1):
             connector.add((RectangleLH(x_text - 5, y_text - 5, 160, 30, 0),))
 # electrode frame in layer 21
 connector.add("21 layer")
+connector.add(alignCustC1(-200, -2925, 100, 2, 100, 0, 120, 120, 0))
+connector.add(alignCustC1(4620, -2925, 100, 2, 100, 0, 120, 120, 0))
 connector.add(
     RectangleLH(
         -10,
-        -1610,
-        1480,
-        1620,
+        -5860,
+        4440,
+        5870,
         0,
     )
 )
