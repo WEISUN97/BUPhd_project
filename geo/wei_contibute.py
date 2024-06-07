@@ -270,3 +270,31 @@ class alignCustC1(Geo):
         self.draw = f"""
        <{x} {y} {L1} {w} {L2} {INV} {IL} {Iw} {theta} alignCustC1>
     """
+
+
+class alignFFFB1(Geo):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        La: float,
+        Lb: float,
+        theta: float,
+    ):
+        self.draw = f"""
+       <{x} {y} {La} {Lb} {theta} alignFFFB1>
+    """
+
+
+class rectangleC(Geo):
+    def __init__(
+        self,
+        x: float,
+        y: float,
+        L: float,
+        H: float,
+        theta: float,
+    ):
+        self.draw = f"""
+       {x} {y} {L} {H} {theta} rectangleC
+    """

@@ -20,6 +20,7 @@ from geo import (
     circlethree,
     Points2Shape,
     alignCustC1,
+    alignFFFB1,
     Structure,
 )
 
@@ -585,6 +586,7 @@ for m in range(2):
 connector.add("21 layer")
 connector.add(alignCustC1(-200, -2925, 100, 2, 100, 0, 120, 120, 0))
 connector.add(alignCustC1(4620, -2925, 100, 2, 100, 0, 120, 120, 0))
+connector.add(alignFFFB1(-200, -2925, 3, 4, 0))
 connector.add(
     RectangleLH(
         -10,
