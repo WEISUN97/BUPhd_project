@@ -174,6 +174,13 @@ class circlethree(Geo):
     """
 
 
+class ellipseVector(Geo):
+    def __init__(self, x: float, y: float, rx: float, ry: float, theta: float):
+        self.draw = f"""
+        {x} {y} {rx} {ry} {theta} ellipseVector
+    """
+
+
 class rectTaper(Geo):
     def __init__(
         self,

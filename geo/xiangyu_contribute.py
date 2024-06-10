@@ -662,3 +662,19 @@ def computeAngleDegrees(v1, v2):
     angle_radians = np.arctan2(cross_product, dot_product)
     angle_degrees = np.degrees(angle_radians)
     return angle_degrees
+
+
+class PolyPath(Geo):
+    def __init__(
+        self, points: list[tuple[float, float]], w: float, cap: int, join: int
+    ) -> None:
+        """See page 93 2.7.10 Polygon Along a Path
+
+        Args:
+            points (list[tuple[float, float]]): list of points, each point is a tuple of x and y
+        """
+        self.draw = ""
+        for point in points:
+            self.draw += f"{point[0]} {point[1]}\n"
+        self.draw += f"{w} {cap} {join}\n"
+        self.draw += "polypath"
