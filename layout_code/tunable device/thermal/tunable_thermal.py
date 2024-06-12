@@ -77,13 +77,15 @@ for m in range(2):
             # def beam
             connector.add(
                 (
-                    RectangleLH(
-                        x_beam + w_support / 2,
-                        y_beam - j * 1200 + (L_support - w_beam) / 2,
-                        L_beam,
-                        w_beam,
-                        0,
-                    ),
+                    (
+                        RectangleLH(
+                            x_beam + w_support / 2,
+                            y_beam - j * 1200 + (L_support - w_beam) / 2,
+                            L_beam,
+                            w_beam,
+                            0,
+                        ),
+                    )
                 )
             )
             # beams and supports
