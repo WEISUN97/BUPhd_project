@@ -2,24 +2,15 @@ import sys
 
 sys.path.append("/Users/bubble/Desktop/PyProjects/layout/Xiangyu2Wei/CNSTPython")
 
-from cnst_gen import CNSTGenerator
-from geo import (
-    tJunction,
-    hJunction,
+from cnstpy import CNSTGenerator
+from cnstpy.geo import (
     RectangleLH,
-    roundrect,
-    roundedCorners,
-    rectSUshape,
+    Roundrect,
+    RectSUshape,
     BendWaveguide,
     TextOutline,
-    multyTextOutline,
-    sBend,
-    slash,
-    sBendLH,
-    rectTaper,
-    circlethree,
+    Circlethree,
     Points2Shape,
-    Boolean,
     Structure,
 )
 
@@ -92,7 +83,7 @@ for m in range(2):
                     (
                         # def support
                         Points2Shape(p1 + p2 + p3 + p4 + p5 + p6),
-                        circlethree(
+                        Circlethree(
                             x1,
                             y1,
                             x1 + w_beam / 2,
@@ -129,13 +120,11 @@ for m in range(2):
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam + 60
             y_text = y_beam + L_support / 2 - i * 850 - fontSize / 2
-            text = [
-                f"{k+1}.{i+1}.{m+1} L{L_beam} t{w_beam:.2f} G{gap_actuators_y:.2f}",
-            ]
+            text = f"{k+1}.{i+1}.{m+1} L{L_beam} t{w_beam:.2f} G{gap_actuators_y:.2f}"
             connector.add(
                 (
-                    multyTextOutline(
-                        text, "Times New Roman", fontSize, spacing, x_text, y_text
+                    TextOutline(
+                        text, "Times New Roman", fontSize, x_text, y_text, spacing
                     )
                 )
             )
@@ -149,7 +138,7 @@ for m in range(2):
                     if i > 0:
                         gap_actuators_x_temp += L_actuators_j[i - 1] + gap_actuators_x
                     connector.add(
-                        roundrect(
+                        Roundrect(
                             x_beam + w_support / 2 + gap_actuators_x_temp,
                             y_beam
                             + (L_support - w_beam) / 2
@@ -174,7 +163,7 @@ for m in range(2):
                 )[0]
                 connector.add(
                     (
-                        roundrect(
+                        Roundrect(
                             x_beam + w_support / 2 + gap_actuators_x,
                             y_beam
                             + (L_support - w_beam) / 2
@@ -187,7 +176,7 @@ for m in range(2):
                             0.5,
                             0,
                         ),
-                        roundrect(
+                        Roundrect(
                             x_beam + w_support / 2 + gap_actuators_x,
                             y_beam
                             + (L_support + w_beam) / 2
@@ -199,7 +188,7 @@ for m in range(2):
                             0.5,
                             0,
                         ),
-                        rectSUshape(
+                        RectSUshape(
                             x_beam
                             + w_support / 2
                             + gap_actuators_x
@@ -229,7 +218,7 @@ for m in range(2):
                 (center_start_x, center_start_y),
                 (center_start_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             L_actuators_j = L_actuators[j]
             gap_actuators_x_temp = gap_actuators_x
             for i in range(2):
@@ -258,7 +247,7 @@ for m in range(2):
                         (p3_x, p2_y),
                         (electrode_x, electrode_y),
                     ]
-                    connector.add((BendWaveguide(point, r_cable, w_cable),))
+                    connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
 
                 if i > 0:
                     p2_y = center_start_y - 15
@@ -281,7 +270,7 @@ for m in range(2):
                         (p3_x, p2_y),
                         (electrode_x, electrode_y),
                     ]
-                    connector.add((BendWaveguide(point, r_cable, w_cable),))
+                    connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
 
             # third cable of 0/1 beam
             if j == 0 or j == 1:
@@ -306,7 +295,7 @@ for m in range(2):
                     (electrode_x, center_start_y),
                     (electrode_x, electrode_y),
                 ]
-                connector.add((BendWaveguide(point, r_cable, w_cable),))
+                connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             # third cable of 2/3 beam
             if j == 2 or j == 3:
                 center_start_x = (
@@ -333,7 +322,7 @@ for m in range(2):
                     (p3_x, p2_y),
                     (electrode_x, electrode_y),
                 ]
-                connector.add((BendWaveguide(point, r_cable, w_cable),))
+                connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             if j == 4 or j == 5:
                 center_start_x = (
                     x_beam + w_support / 2 + L_actuators_j[0] / 2 + gap_actuators_x
@@ -355,7 +344,7 @@ for m in range(2):
                     (p3_x, p2_y),
                     (electrode_x, electrode_y),
                 ]
-                connector.add((BendWaveguide(point, r_cable, w_cable),))
+                connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
         # # Text
         # if k == 2 and m == 1:
         #     text = ["Zhou Lab", "Wei Sun 2024"]

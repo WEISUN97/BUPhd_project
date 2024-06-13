@@ -2,9 +2,9 @@ import sys
 
 sys.path.append("/Users/bubble/Desktop/PyProjects/layout/Xiangyu2Wei/CNSTPython")
 
-from cnst_gen import CNSTGenerator
-from geo import (
-    tJunction,
+from cnstpy import CNSTGenerator
+from cnstpy.geo import (
+    TJunction,
     hJunction,
     RectangleLH,
     roundrect,

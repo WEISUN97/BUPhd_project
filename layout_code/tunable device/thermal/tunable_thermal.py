@@ -2,28 +2,17 @@ import sys
 
 sys.path.append("/Users/bubble/Desktop/PyProjects/layout/Xiangyu2Wei/CNSTPython")
 
-from cnst_gen import CNSTGenerator
-from geo import (
-    tJunction,
-    hJunction,
+from cnstpy import CNSTGenerator
+from cnstpy.geo import (
     RectangleLH,
-    roundrect,
-    roundedCorners,
-    rectSUshape,
-    BendWaveguide,
+    Roundrect,
     TextOutline,
-    multyTextOutline,
-    sBend,
-    slash,
-    sBendLH,
-    rectTaper,
-    circlethree,
+    RectTaper,
     Points2Shape,
-    Boolean,
-    alignCustC1,
-    rectangleC,
+    # AlignCustC1,
+    RectangleC,
     Structure,
-    alignFFFB1,
+    AlignFFFB1,
 )
 
 connector = Structure("Tunable")
@@ -122,7 +111,7 @@ for m in range(2):
             connector.add(
                 (
                     # roundcorner of actuator d = 1
-                    roundrect(
+                    Roundrect(
                         x_actuator,
                         y_actuator,
                         L_actuator,
@@ -131,7 +120,7 @@ for m in range(2):
                         1,
                         0,
                     ),
-                    rectTaper(
+                    RectTaper(
                         x_actuator + L_actuator / 2,
                         y_actuator - L_2 - L_1 - 10,
                         w_cable,
@@ -147,7 +136,7 @@ for m in range(2):
             connector.add(
                 (
                     # roundcorner of actuator d = 1
-                    roundrect(
+                    Roundrect(
                         x_actuator,
                         y_actuator,
                         L_actuator,
@@ -156,7 +145,7 @@ for m in range(2):
                         1,
                         0,
                     ),
-                    rectTaper(
+                    RectTaper(
                         x_actuator + L_actuator / 2,
                         y_actuator + L_2 + h_actuators + L_1 + 10,
                         w_cable,
@@ -173,16 +162,11 @@ for m in range(2):
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam / 2 + L_electrode_2 / 2 + 60
             y_text = y_beam - j * 1200 + L_electrode_2 / 2 + 60
-            text = [
-                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}",
-            ]
+            text = f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
+
             # L/t={int(L_beam/w_beam)}
             connector.add(
-                (
-                    multyTextOutline(
-                        text, "Times New Roman", fontSize, spacing, x_text, y_text
-                    )
-                )
+                (TextOutline(text, "Times New Roman", fontSize, x_text, y_text))
             )
 
         # if k == 2 and m == 1:
@@ -200,7 +184,7 @@ for m in range(2):
         #     )
         #     connector.add(
         #         (
-        #             multyTextOutline(
+        #             M(
         #                 text, "Times New Roman", fontSize, spacing, text_x, text_y
         #             )
         #         )
@@ -419,9 +403,9 @@ for m in range(2):
 
 
 # electrodes
-connector.add("21 layer")
-connector.add(alignCustC1(-200, -5000, 100, 2, 100, 0, 120, 120, 0))
-connector.add(alignCustC1(8940, -5000, 100, 2, 100, 0, 120, 120, 0))
+# connector.add("21 layer")
+# connector.add(alignCustC1(-200, -5000, 100, 2, 100, 0, 120, 120, 0))
+# connector.add(alignCustC1(8940, -5000, 100, 2, 100, 0, 120, 120, 0))
 # connector.add(alignFFFB1(-200, -2925, 3, 4, 0))
 connector.add(
     RectangleLH(

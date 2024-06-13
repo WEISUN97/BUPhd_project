@@ -2,26 +2,17 @@ import sys
 
 sys.path.append("/Users/bubble/Desktop/PyProjects/layout/Xiangyu2Wei/CNSTPython")
 
-from cnst_gen import CNSTGenerator
-from geo import (
-    tJunction,
-    hJunction,
+from cnstpy import CNSTGenerator
+from cnstpy.geo import (
     RectangleLH,
-    roundrect,
-    roundedCorners,
-    rectSUshape,
-    BendWaveguide,
+    Roundrect,
     TextOutline,
-    multyTextOutline,
-    sBend,
-    slash,
-    sBendLH,
-    rectTaper,
-    circlethree,
+    RectTaper,
     Points2Shape,
-    Boolean,
-    alignCustC1,
+    # AlignCustC1,
+    RectangleC,
     Structure,
+    AlignFFFB1,
 )
 
 connector = Structure("Tunable")
@@ -124,7 +115,7 @@ for m in range(1):
             connector.add(
                 (
                     # roundcorner of actuator d = 1
-                    roundrect(
+                    Roundrect(
                         x_actuator,
                         y_actuator,
                         L_actuator,
@@ -133,7 +124,7 @@ for m in range(1):
                         1,
                         0,
                     ),
-                    rectTaper(
+                    RectTaper(
                         x_actuator + L_actuator / 2,
                         y_actuator - L_2,
                         w_cable,
@@ -148,7 +139,7 @@ for m in range(1):
             connector.add(
                 (
                     # roundcorner of actuator d = 1
-                    roundrect(
+                    Roundrect(
                         x_actuator,
                         y_actuator,
                         L_actuator,
@@ -157,7 +148,7 @@ for m in range(1):
                         1,
                         0,
                     ),
-                    rectTaper(
+                    RectTaper(
                         x_actuator + L_actuator / 2,
                         y_actuator + L_2 + h_actuators,
                         w_cable,

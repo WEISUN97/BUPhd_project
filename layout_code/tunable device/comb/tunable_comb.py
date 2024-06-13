@@ -3,26 +3,24 @@ import math
 
 sys.path.append("/Users/bubble/Desktop/PyProjects/layout/Xiangyu2Wei/CNSTPython")
 
-from cnst_gen import CNSTGenerator
+from cnstpy import CNSTGenerator
 
-from geo import (
+from cnstpy.geo import (
     RectangleLH,
     RectangleC,
-    roundrect,
-    roundedCorners,
+    Roundrect,
+    RoundedCorners,
     BendWaveguide,
     TextOutline,
-    multyTextOutline,
-    rectTaper,
-    circlethree,
+    RectTaper,
+    Circlethree,
     Points2Shape,
-    Boolean,
-    comb,
-    rotateRec,
-    rotateRoundrect,
+    Comb,
+    RotateRec,
+    RotateRoundrect,
+    HollowUnit,
     Structure,
-    alignCustC1,
-    frame,
+    AlignCustC1,
 )
 
 connector = Structure("Tunable")
@@ -85,13 +83,13 @@ for m in range(1):
             )
             connector.add(
                 (
-                    roundedCorners(
+                    RoundedCorners(
                         x_beam + w_support / 2 + r,
                         y_beam + (L_support + w_beam) / 2 + r - j * 1050,
                         r,
                         180,
                     ),
-                    roundedCorners(
+                    RoundedCorners(
                         x_beam + w_support / 2 + r,
                         y_beam + (L_support - w_beam) / 2 - r - j * 1050,
                         r,
@@ -131,7 +129,7 @@ for m in range(1):
             connector.add(
                 (
                     # roundcorner of actuator d = 1
-                    roundrect(
+                    Roundrect(
                         x_actuator,
                         y_actuator,
                         L_actuator,
@@ -140,7 +138,7 @@ for m in range(1):
                         h_actuators,
                         0,
                     ),
-                    rectTaper(
+                    RectTaper(
                         x_actuator + L_actuator / 2,
                         y_actuator - L_2,
                         w_cable,
@@ -168,7 +166,7 @@ for m in range(1):
             N += 1
             s = b_comb + 2 * g_comb
             connector.add(
-                comb(x_comb, y_comb, L_support, w_support, L_comb, b_comb, d, s, N, 90)
+                Comb(x_comb, y_comb, L_support, w_support, L_comb, b_comb, d, s, N, 90)
             )
             # fixed side
             L_sub = N * 2 * (b_comb + g_comb) + b_comb
@@ -178,7 +176,7 @@ for m in range(1):
             d = 0
             N += 1
             connector.add(
-                comb(x_comb, y_comb, L_sub, w_sub, L_comb, b_comb, d, s, N, -90)
+                Comb(x_comb, y_comb, L_sub, w_sub, L_comb, b_comb, d, s, N, -90)
             )
 
             # cables
@@ -193,7 +191,7 @@ for m in range(1):
                 (electrode_x, center_start_y),
                 (electrode_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             # cable of right support
             center_start_x = x_beam + w_support / 2 + L_beam + L_support2 - w_cable / 2
             center_start_y = (
@@ -204,7 +202,7 @@ for m in range(1):
                 (center_start_x, center_start_y),
                 (center_start_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             # cable of electrode
             center_start_x = x_beam + w_support / 2 + gap_actuators_x + L_actuator / 2
             center_start_y = (
@@ -232,7 +230,7 @@ for m in range(1):
                 (center_start_x, electrode_y),
                 (electrode_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
 
             # Spring
             t_spring = 0.15
@@ -262,7 +260,7 @@ for m in range(1):
                 connector.add(
                     (
                         # left side
-                        rotateRec(
+                        RotateRec(
                             x_start,
                             y_start,
                             x_start,
@@ -272,7 +270,7 @@ for m in range(1):
                             theta,
                         ),
                         # right side
-                        rotateRec(
+                        RotateRec(
                             x_start,
                             y_start,
                             x_start + L_top + t_spring + t_side,
@@ -282,7 +280,7 @@ for m in range(1):
                             theta,
                         ),
                         # bottom
-                        rotateRec(
+                        RotateRec(
                             x_start,
                             y_start,
                             x_start + t_spring + t_side,
@@ -292,7 +290,7 @@ for m in range(1):
                             theta,
                         ),
                         # anchor
-                        rotateRoundrect(
+                        RotateRoundrect(
                             x_start,
                             y_start,
                             x_start + t_spring + t_side + gap_anchor,
@@ -304,7 +302,7 @@ for m in range(1):
                             theta,
                         ),
                         # top side
-                        rotateRec(
+                        RotateRec(
                             x_start,
                             y_start,
                             x_start + t_side,
@@ -328,7 +326,7 @@ for m in range(1):
                     connector.add(
                         (
                             # left side
-                            rotateRec(
+                            RotateRec(
                                 x_start,
                                 y_start,
                                 x_start_p,
@@ -344,13 +342,14 @@ for m in range(1):
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam + 60
             y_text = y_beam + L_support / 2 - j * 1050 - fontSize / 2
-            text = [
-                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}",
-            ]
+            text = (
+                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}"
+            )
+
             connector.add(
                 (
-                    multyTextOutline(
-                        text, "Times New Roman", fontSize, spacing, x_text, y_text
+                    TextOutline(
+                        text, "Times New Roman", spacing, x_text, y_text, fontSize
                     )
                 )
             )
@@ -380,7 +379,7 @@ for m in range(1):
         for n in range(15):
             if n > 0:
                 hollow_support_y += 1
-            connector.add(frame(hollow_support_x, hollow_support_y, 0.05, 1))
+            connector.add(HollowUnit(hollow_support_x, hollow_support_y, 0.05, 1))
         for p in range(2):
             if p == 0:
                 hollow_side_x = hollow_side_x_1
@@ -400,7 +399,7 @@ for m in range(1):
                         hollow_side_y -= 1
                         hollow_side_buttom_x += 1
                 connector.add(
-                    frame(
+                    HollowUnit(
                         hollow_side_buttom_x + t_spring + t_side,
                         hollow_side_buttom_y,
                         0.05,
@@ -411,8 +410,8 @@ for m in range(1):
                     continue
                 connector.add(
                     (
-                        frame(hollow_side_x, hollow_side_y, 0.05, 1),
-                        frame(
+                        HollowUnit(hollow_side_x, hollow_side_y, 0.05, 1),
+                        HollowUnit(
                             hollow_side_x + L_top + t_spring + t_side,
                             hollow_side_y,
                             0.05,
@@ -422,8 +421,8 @@ for m in range(1):
                 )
 
 # Alignment Marks
-connector.add(alignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
-connector.add(alignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
 
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)
