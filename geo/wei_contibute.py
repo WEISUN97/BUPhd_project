@@ -305,3 +305,47 @@ class rectangleC(Geo):
         self.draw = f"""
        {x} {y} {L} {H} {theta} rectangleC
     """
+
+
+# Hollow part of the triangle, 8 triangles in one square
+class frame(Geo):
+    def __init__(
+        self,
+        x: float,
+        y: float,  # (x, y) is the center of the square
+        t: float,  # thickness of the side wall
+        H: float,  # height of the square
+    ):
+        self.draw = ""
+        h = H / 2
+        temp = t / tan(pi / 8)
+        for i in range(2):
+            if i == 0:
+                p1 = (x - temp, y + t)
+                p2 = (x - h + t, y + t)
+                p3 = (x - h + t, y + h - temp)
+            else:
+                p1 = (x - t, y + temp)
+                p2 = (x - t, y + h - t)
+                p3 = (x - h + temp, y + h - t)
+            points = [p1, p2, p3]
+            for j in range(4):
+                tempPoints = [[0, 0], [0, 0], [0, 0]]
+                theta = pi / 2 * j
+                for k in range(3):
+                    tempPoints[k][0] = (
+                        (points[k][0] - x) * cos(theta)
+                        - (points[k][1] - y) * sin(theta)
+                        + x
+                    )
+                    tempPoints[k][1] = (
+                        (points[k][0] - x) * sin(theta)
+                        + (points[k][1] - y) * cos(theta)
+                        + y
+                    )
+                    newPoints = [
+                        (tempPoints[0][0], tempPoints[0][1]),
+                        (tempPoints[1][0], tempPoints[1][1]),
+                        (tempPoints[2][0], tempPoints[2][1]),
+                    ]
+                self.add(Points2Shape(newPoints))

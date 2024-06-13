@@ -7,6 +7,7 @@ from cnst_gen import CNSTGenerator
 
 from geo import (
     RectangleLH,
+    RectangleC,
     roundrect,
     roundedCorners,
     BendWaveguide,
@@ -21,18 +22,19 @@ from geo import (
     rotateRoundrect,
     Structure,
     alignCustC1,
+    frame,
 )
 
 connector = Structure("Tunable")
 for m in range(1):
     for k in range(1):
-        r = 1  # round corner of beam
-        w_cable = 2
+        r = 0.1  # round corner of beam
+        w_cable = 13.65
         r_cable = 10
         w_support = 1
-        L_support = 14.7
-        w_support2 = 10
-        L_support2 = 10
+        L_support = 15
+        w_support2 = 20
+        L_support2 = 20
         w_beam_list = [0.03, 0.04, 0.05, 0.03, 0.04, 0.05]
         L_beam = 100 + k * 50
         gap_1 = 10  # gap between electrodes and beams
@@ -53,8 +55,9 @@ for m in range(1):
         y_beam = -L_support / 2 - gap_2 / 2 - L_electrode
         L_1 = 0  # length of rectaper
         L_2 = 5  # length of rectaper
-        for j in range(6):
-            w_beam = w_beam_list[j]
+        for j in range(1):
+            connector.add("11 layer")
+            w_beam = w_beam_list[j] * 2
             # beam
             connector.add(
                 RectangleLH(
@@ -70,10 +73,10 @@ for m in range(1):
             y1 = y_beam + (L_support - w_beam) / 2 - j * 1050
             p1 = [(x1, y1)]
             p2 = [(x1, y1 + w_beam)]
-            p3 = [(x1 + 3, y1 + (L_support2 - w_beam) / 2)]
+            p3 = [(x1 + L_support2 - w_cable, y1 + (L_support2 - w_beam) / 2)]
             p4 = [(x1 + w_support2, y1 + (L_support2 - w_beam) / 2)]
             p5 = [(x1 + w_support2, y1 - (L_support2 + w_beam) / 2)]
-            p6 = [(x1 + 3, y1 - (L_support2 + w_beam) / 2)]
+            p6 = [(x1 + L_support2 - w_cable, y1 - (L_support2 + w_beam) / 2)]
             connector.add(
                 (
                     # def support
@@ -152,19 +155,18 @@ for m in range(1):
             # beam side
             x_comb = x_beam + w_support / 2
             y_comb = y_beam - j * 1050
+            hollow_support_x = x_comb - w_support / 2
+            hollow_support_y = y_comb + 0.5
             g_comb = 0.3
-            b_comb = 0.3
+            b_comb = 0.15
             d_comb = 0.5
             L_overlapping = 1
             L_comb = d_comb + L_overlapping
             # N = math.floor(L_support / 2 / (b_comb + g_comb))
-            N = 12
+            N = 14
             d = (L_support - N * 2 * (b_comb + g_comb) - b_comb) / 2
             N += 1
             s = b_comb + 2 * g_comb
-            x_comb_2 = x_beam + w_support / 2
-            y_comb_2 = y_beam + L_support / 2 - gap_2 / 2 - j * 1050
-
             connector.add(
                 comb(x_comb, y_comb, L_support, w_support, L_comb, b_comb, d, s, N, 90)
             )
@@ -193,8 +195,10 @@ for m in range(1):
             ]
             connector.add((BendWaveguide(point, r_cable, w_cable),))
             # cable of right support
-            center_start_x = x_beam + w_support / 2 + L_beam + w_support2 / 2
-            center_start_y = y_beam + L_support / 2 + L_support2 / 2 - j * 1050
+            center_start_x = x_beam + w_support / 2 + L_beam + L_support2 - w_cable / 2
+            center_start_y = (
+                y_beam + (L_support - w_beam) / 2 - j * 1050 + (L_support2 - w_beam) / 2
+            )
             electrode_y = y_beam + L_support / 2 + gap_2 / 2 - j * 1050 + cable_in
             point = [
                 (center_start_x, center_start_y),
@@ -211,8 +215,18 @@ for m in range(1):
                 - L_2
                 - j * 1050
             )
-            electrode_y = y_beam + L_support / 2 - gap_2 / 2 - j * 1050 - cable_in
-            electrode_x = x_beam
+            electrode_y = (
+                y_beam + L_support / 2 - gap_2 / 2 - j * 1050 - cable_in - w_cable / 2
+            )
+            electrode_x = (
+                x_beam
+                - w_support / 2
+                - (d_comb + L_comb)
+                - w_sub
+                - 10
+                - w_cable / 2
+                - 10
+            )
             point = [
                 (center_start_x, center_start_y),
                 (center_start_x, electrode_y),
@@ -221,14 +235,14 @@ for m in range(1):
             connector.add((BendWaveguide(point, r_cable, w_cable),))
 
             # Spring
-            t_spring = 0.22
+            t_spring = 0.15
             L_spring = 20
-            t_side = 0.28
+            t_side = 0.85
             L_anchor = w_anchor = 5
             gap_anchor = 2
             gap_anchor_buttom = 1
             L_top = 9
-            w_top = 0.5
+            w_top = 1
             L_side = w_top + gap_anchor_buttom + L_anchor
             for n in range(2):
                 # top spring
@@ -236,11 +250,15 @@ for m in range(1):
                     theta = 0
                     x_start = x_beam + w_support / 2
                     y_start = y_beam + L_support - 3 - j * 1050
+                    hollow_side_x_1 = x_start + 0.5
+                    hollow_side_y_1 = y_start + 0.5
                 else:
                     theta = 180
                     x_start = x_start + L_top + 2 * (t_side + t_spring)
                     d_gap = (L_support / 2 - 3) * 2
                     y_start = y_beam + L_support - 3 - j * 1050 - d_gap
+                    hollow_side_x_2 = x_start - 0.5 - L_top - (t_side + t_spring)
+                    hollow_side_y_2 = y_start - 0.5
                 connector.add(
                     (
                         # left side
@@ -356,12 +374,58 @@ for m in range(1):
         #             )
         #         )
         #     )
+
+        # hollow part
+        connector.add("9 layer")
+        for n in range(15):
+            if n > 0:
+                hollow_support_y += 1
+            connector.add(frame(hollow_support_x, hollow_support_y, 0.05, 1))
+        for p in range(2):
+            if p == 0:
+                hollow_side_x = hollow_side_x_1
+                hollow_side_y = hollow_side_y_1
+            else:
+                hollow_side_x = hollow_side_x_2
+                hollow_side_y = hollow_side_y_2
+            hollow_side_buttom_x = hollow_side_x
+            hollow_side_buttom_y = hollow_side_y
+            for n in range(9):
+                if p == 0:
+                    if n > 0:
+                        hollow_side_y += 1
+                        hollow_side_buttom_x += 1
+                else:
+                    if n > 0:
+                        hollow_side_y -= 1
+                        hollow_side_buttom_x += 1
+                connector.add(
+                    frame(
+                        hollow_side_buttom_x + t_spring + t_side,
+                        hollow_side_buttom_y,
+                        0.05,
+                        1,
+                    ),
+                )
+                if n > 6:
+                    continue
+                connector.add(
+                    (
+                        frame(hollow_side_x, hollow_side_y, 0.05, 1),
+                        frame(
+                            hollow_side_x + L_top + t_spring + t_side,
+                            hollow_side_y,
+                            0.05,
+                            1,
+                        ),
+                    )
+                )
+
 # Alignment Marks
 connector.add(alignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
 connector.add(alignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
 
 gen = CNSTGenerator(shapeReso=0.01)
-gen.add("2 layer")
 gen.add(connector)
 gen.generate(
     "result_wei/tunable_device/comb/Tunable.cnst",
