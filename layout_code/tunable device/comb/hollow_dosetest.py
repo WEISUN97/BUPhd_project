@@ -243,7 +243,7 @@ for m in range(1):
                             x_start,
                             y_start,
                             x_start + t_spring + t_side + gap_anchor,
-                            y_start + gap_anchor_buttom + w_top,
+                            y_start + gap_anchor_buttom + w_top - 0.1,
                             L_anchor,
                             w_anchor,
                             0.5,
@@ -484,7 +484,7 @@ for m in range(1):
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)
 gen.generate(
-    "result_wei/tunable_device/comb/Tunable.cnst",
-    "result_wei/tunable_device/comb/Tunable.gds",
+    "result_wei/tunable_device/comb/hollow_dosetest.cnst",
+    "result_wei/tunable_device/comb/hollow_dosetest.gds",
     show=True,
 )
