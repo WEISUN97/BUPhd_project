@@ -3,26 +3,21 @@ import math
 
 sys.path.append("/Users/bubble/Desktop/PyProjects/layout/Xiangyu2Wei/CNSTPython")
 
-from cnst_gen import CNSTGenerator
-from geo import (
-    tJunction,
-    hJunction,
+from cnstpy import CNSTGenerator
+from cnstpy.geo import (
     RectangleLH,
-    roundrect,
-    roundedCorners,
-    rectSUshape,
+    Roundrect,
+    RoundedCorners,
     BendWaveguide,
     TextOutline,
-    multyTextOutline,
-    sBend,
-    slash,
-    sBendLH,
-    rectTaper,
-    circlethree,
+    RectTaper,
     Points2Shape,
-    Boolean,
-    comb,
+    Comb,
+    RotateRec,
+    RotateRoundrect,
+    HollowUnit,
     Structure,
+    AlignCustC1,
 )
 
 gen = CNSTGenerator(shapeReso=0.01)
@@ -31,10 +26,10 @@ connector.add("10 layer")
 for m in range(1):
     for k in range(3):
         r = 1  # round corner of beam
-        w_cable = 2
+        w_cable = 13.65
         r_cable = 10
         w_support = 1
-        L_support = 14.7
+        L_support = 15
         w_support2 = 10
         L_support2 = 10
         L_beam = 100 + k * 50
@@ -83,13 +78,13 @@ for m in range(1):
             )
             connector.add(
                 (
-                    roundedCorners(
+                    RoundedCorners(
                         x_beam + w_support / 2 + r,
                         y_beam + (L_support + w_beam) / 2 + r - j * 300,
                         r,
                         180,
                     ),
-                    roundedCorners(
+                    RoundedCorners(
                         x_beam + w_support / 2 + r,
                         y_beam + (L_support - w_beam) / 2 - r - j * 300,
                         r,
@@ -97,26 +92,7 @@ for m in range(1):
                     ),
                 )
             )
-        # pad
-        # for j in range(3):
-        #     for i in range(2):
-        #         for p in range(2):
-        #             connector.add(
-        #                 RectangleLH(
-        #                     x_beam
-        #                     - L_electrode
-        #                     + p * (L_electrode + gap_3 - cable_offset)
-        #                     + cable_offset,
-        #                     y_beam
-        #                     + L_support / 2
-        #                     + gap_2 / 2
-        #                     - i * (gap_2 + L_electrode)
-        #                     - j * 300,
-        #                     L_electrode,
-        #                     L_electrode,
-        #                     0,
-        #                 ),
-        #             )
+
         # actuators
         for j in range(3):
             w_beam = 0.04 + j * 0.01
@@ -133,7 +109,7 @@ for m in range(1):
             connector.add(
                 (
                     # roundcorner of actuator d = 1
-                    roundrect(
+                    Roundrect(
                         x_actuator,
                         y_actuator,
                         L_actuator,
@@ -142,7 +118,7 @@ for m in range(1):
                         h_actuators,
                         0,
                     ),
-                    rectTaper(
+                    RectTaper(
                         x_actuator + L_actuator / 2,
                         y_actuator - L_2,
                         w_cable,
@@ -153,37 +129,34 @@ for m in range(1):
                     ),
                 )
             )
-        # comb drive
-        for j in range(3):
-            w_beam = 0.04 + j * 0.01
+            # comb drive
             # beam side
             x_comb = x_beam + w_support / 2
-            y_comb = y_beam - j * 300
+            y_comb = y_beam - j * 1050
+            hollow_support_x = x_comb - w_support / 2
+            hollow_support_y = y_comb + 0.5
             g_comb = 0.3
-            b_comb = 0.3
+            b_comb = 0.15
             d_comb = 0.5
             L_overlapping = 1
             L_comb = d_comb + L_overlapping
             # N = math.floor(L_support / 2 / (b_comb + g_comb))
-            N = 12
+            N = 14
             d = (L_support - N * 2 * (b_comb + g_comb) - b_comb) / 2
             N += 1
             s = b_comb + 2 * g_comb
-            x_comb_2 = x_beam + w_support / 2
-            y_comb_2 = y_beam + L_support / 2 - gap_2 / 2 - j * 300
-
             connector.add(
-                comb(x_comb, y_comb, L_support, w_support, L_comb, b_comb, d, s, N, 90)
+                Comb(x_comb, y_comb, L_support, w_support, L_comb, b_comb, d, s, N, 90)
             )
             # fixed side
             L_sub = N * 2 * (b_comb + g_comb) + b_comb
             w_sub = 10
             x_comb = x_beam - w_support / 2 - (d_comb + L_comb) - w_sub
-            y_comb = y_beam + L_support - d + g_comb + b_comb - j * 300
+            y_comb = y_beam + L_support - d + g_comb + b_comb - j * 1050
             d = 0
             N += 1
             connector.add(
-                comb(x_comb, y_comb, L_sub, w_sub, L_comb, b_comb, d, s, N, -90)
+                Comb(x_comb, y_comb, L_sub, w_sub, L_comb, b_comb, d, s, N, -90)
             )
 
         # cables
@@ -199,7 +172,7 @@ for m in range(1):
                 (center_start_x, center_start_y),
                 (center_start_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             # cable of left support
             center_start_x = x_beam - w_support / 2 - L_comb - d_comb - w_sub / 2
             center_start_y = y_beam + L_support + g_comb + b_comb - j * 300
@@ -207,7 +180,7 @@ for m in range(1):
                 (center_start_x, center_start_y),
                 (center_start_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             # cable of electrode
             center_start_x = x_beam + w_support / 2 + gap_actuators_x + L_actuator / 2
             center_start_y = (
@@ -225,24 +198,112 @@ for m in range(1):
                 (center_start_x, electrode_y),
                 (electrode_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
-
-        # # Spring
-        # for j in range(1):
-        #     t_spring = 0.22
-        #     L_spring = 20
-        #     x_start = x_beam + w_support / 2
-        #     y_start = y_beam + L_support - 8 - j * 300
-
-        #     connector.add(
-        #         RectangleLH(
-        #             x_start,
-        #             y_start,
-        #             t_spring,
-        #             L_spring,
-        #             0,
-        #         ),
-        #     )
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
+            # Spring
+            t_spring = 0.15
+            L_spring = 20
+            t_side = 0.85
+            L_anchor = w_anchor = 5
+            gap_anchor = 2
+            gap_anchor_buttom = 1
+            L_top = 9
+            w_top = 1
+            L_side = w_top + gap_anchor_buttom + L_anchor
+            for n in range(2):
+                # top spring
+                if n == 0:
+                    theta = 0
+                    x_start = x_beam + w_support / 2
+                    y_start = y_beam + L_support - 3 - j * 1050
+                    hollow_side_x_1 = x_start + 0.5
+                    hollow_side_y_1 = y_start + 0.5
+                else:
+                    theta = 180
+                    x_start = x_start + L_top + 2 * (t_side + t_spring)
+                    d_gap = (L_support / 2 - 3) * 2
+                    y_start = y_beam + L_support - 3 - j * 1050 - d_gap
+                    hollow_side_x_2 = x_start - 0.5 - L_top - (t_side + t_spring)
+                    hollow_side_y_2 = y_start - 0.5
+                connector.add(
+                    (
+                        # left side
+                        RotateRec(
+                            x_start,
+                            y_start,
+                            x_start,
+                            y_start,
+                            t_spring + t_side,
+                            L_side,
+                            theta,
+                        ),
+                        # right side
+                        RotateRec(
+                            x_start,
+                            y_start,
+                            x_start + L_top + t_spring + t_side,
+                            y_start,
+                            t_spring + t_side,
+                            L_side,
+                            theta,
+                        ),
+                        # bottom
+                        RotateRec(
+                            x_start,
+                            y_start,
+                            x_start + t_spring + t_side,
+                            y_start,
+                            L_top,
+                            w_top,
+                            theta,
+                        ),
+                        # anchor
+                        RotateRoundrect(
+                            x_start,
+                            y_start,
+                            x_start + t_spring + t_side + gap_anchor,
+                            y_start + gap_anchor_buttom + w_top,
+                            L_anchor,
+                            w_anchor,
+                            0.5,
+                            0.5,
+                            theta,
+                        ),
+                        # top side
+                        RotateRec(
+                            x_start,
+                            y_start,
+                            x_start + t_side,
+                            y_start + L_side + L_spring,
+                            L_top + 2 * t_spring,
+                            w_top,
+                            theta,
+                        ),
+                    )
+                )
+                # 4 springs
+                for i in range(4):
+                    if i == 0:
+                        gap_spring = 0
+                    elif i == 2:
+                        gap_spring += L_top / 3
+                    else:
+                        gap_spring += t_spring / 2 + L_top / 3
+                    x_start_p = x_start + t_side + gap_spring
+                    y_start_p = y_start + L_side
+                    connector.add(
+                        (
+                            # left side
+                            RotateRec(
+                                x_start,
+                                y_start,
+                                x_start_p,
+                                y_start_p,
+                                t_spring,
+                                L_spring,
+                                theta,
+                            ),
+                        )
+                    )
 
         # Text
         for j in range(3):
@@ -251,39 +312,24 @@ for m in range(1):
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam + 10
             y_text = y_beam + L_support / 2 - j * 300 - fontSize / 2
-            text = [
-                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}",
-            ]
-            connector.add(
-                (
-                    multyTextOutline(
-                        text, "Times New Roman", fontSize, spacing, x_text + 20, y_text
-                    )
-                )
-            )
-        if k == 2 and m == 1:
-            text = ["Zhou Lab", "Wei Sun 2024"]
-            fontSize = 50
-            spacing = 50
-            text_x = x_beam
-            text_y = (
-                y_beam
-                + L_support / 2
-                - gap_2 / 2
-                - j * 300
-                - L_electrode
-                - spacing * len(text)
+            text = (
+                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}"
             )
             connector.add(
                 (
-                    multyTextOutline(
-                        text, "Times New Roman", fontSize, spacing, text_x, text_y
+                    TextOutline(
+                        text,
+                        "Times New Roman",
+                        fontSize,
+                        x_text + 20,
+                        y_text,
+                        spacing,
                     )
                 )
             )
+
 
 connector.add("11 layer")
-
 # frame for beam
 for k in range(3):
     L_beam = 100 + k * 50

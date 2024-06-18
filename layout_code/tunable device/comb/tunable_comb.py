@@ -7,13 +7,11 @@ from cnstpy import CNSTGenerator
 
 from cnstpy.geo import (
     RectangleLH,
-    RectangleC,
     Roundrect,
     RoundedCorners,
     BendWaveguide,
     TextOutline,
     RectTaper,
-    Circlethree,
     Points2Shape,
     Comb,
     RotateRec,
@@ -188,8 +186,8 @@ for m in range(1):
             electrode_y = y_beam + L_support / 2 + gap_2 / 2 - j * 1050 + cable_in
             point = [
                 (center_start_x, center_start_y),
-                (electrode_x, center_start_y),
-                (electrode_x, electrode_y),
+                (electrode_x - 10, center_start_y),
+                (electrode_x - 10, electrode_y),
             ]
             connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             # cable of right support
@@ -228,7 +226,7 @@ for m in range(1):
             point = [
                 (center_start_x, center_start_y),
                 (center_start_x, electrode_y),
-                (electrode_x, electrode_y),
+                (electrode_x - 10, electrode_y),
             ]
             connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
 
@@ -353,6 +351,7 @@ for m in range(1):
                     )
                 )
             )
+
         # if k == 2 and m == 1:
         #     text = ["Zhou Lab", "Wei Sun 2024"]
         #     fontSize = 50
@@ -421,6 +420,7 @@ for m in range(1):
                 )
 
 # Alignment Marks
+connector.add("11 layer")
 connector.add(AlignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
 connector.add(AlignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
 
