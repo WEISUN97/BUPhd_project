@@ -9,14 +9,11 @@ from cnstpy.geo import (
     TextOutline,
     RectTaper,
     Points2Shape,
-    # AlignCustC1,
-    RectangleC,
+    AlignCustC1,
     Structure,
-    AlignFFFB1,
 )
 
 connector = Structure("Tunable")
-connector.add("10 layer")
 L_beam_list = [100, 500, 1000]
 w_beam_list = [0.05, 0.1, 0.2, 0.1, 0.05, 0.1, 0.2, 0.1]
 y_beam = -562.025
@@ -49,8 +46,8 @@ for m in range(2):
         x_beam = m * 4500 + k * 1000 + temp_x + 360
         L_1 = 150  # length of rectaper (rec part)
         L_2 = 50  # length of rectaper
-
         for j in range(8):
+            connector.add("10 layer")
             L_beam = L_beam_list[k]
             w_cable = 50 + (150 / 900) * (L_beam - 100)
             if k > 0 and (j == 3 or j == 7):
@@ -156,7 +153,7 @@ for m in range(2):
                     ),
                 )
             )
-
+            connector.add("11 layer")
             # Text
             fontSize = 25
             spacing = 25
@@ -168,48 +165,7 @@ for m in range(2):
             connector.add(
                 (TextOutline(text, "Times New Roman", fontSize, x_text, y_text))
             )
-
-        # if k == 2 and m == 1:
-        #     text = ["Zhou Lab", "Wei Sun 2024"]
-        #     fontSize = 50
-        #     spacing = 50
-        #     text_x = x_beam
-        #     text_y = (
-        #         y_beam
-        #         + L_support / 2
-        #         - gap_2 / 2
-        #         - j * 1200
-        #         - L_electrode
-        #         - spacing * len(text)
-        #     )
-        #     connector.add(
-        #         (
-        #             M(
-        #                 text, "Times New Roman", fontSize, spacing, text_x, text_y
-        #             )
-        #         )
-        #     )
-# Alignment Marks
-# connector.add(alignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
-# connector.add(alignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
-
-# frame for beam
-connector.add("11 layer")
-for m in range(2):
-    for k in range(3):
-        temp_x = 0 if k == 0 else L_beam_list[k - 1]
-        x_beam = m * 4500 + k * 1000 + temp_x + 360
-        L_beam = L_beam_list[k]
-        for j in range(8):
-            w_beam = w_beam_list[j]
-            gap_actuators_y = gap_actuators_y_list[j]
-            L_beam = L_beam_list[k]
-            w_cable = 50 + (150 / 900) * (L_beam - 100)
-            if k > 0 and (j == 3 or j == 7):
-                continue
-            if k == 0 and (j == 3 or j == 7):
-                L_beam = 3000
-                w_cable = 200
+            # frame of actuator
             frame_x = x_beam - w_support / 2
             frame_y = y_beam + L_support / 2 - L_2 - j * 1200 - 10
             frame_height = (L_2 + gap_actuators_y + h_actuators) * 2 + w_beam + 20
@@ -224,6 +180,7 @@ for m in range(2):
             )
             connector.add(
                 (
+                    # center
                     RectangleLH(
                         frame_x,
                         frame_y,
@@ -254,53 +211,8 @@ for m in range(2):
                     ),
                 )
             )
-            fontSize = 25
-            spacing = 25
-            x_text = x_beam + w_support / 2 + L_beam / 2 + L_electrode_2 / 2 + 40
-            y_text = y_beam - j * 1200 + L_electrode_2 / 2 + 60
-            connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 350, 25, 0),))
-
-# electrodes
-connector.add("20 layer")
-for m in range(2):
-    for k in range(3):
-        r = 0.5  # round corner of beam
-        r_cable = 10
-        w_support = 20
-        L_support = 20
-        gap_1 = 10  # gap between electrodes and beams
-        gap_2 = 50  # gap between electrodes in y direction
-        gap_actuators_x = 2  # gap between actuators
-        gap_actuators_y_list = [
-            1,
-            1,
-            1,
-            1,
-            3,
-            3,
-            3,
-            3,
-        ]  # gap between actuators and beams
-        h_actuators = 1
-        L_electrode_1 = 250
-        L_electrode_2 = 350
-        cable_in = 10  # length enter the electrode in y direction
-        cable_offset = 10  # offset of cable in x direction
-        temp_x = 0 if k == 0 else L_beam_list[k - 1]
-        x_beam = m * 4500 + k * 1000 + temp_x + 360
-        L_1 = 150  # length of rectaper (rec part)
-        L_2 = 50  # length of rectaper
-
-        for j in range(8):
-            w_beam = w_beam_list[j]
-            gap_actuators_y = gap_actuators_y_list[j]
-            L_beam = L_beam_list[k]
-            w_cable = 50 + (150 / 900) * (L_beam - 100)
-            if k > 0 and (j == 3 or j == 7):
-                continue
-            if k == 0 and (j == 3 or j == 7):
-                L_beam = 3000
-                w_cable = 200
+            # pads
+            connector.add("20 layer")
             frame_x = x_beam - w_support / 2
             frame_y = y_beam + L_support / 2 - L_2 - j * 1200 - 10
             frame_height = (L_2 + gap_actuators_y + h_actuators) * 2 + w_beam + 20
@@ -363,6 +275,7 @@ for m in range(2):
                         ),
                     )
                 )
+            # frame of actuator in layer 20
             connector.add(
                 (
                     RectangleLH(
@@ -395,18 +308,41 @@ for m in range(2):
                     ),
                 )
             )
+            # frame of text
             fontSize = 25
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam / 2 + L_electrode_2 / 2 + 35
             y_text = y_beam - j * 1200 + L_electrode_2 / 2 + 55
             connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 360, 35, 0),))
 
+        # if k == 2 and m == 1:
+        #     text = ["Zhou Lab", "Wei Sun 2024"]
+        #     fontSize = 50
+        #     spacing = 50
+        #     text_x = x_beam
+        #     text_y = (
+        #         y_beam
+        #         + L_support / 2
+        #         - gap_2 / 2
+        #         - j * 1200
+        #         - L_electrode
+        #         - spacing * len(text)
+        #     )
+        #     connector.add(
+        #         (
+        #             M(
+        #                 text, "Times New Roman", fontSize, spacing, text_x, text_y
+        #             )
+        #         )
+        #     )
 
-# electrodes
+# alignment marks in layer 11
+connector.add("11 layer")
+connector.add(AlignCustC1(-200, -5000, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8940, -5000, 100, 2, 100, 0, 120, 120, 0))
+
 # connector.add("21 layer")
-# connector.add(alignCustC1(-200, -5000, 100, 2, 100, 0, 120, 120, 0))
-# connector.add(alignCustC1(8940, -5000, 100, 2, 100, 0, 120, 120, 0))
-# connector.add(alignFFFB1(-200, -2925, 3, 4, 0))
+connector.add("21 layer")
 connector.add(
     RectangleLH(
         -10,
@@ -416,6 +352,11 @@ connector.add(
         0,
     )
 )
+# alignment marks in layer 21
+connector.add(AlignCustC1(-200, -5000, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8940, -5000, 100, 2, 100, 0, 120, 120, 0))
+
+
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)
 gen.generate(

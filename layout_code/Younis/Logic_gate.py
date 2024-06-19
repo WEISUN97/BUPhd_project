@@ -12,6 +12,7 @@ from cnstpy.geo import (
     Circlethree,
     Points2Shape,
     Structure,
+    AlignCustC1,
 )
 
 
@@ -19,31 +20,45 @@ from cnstpy.geo import (
 connector = Structure("logicgate")
 # E-beam structure part in layer 10
 connector.add("10 layer")
+gap_actuators_y_list = [0.5, 1]
+
 for m in range(2):
+    # gap between actuators and beams
+    gap_actuators_y = gap_actuators_y_list[m]
     for k in range(3):
         # m = 0
         # k = 0
         r = 0.5  # round corner of beam
         w_cable = 2
-        r_cable = 10
+        r_cable = 5
         w_support = 10
         L_support = 10
         w_beam = 0.2 + k * 0.2
-        L_beam = 10 + k * 5
+        # L_beam = 15
+        L_beam = 15
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 50  # gap between electrodes in y direction
         gap_3 = 20  # gap between electrodes in x direction
         gap_cell_x = 740  # gap between cells in x direction
         gap_actuators_x = 0.25  # gap between actuators
         # gap_actuators_y = 0.2 + k * 0.2  # gap between actuators and beams
+        # L_actuators = [
+        #     [3 + k * 2.5, 3 + k * 2.5, 3],
+        #     [3 + k * 2.5, 3 + k * 2.5, 3],
+        #     [3 + k * 2.5, 3, 3 + k * 2.5],
+        #     [3 + k * 2.5, 3, 3 + k * 2.5],
+        #     [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
+        #     [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
+        #     [4.75 + k * 2.5, 4.75 + k * 2.5],
+        # ]
         L_actuators = [
-            [3 + k * 2.5, 3 + k * 2.5, 3],
-            [3 + k * 2.5, 3 + k * 2.5, 3],
-            [3 + k * 2.5, 3, 3 + k * 2.5],
-            [3 + k * 2.5, 3, 3 + k * 2.5],
-            [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
-            [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
-            [4.75 + k * 2.5, 4.75 + k * 2.5],
+            [14 / 3, 14 / 3, 14 / 3],
+            [14 / 3, 14 / 3, 14 / 3],
+            [14 / 3, 14 / 3, 14 / 3],
+            [14 / 3, 14 / 3, 14 / 3],
+            [9.5, 6.5, 9.5],
+            [9.5, 6.5, 9.5],
+            [4.75 + 2.5, 4.75 + 2.5],
         ]
         h_actuators = 3
         L_electrode = 350
@@ -57,7 +72,7 @@ for m in range(2):
 
         for i in range(7):
             # beams and supports
-            gap_actuators_y = 0.2 + i * 0.1
+            gap_actuators_y = gap_actuators_y_list[m]
             # def beam
             connector.add(
                 (
@@ -369,7 +384,10 @@ for m in range(2):
 
 # E-beam frame in layer 11
 connector.add("11 layer")
+connector.add(AlignCustC1(-200, -2925, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(4620, -2925, 100, 2, 100, 0, 120, 120, 0))
 for m in range(2):
+    gap_actuators_y = gap_actuators_y_list[m]
     for k in range(3):
         # m = 0
         # k = 0
@@ -379,13 +397,13 @@ for m in range(2):
         w_support = 10
         L_support = 10
         w_beam = 0.2 + k * 0.2
-        L_beam = 10 + k * 5
+        L_beam = 15
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 50  # gap between electrodes in y direction
         gap_3 = 20  # gap between electrodes in x direction
         gap_cell_x = 740  # gap between cells in x direction
         gap_actuators_x = 0.25  # gap between actuators
-        gap_actuators_y = 0.2 + k * 0.2  # gap between actuators and beams
+        # gap_actuators_y = 0.2 + k * 0.2  # gap between actuators and beams
         L_actuators = [
             [3 + k * 2.5, 3 + k * 2.5, 3],
             [3 + k * 2.5, 3 + k * 2.5, 3],
@@ -449,6 +467,7 @@ for m in range(2):
 connector.add("20 layer")
 # electrodes
 for m in range(2):
+    gap_actuators_y = gap_actuators_y_list[m]
     for k in range(3):
         # m = 0
         # k = 0
@@ -458,13 +477,13 @@ for m in range(2):
         w_support = 10
         L_support = 10
         w_beam = 0.2 + k * 0.2
-        L_beam = 10 + k * 5
+        L_beam = 15
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 50  # gap between electrodes in y direction
         gap_3 = 20  # gap between electrodes in x direction
         gap_cell_x = 740  # gap between cells in x direction
         gap_actuators_x = 0.25  # gap between actuators
-        gap_actuators_y = 0.2 + k * 0.2  # gap between actuators and beams
+        # gap_actuators_y = 0.2 + k * 0.2  # gap between actuators and beams
         L_actuators = [
             [3 + k * 2.5, 3 + k * 2.5, 3],
             [3 + k * 2.5, 3 + k * 2.5, 3],
@@ -549,6 +568,8 @@ for m in range(2):
             connector.add((RectangleLH(x_text - 5, y_text - 5, 240, 30, 0),))
 # electrode frame in layer 21
 connector.add("21 layer")
+connector.add(AlignCustC1(-200, -2925, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(4620, -2925, 100, 2, 100, 0, 120, 120, 0))
 connector.add(
     RectangleLH(
         -10,
