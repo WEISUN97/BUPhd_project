@@ -360,7 +360,7 @@ connector.add(AlignCustC1(8940, -5000, 100, 2, 100, 0, 120, 120, 0))
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)
 gen.generate(
-    "result_wei/tunable_device/thermal/Tunable.cnst",
-    "result_wei/tunable_device/thermal/Tunable.gds",
+    "result_wei/tunable_device/thermal/Tunable_thermal.cnst",
+    "result_wei/tunable_device/thermal/Tunable_thermal.gds",
     show=True,
 )

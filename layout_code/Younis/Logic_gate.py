@@ -586,4 +586,8 @@ connector.add(
 gen = CNSTGenerator(shapeReso=0.01)
 
 gen.add(connector)
-gen.generate("result_wei/logicgate.cnst", "result_wei/logicgate.gds", show=True)
+gen.generate(
+    "result_wei/logicgate/logicgate.cnst",
+    "result_wei/logicgate/logicgate.gds",
+    show=True,
+)

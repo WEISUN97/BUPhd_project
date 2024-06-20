@@ -4415,7 +4415,7 @@ points2shape
 141.5 -161.0 350 350 0 rectangleLH
 -124.5 215.55 350 350 0 rectangleLH
 -124.5 -537.55 350 350 0 rectangleLH
--0.5 -41.0 111.5 113.1 0 rectangleLH
+-38.5 -41.0 180.0 113.1 0 rectangleLH
 69.225 -197.55 160 37.45 90 rectangleLH
 31.775 225.55 160 37.45 -90 rectangleLH
 258.0 227.5 360 35 0 rectangleLH

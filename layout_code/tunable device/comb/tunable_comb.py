@@ -603,10 +603,11 @@ for m in range(1):
             # frame of actuator in layer 20
             connector.add(
                 (
+                    # center
                     RectangleLH(
-                        frame_x,
+                        x_comb,
                         frame_y + 5,
-                        frame_length + 10,
+                        x_beam + w_support / 2 * 3 + L_beam + w_support2 - x_comb,
                         frame_height - 10,
                         0,
                     ),
@@ -685,7 +686,7 @@ connector.add(
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)
 gen.generate(
-    "result_wei/tunable_device/comb/Tunable.cnst",
-    "result_wei/tunable_device/comb/Tunable.gds",
+    "result_wei/tunable_device/comb/Tunable_comb.cnst",
+    "result_wei/tunable_device/comb/Tunable_comb.gds",
     show=True,
 )
