@@ -74,7 +74,7 @@ for m in range(2):
                     )
                 )
             )
-            # beams and supports
+            # supports
             temp = w_support / 4
             p1_1 = [(x_beam + temp, y_beam - j * 1200)]
             p2_1 = [(p1_1[0][0] + temp, p1_1[0][1] + (w_support - w_beam) / 2)]

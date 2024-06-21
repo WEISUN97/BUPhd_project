@@ -9,10 +9,9 @@ from cnstpy.geo import (
     TextOutline,
     RectTaper,
     Points2Shape,
-    # AlignCustC1,
-    RectangleC,
+    AlignCustC1,
+    BendWaveguide,
     Structure,
-    AlignFFFB1,
 )
 
 connector = Structure("Tunable")
@@ -169,7 +168,7 @@ for m in range(1):
                 (center_start_x, center_start_y),
                 (center_start_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             # cable of right support
             center_start_x = x_beam + w_support + L_beam
             center_start_y = y_beam - j * 800
@@ -180,7 +179,7 @@ for m in range(1):
                 (center_start_x, center_start_y),
                 (center_start_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             # cable of actuator below
             center_start_x = x_beam + w_support / 2 + gap_actuators_x + L_actuator / 2
             center_start_y = (
@@ -198,7 +197,7 @@ for m in range(1):
                 (center_start_x, electrode_y),
                 (electrode_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
             # cable of actuator up
             center_start_y += 2 * (L_2 + h_actuators + gap_actuators_y) + w_beam
             electrode_y = y_beam + L_support / 2 + gap_2 / 2 - j * 800 + cable_in
@@ -208,20 +207,20 @@ for m in range(1):
                 (center_start_x, electrode_y),
                 (electrode_x, electrode_y),
             ]
-            connector.add((BendWaveguide(point, r_cable, w_cable),))
+            connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
 
             # Text
             fontSize = 25
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam + 60
             y_text = y_beam + L_support / 2 - j * 800 - fontSize / 2
-            text = [
-                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}",
-            ]
+            text = (
+                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}"
+            )
             connector.add(
                 (
-                    multyTextOutline(
-                        text, "Times New Roman", fontSize, spacing, x_text, y_text
+                    TextOutline(
+                        text, "Times New Roman", fontSize, x_text, y_text, spacing
                     )
                 )
             )
@@ -246,8 +245,8 @@ for m in range(1):
         #         )
         #     )
 # Alignment Marks
-connector.add(alignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
-connector.add(alignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
 
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add("2 layer")

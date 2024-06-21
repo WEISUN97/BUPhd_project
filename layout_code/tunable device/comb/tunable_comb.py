@@ -204,64 +204,6 @@ for m in range(1):
             connector.add(
                 Comb(x_comb, y_comb, L_sub, w_sub, L_comb, b_comb, d, s, N, -90)
             )
-
-            # actuators
-            y_actuator = (
-                y_beam
-                + (L_support - w_beam) / 2
-                - gap_actuators_y
-                - h_actuators
-                - j * 1200
-            )
-            # down
-            connector.add(
-                (
-                    # roundcorner of actuator d = 1
-                    Roundrect(
-                        x_actuator,
-                        y_actuator,
-                        L_actuator,
-                        h_actuators,
-                        1,
-                        1,
-                        0,
-                    ),
-                    RectTaper(
-                        x_actuator + L_actuator / 2,
-                        y_actuator - L_2 - L_1 - 10,
-                        w_cable,
-                        L_1 + 10,
-                        L_actuator - 1,
-                        L_2,
-                        90,
-                    ),
-                )
-            )
-            y_actuator += h_actuators + 2 * gap_actuators_y + w_beam
-            # up
-            connector.add(
-                (
-                    # roundcorner of actuator d = 1
-                    Roundrect(
-                        x_actuator,
-                        y_actuator,
-                        L_actuator,
-                        h_actuators,
-                        1,
-                        1,
-                        0,
-                    ),
-                    RectTaper(
-                        x_actuator + L_actuator / 2,
-                        y_actuator + L_2 + h_actuators + L_1 + 10,
-                        w_cable,
-                        L_1 + 10,
-                        L_actuator - 1,
-                        L_2,
-                        -90,
-                    ),
-                )
-            )
             # Spring
             t_spring = 0.1
             L_spring = 20

@@ -98,14 +98,6 @@ points2shape
 -2.5 1.725000000000005 0.15 1.5 -90 rectangleLH
 -2.5 0.42500000000000426 0.15 1.5 -90 rectangleLH
 
-            16.0 12.45 70 0.5 1 1 0 roundrect
-        
-51.0 -197.55 27.45 160 69 50 90 rectTaper
-
-            16.0 15.049999999999999 70 0.5 1 1 0 roundrect
-        
-51.0 225.55 27.45 160 69 50 -90 rectTaper
-
 0.5 21.0 1.0 7 0 rectangleLH
 
 10.5 21.0 1.0 7 0 rectangleLH
