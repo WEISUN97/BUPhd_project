@@ -9,7 +9,6 @@ from cnstpy.geo import (
     RectangleLH,
     Roundrect,
     RoundedCorners,
-    BendWaveguide,
     TextOutline,
     RectTaper,
     Points2Shape,
@@ -34,8 +33,10 @@ for m in range(1):
         L_support = 28
         w_support2 = 40
         L_support2 = 40
-        w_beam_list = [0.05, 0.075, 0.1, 0.05, 0.075, 0.1]
-        L_beam = 100 + k * 50
+        # w_beam_list = [0.05, 0.075, 0.1, 0.05, 0.075, 0.1]
+        w_beam_list = [0.05, 0.1, 0.05, 0.1, 0.05, 0.1]
+        # L_beam = 100 + k * 50
+        L_beam = 100
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 100  # gap between electrodes in y direction
         gap_3 = L_beam  # gap between electrodes in x direction
@@ -581,16 +582,17 @@ for m in range(1):
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam / 2 + L_electrode_2 / 2 + 35
             y_text = y_beam - j * 1200 + L_electrode_2 / 2 + 55
-            connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 360, 35, 0),))
+            connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 315, 35, 0),))
 
 
-# # alignment marks in layer 11
-# connector.add("11 layer")
-# connector.add(AlignCustC1(-200, -5000, 100, 2, 100, 0, 120, 120, 0))
-# connector.add(AlignCustC1(8940, -5000, 100, 2, 100, 0, 120, 120, 0))
+# alignment marks in layer 11
+connector.add("11 layer")
+connector.add(AlignCustC1(-600, y_beam + L_support / 2, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(800, y_beam + L_support / 2, 100, 2, 100, 0, 120, 120, 0))
 
 # connector.add("21 layer")
 connector.add("21 layer")
+# frame of lithography
 connector.add(
     RectangleLH(
         -410,
@@ -600,9 +602,9 @@ connector.add(
         0,
     )
 )
-# # alignment marks in layer 21
-# connector.add(AlignCustC1(-200, -5000, 100, 2, 100, 0, 120, 120, 0))
-# connector.add(AlignCustC1(8940, -5000, 100, 2, 100, 0, 120, 120, 0))
+# alignment marks in layer 21
+connector.add(AlignCustC1(-600, y_beam + L_support / 2, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(800, y_beam + L_support / 2, 100, 2, 100, 0, 120, 120, 0))
 
 # signature
 #     text = ["Zhou Lab", "Wei Sun 2024"]

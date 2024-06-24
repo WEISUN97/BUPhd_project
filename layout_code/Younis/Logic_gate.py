@@ -135,7 +135,7 @@ for m in range(2):
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam + 60
             y_text = y_beam + L_support / 2 - i * 850 - fontSize / 2
-            text = f"{k+1}.{i+1}.{m+1} L{L_beam} t{w_beam:.2f} G{gap_actuators_y:.2f}"
+            text = f"{i+1}.{k+1}.{m+1} L{L_beam} t{w_beam:.2f} G{gap_actuators_y:.2f}"
             connector.add(
                 (
                     TextOutline(

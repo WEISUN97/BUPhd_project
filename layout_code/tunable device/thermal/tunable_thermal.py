@@ -18,8 +18,8 @@ L_beam_list = [100, 500, 1000]
 w_beam_list = [0.05, 0.1, 0.2, 0.1, 0.05, 0.1, 0.2, 0.1]
 y_beam = -562.025
 
-for m in range(2):
-    for k in range(3):
+for m in range(1):
+    for k in range(1):
         r = 0.5  # round corner of beam
         r_cable = 10
         w_support = 20
@@ -46,7 +46,7 @@ for m in range(2):
         x_beam = m * 4500 + k * 1000 + temp_x + 360
         L_1 = 150  # length of rectaper (rec part)
         L_2 = 50  # length of rectaper
-        for j in range(8):
+        for j in range(1):
             connector.add("10 layer")
             L_beam = L_beam_list[k]
             w_cable = 50 + (150 / 900) * (L_beam - 100)
@@ -313,7 +313,7 @@ for m in range(2):
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam / 2 + L_electrode_2 / 2 + 35
             y_text = y_beam - j * 1200 + L_electrode_2 / 2 + 55
-            connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 360, 35, 0),))
+            connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 350, 35, 0),))
 
         # if k == 2 and m == 1:
         #     text = ["Zhou Lab", "Wei Sun 2024"]
@@ -344,11 +344,18 @@ connector.add(AlignCustC1(8940, -5000, 100, 2, 100, 0, 120, 120, 0))
 # connector.add("21 layer")
 connector.add("21 layer")
 connector.add(
+    # RectangleLH(
+    #     -10,
+    #     -9506.075 - 10,
+    #     8740 + 20,
+    #     9506.075 + 20,
+    #     0,
+    # )
     RectangleLH(
         -10,
-        -9506.075 - 10,
-        8740 + 20,
-        9506.075 + 20,
+        -1120,
+        1000,
+        1150,
         0,
     )
 )

@@ -8,15 +8,10 @@ from cnstpy import CNSTGenerator
 from cnstpy.geo import (
     RectangleLH,
     Roundrect,
-    RoundedCorners,
     BendWaveguide,
     TextOutline,
     RectTaper,
     Points2Shape,
-    Comb,
-    RotateRec,
-    RotateRoundrect,
-    HollowUnit,
     Structure,
     AlignCustC1,
 )
@@ -178,6 +173,31 @@ for m in range(1):
                 (tip_center_x + temp, tip_center_y),
             ]
             connector.add(Points2Shape(points))
+            # Text
+            connector.add("11 layer")
+            fontSize = 25
+            spacing = 25
+            x_text = x_beam + w_support / 2 + L_beam + 60
+            y_text = y_beam + L_support / 2 - j * 1050 - fontSize / 2
+            text = f"No.{j+1}.{k+1}.{m+1} L={L_beam} t={w_beam}"
+
+            connector.add(
+                (
+                    TextOutline(
+                        text, "Times New Roman", spacing, x_text, y_text, fontSize
+                    )
+                )
+            )
+            # frame of EBL
+            connector.add(
+                RectangleLH(
+                    x_beam - w_support / 2 - 10,
+                    electrode_y_3,
+                    center_start_x_2 - center_start_x_1 + w_cable + 20,
+                    electrode_y_1 - electrode_y_3,
+                    0,
+                ),
+            )
             # pad
             connector.add("20 layer")
             x_start = [
@@ -221,31 +241,6 @@ for m in range(1):
                         0,
                     ),
                 )
-            )
-            # Text
-            connector.add("11 layer")
-            fontSize = 25
-            spacing = 25
-            x_text = x_beam + w_support / 2 + L_beam + 60
-            y_text = y_beam + L_support / 2 - j * 1050 - fontSize / 2
-            text = f"No.{j+1}.{k+1}.{m+1} L={L_beam} t={w_beam}"
-
-            connector.add(
-                (
-                    TextOutline(
-                        text, "Times New Roman", spacing, x_text, y_text, fontSize
-                    )
-                )
-            )
-            # frame of EBL
-            connector.add(
-                RectangleLH(
-                    x_beam - w_support / 2 - 10,
-                    electrode_y_3,
-                    center_start_x_2 - center_start_x_1 + w_cable + 20,
-                    electrode_y_1 - electrode_y_3,
-                    0,
-                ),
             )
 
             # frame of lithography

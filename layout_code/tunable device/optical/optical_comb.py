@@ -50,7 +50,7 @@ for m in range(1):
         for j in range(1):
             connector.add("10 layer")
             gap_actuators_y = gap_actuators_y_list[j]
-            w_beam = w_beam_list[j] * 2
+            w_beam = w_beam_list[j]
             # beam
             connector.add(
                 RectangleLH(
@@ -450,11 +450,9 @@ for m in range(1):
             # Text
             fontSize = 25
             spacing = 25
-            x_text = x_beam - w_support + w_support / 2 + L_beam + 60
+            x_text = x_beam - w_support + w_support / 2 + L_beam + 120
             y_text = y_beam + L_support / 2 - j * 1050 - fontSize / 2
-            text = (
-                f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} L/t={int(L_beam/w_beam)}"
-            )
+            text = f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam}"
 
             connector.add(
                 (
@@ -466,7 +464,7 @@ for m in range(1):
             # frame of EBL
             connector.add(
                 RectangleLH(
-                    x_beam - w_support / 2 - 10,
+                    center_start_x_1 - w_cable / 2 - 10,
                     electrode_y_3,
                     center_start_x_2 - center_start_x_1 + w_cable + 20,
                     electrode_y_1 - electrode_y_3,
@@ -497,14 +495,34 @@ for m in range(1):
                         0,
                     ),
                 )
+            # frame of lithography (beam part)
+            connector.add(
+                (
+                    RectangleLH(
+                        center_start_x_1 - w_cable / 2 - 5,
+                        electrode_y_3,
+                        center_start_x_2 - center_start_x_1 + w_cable + 10,
+                        electrode_y_1 - electrode_y_3,
+                        0,
+                    ),
+                    # waveguide part
+                    RectangleLH(
+                        center_start_x_3 + w_cable / 2 + 15,
+                        electrode_y_3 + cable_in - L_electrode,
+                        center_start_x_4 - center_start_x_3 - w_cable - 30,
+                        L_electrode,
+                        0,
+                    ),
+                )
+            )
             # frame of lithography
             connector.add("21 layer")
             connector.add(
                 RectangleLH(
-                    x_beam - w_support / 2 - 0.5,
-                    y_beam - 0.5,
-                    L_beam + w_support + 1,
-                    L_support + 1,
+                    x_start[0] - 10,
+                    y_start[2] - 10,
+                    x_start[1] + L_electrode - x_start[0] + 20,
+                    y_start[0] + L_electrode - y_start[2] + 20,
                     0,
                 ),
             )
@@ -518,7 +536,7 @@ for m in range(1):
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)
 gen.generate(
-    "result_wei/tunable_device/comb/Tunable.cnst",
-    "result_wei/tunable_device/comb/Tunable.gds",
+    "result_wei/tunable_device/optical/optical_comb.cnst",
+    "result_wei/tunable_device/optical/optical_comb.gds",
     show=True,
 )
