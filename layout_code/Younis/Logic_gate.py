@@ -131,18 +131,6 @@ for m in range(2):
                         Points2Shape(p1_2 + p2_2 + p3_2 + p4_2 + p5_2 + p6_2),
                     ),
                 )
-            fontSize = 25
-            spacing = 25
-            x_text = x_beam + w_support / 2 + L_beam + 60
-            y_text = y_beam + L_support / 2 - i * 850 - fontSize / 2
-            text = f"{i+1}.{k+1}.{m+1} L{L_beam} t{w_beam:.2f} G{gap_actuators_y:.2f}"
-            connector.add(
-                (
-                    TextOutline(
-                        text, "Times New Roman", fontSize, x_text, y_text, spacing
-                    )
-                )
-            )
 
         # actuators
         for j in range(7):
@@ -250,7 +238,7 @@ for m in range(2):
                     - j * 850
                 )
                 if i == 0:
-                    p2_y = center_start_y - 12
+                    p2_y = center_start_y - 15
                     p3_x = center_start_x - w_support - 15
                     electrode_y = (
                         y_beam + L_support / 2 - gap_2 / 2 - j * 850 - cable_in
@@ -393,7 +381,7 @@ for m in range(2):
         # k = 0
         r = 0.5  # round corner of beam
         w_cable = 2
-        r_cable = 10
+        r_cable = 5
         w_support = 10
         L_support = 10
         w_beam = 0.2 + k * 0.2
@@ -453,13 +441,18 @@ for m in range(2):
                     0,
                 ),
             )
-        # text
-        for j in range(7):
             fontSize = 25
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam + 60
             y_text = y_beam + L_support / 2 - j * 850 - fontSize / 2
-            connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 235, 25, 0),))
+            text = f"{j+1}.{k+1}.{m+1} L{L_beam} t{w_beam:.2f} G{gap_actuators_y:.2f}"
+            connector.add(
+                (
+                    TextOutline(
+                        text, "Times New Roman", fontSize, x_text, y_text, spacing
+                    )
+                )
+            )
 
 
 # cell electrode

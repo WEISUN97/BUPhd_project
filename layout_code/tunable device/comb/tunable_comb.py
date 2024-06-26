@@ -23,9 +23,12 @@ from cnstpy.geo import (
 
 
 connector = Structure("Tunable")
-L_electrode_2 = 350
-for m in range(1):
-    for k in range(1):
+L_beam_list = [100, 500, 1000]
+w_beam_list = [0.05, 0.1, 0.2, 0.1, 0.05, 0.1, 0.2, 0.1]
+for m in range(2):
+    for k in range(3):
+        # y_beam = -562.025 + 1200
+        y_beam = 0
         r = 0.1  # round corner of beam
         w_cable = 27.45
         r_cable = 10
@@ -33,8 +36,7 @@ for m in range(1):
         L_support = 28
         w_support2 = 40
         L_support2 = 40
-        # w_beam_list = [0.05, 0.075, 0.1, 0.05, 0.075, 0.1]
-        w_beam_list = [0.05, 0.1, 0.05, 0.1, 0.05, 0.1]
+        L_electrode = 350
         # L_beam = 100 + k * 50
         L_beam = 100
         gap_1 = 10  # gap between electrodes and beams
@@ -52,69 +54,60 @@ for m in range(1):
             3,
             3,
         ]  # gap between actuators and beams
-        L_actuator = L_beam - 30
         h_actuators = 0.5
         cable_in = 10  # length enter the electrode in y direction
         cable_offset = 10  # offset of cable in x direction
-        x_beam = 0
-        x_beam_2 = x_beam + w_support
-        y_beam = 0
+        temp_x = 0 if k == 0 else L_beam_list[k - 1]
+        x_beam = m * 4500 + k * 1000 + temp_x + 360
         L_1 = 150  # length of rectaper
         L_2 = 50  # length of rectaper
-        for j in range(1):
+        for j in range(8):
+            y_beam -= 1200
             connector.add("10 layer")
+            L_beam = L_beam_list[k]
+            w_cable = 50 + (150 / 900) * (L_beam - 100)
+            if k > 0 and (j == 3 or j == 7):
+                continue
+            if k == 0 and (j == 3 or j == 7):
+                L_beam = 3000
+                w_cable = 200
+            L_actuator = L_beam - 30
+            gap_3 = L_beam  # gap between electrodes in x direction
+            x_actuator = x_beam + gap_actuators_x + w_support / 2
+            w_beam = w_beam_list[j]
             gap_actuators_y = gap_actuators_y_list[j]
-            w_beam = w_beam_list[j] * 2
             # beam
             connector.add(
                 RectangleLH(
-                    x_beam_2 + w_support / 2,
-                    y_beam + (L_support - w_beam) / 2 - j * 100,
+                    x_beam + w_support / 2,
+                    y_beam + (L_support - w_beam) / 2,
                     L_beam,
                     w_beam,
                     0,
                 ),
             )
             # right support
-            x1 = x_beam_2 + w_support / 2 + L_beam
-            y1 = y_beam + (L_support - w_beam) / 2 - j * 100
-            p1 = [(x1, y1)]
-            p2 = [(x1, y1 + w_beam)]
-            p3 = [(x1 + L_support2 - w_cable, y1 + (L_support2 - w_beam) / 2)]
-            p4 = [(x1 + w_support2, y1 + (L_support2 - w_beam) / 2)]
-            p5 = [(x1 + w_support2, y1 - (L_support2 + w_beam) / 2)]
-            p6 = [(x1 + L_support2 - w_cable, y1 - (L_support2 + w_beam) / 2)]
-            connector.add(
+            temp = w_support2 / 4
+
+            p1_2 = [
                 (
-                    # def support
-                    Points2Shape(p1 + p2 + p3 + p4 + p5 + p6),
-                ),
-            )
-            connector.add(
-                (
-                    RoundedCorners(
-                        x_beam_2 + w_support / 2 + r,
-                        y_beam + (L_support + w_beam) / 2 + r - j * 100,
-                        r,
-                        180,
-                    ),
-                    RoundedCorners(
-                        x_beam_2 + w_support / 2 + r,
-                        y_beam + (L_support - w_beam) / 2 - r - j * 100,
-                        r,
-                        90,
-                    ),
+                    x_beam + w_support / 2 + L_beam + temp,
+                    y_beam + (L_support + L_support2) / 2,
                 )
+            ]
+            p2_2 = [(p1_2[0][0] - temp, p1_2[0][1] - L_support2 / 2 + w_beam / 2)]
+            p3_2 = [(p2_2[0][0], p2_2[0][1] - w_beam)]
+            p4_2 = [(p1_2[0][0], p1_2[0][1] - L_support2)]
+            p5_2 = [(p4_2[0][0] + 0.75 * w_support2, p4_2[0][1])]
+            p6_2 = [(p5_2[0][0], p1_2[0][1])]
+            connector.add(
+                (Points2Shape(p1_2 + p2_2 + p3_2 + p4_2 + p5_2 + p6_2),),
             )
 
             # actuators
-            x_actuator = x_beam_2 + L_beam / 2 - L_actuator / 2
+            x_actuator = x_beam + w_support / 2 + L_beam / 2 - L_actuator / 2
             y_actuator = (
-                y_beam
-                + (L_support - w_beam) / 2
-                - gap_actuators_y
-                - h_actuators
-                - j * 1050
+                y_beam + (L_support - w_beam) / 2 - gap_actuators_y - h_actuators
             )
 
             # down
@@ -167,11 +160,40 @@ for m in range(1):
                 )
             )
             # comb drive
+            # def left support
+            c = 3  # number of support except the beam support
+            for i in range(c):
+                connector.add(
+                    RectangleLH(
+                        x_beam - w_support / 2 - i * w_support,
+                        y_beam,
+                        w_support,
+                        L_support,
+                        0,
+                    ),
+                )
+            # round corner of left support
+            connector.add(
+                (
+                    RoundedCorners(
+                        x_beam + w_support / 2 + r,
+                        y_beam + (L_support + w_beam) / 2 + r,
+                        r,
+                        180,
+                    ),
+                    RoundedCorners(
+                        x_beam + w_support / 2 + r,
+                        y_beam + (L_support - w_beam) / 2 - r - j * 100,
+                        r,
+                        90,
+                    ),
+                )
+            )
             # beam side
-            x_comb = x_beam + w_support / 2
-            y_comb = y_beam - j * 100
-            hollow_support_x = x_comb - w_support / 2
-            hollow_support_y = y_comb + 0.5
+            x_comb = x_beam - c * w_support + w_support / 2
+            y_comb = y_beam
+            hollow_comb_x = x_comb - w_support / 2
+            hollow_comb_y = y_comb + 0.5
             g_comb = 0.5
             b_comb = 0.15
             d_comb = 0.5
@@ -185,21 +207,11 @@ for m in range(1):
             connector.add(
                 Comb(x_comb, y_comb, L_support, w_support, L_comb, b_comb, d, s, N, 90)
             )
-            # def left support
-            connector.add(
-                RectangleLH(
-                    x_beam + w_support / 2,
-                    y_comb,
-                    w_support,
-                    L_support,
-                    0,
-                ),
-            )
             # fixed side
             L_sub = N * 2 * (b_comb + g_comb) + b_comb
             w_sub = 36
-            x_comb = x_beam - w_support / 2 - (d_comb + L_comb) - w_sub
-            y_comb = y_beam + L_support - d + g_comb + b_comb - j * 100
+            x_comb = x_comb - w_support - (d_comb + L_comb) - w_sub
+            y_comb = y_beam + L_support - d + g_comb + b_comb
             d = 0
             N += 1
             connector.add(
@@ -219,8 +231,8 @@ for m in range(1):
                 # top spring
                 if n == 0:
                     theta = 0
-                    x_start = x_beam + w_support / 2
-                    y_start = y_beam + L_support - 7 - j * 100
+                    x_start = x_beam - w_support + w_support / 2
+                    y_start = y_beam + L_support - 7
                     hollow_side_x_1 = x_start + 0.5
                     hollow_side_y_1 = y_start + 0.5 + 0.05
                 # buttom spring
@@ -228,7 +240,7 @@ for m in range(1):
                     theta = 180
                     x_start = x_start + L_top + 2 * (t_side + t_spring)
                     d_gap = (L_support / 2 - 3) * 2
-                    y_start = y_beam + L_support + 1 - j * 100 - d_gap
+                    y_start = y_beam + L_support + 1 - d_gap
                     hollow_side_x_2 = x_start - 0.5 - L_top - (t_side + t_spring)
                     hollow_side_y_2 = y_start - 0.5 - 0.05
                 connector.add(
@@ -315,26 +327,25 @@ for m in range(1):
             # Text
             fontSize = 25
             spacing = 25
-            x_text = x_beam + w_support / 2 + L_beam / 2 + L_electrode_2 / 2 + 60
-            y_text = y_beam - j * 1200 + L_electrode_2 / 2 + 60
+            x_text = (
+                x_beam - w_support + w_support / 2 + L_beam / 2 + L_electrode / 2 + 60
+            )
+            y_text = y_beam + L_electrode / 2 + 60
             text = f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
 
-            # L/t={int(L_beam/w_beam)}
             connector.add(
                 (TextOutline(text, "Times New Roman", fontSize, x_text, y_text))
             )
             # frame of actuator
-            frame_x = x_beam - w_support / 2 - w_sub - L_comb - d_comb
-            frame_y = y_beam + L_support / 2 - L_2 - j * 1200 - 10
+            frame_x = x_comb
+            frame_y = y_beam + L_support / 2 - L_2 - 10
             frame_height = (L_2 + gap_actuators_y + h_actuators) * 2 + w_beam + 20
-            frame_length = x_beam + w_support / 2 * 3 + L_beam + w_support2 - frame_x
-            x_actuator = x_beam + gap_actuators_x + w_support / 2
+            frame_length = (
+                x_beam - w_support + w_support / 2 * 3 + L_beam + w_support2 - frame_x
+            )
+            x_actuator = x_beam - w_support + gap_actuators_x + w_support / 2
             y_actuator = (
-                y_beam
-                + (L_support - w_beam) / 2
-                - gap_actuators_y
-                - h_actuators
-                - j * 1200
+                y_beam + (L_support - w_beam) / 2 - gap_actuators_y - h_actuators
             )
             connector.add(
                 (
@@ -348,7 +359,12 @@ for m in range(1):
                     ),
                     # down
                     RectangleLH(
-                        x_beam + w_support / 2 + L_beam / 2 + w_cable / 2 + 10,
+                        x_beam
+                        - w_support
+                        + w_support / 2
+                        + L_beam / 2
+                        + w_cable / 2
+                        + 10,
                         y_actuator - L_2 - L_1 - 10,
                         L_1 + 10,
                         w_cable + 20,
@@ -361,7 +377,12 @@ for m in range(1):
                 (
                     # up
                     RectangleLH(
-                        x_beam + w_support / 2 + L_beam / 2 - w_cable / 2 - 10,
+                        x_beam
+                        - w_support
+                        + w_support / 2
+                        + L_beam / 2
+                        - w_cable / 2
+                        - 10,
                         y_actuator + L_2 + h_actuators + L_1 + 10,
                         L_1 + 10,
                         w_cable + 20,
@@ -374,32 +395,38 @@ for m in range(1):
             # hollow part of support
             for n in range(L_support):
                 if n > 0:
-                    hollow_support_y += 1
-                connector.add(
-                    (
-                        HollowUnit(hollow_support_x, hollow_support_y, 0.05, 1),
-                        HollowUnit(
-                            hollow_support_x + w_support, hollow_support_y, 0.05, 1
-                        ),
-                        Circle(hollow_support_x, hollow_support_y, 0.075, 0.001),
-                        Circle(
-                            hollow_support_x + w_support,
-                            hollow_support_y,
-                            0.075,
-                            0.001,
-                        ),
+                    hollow_comb_y += 1
+                # hollow part of all vertical support (number = c+1)
+                for i in range(c + 1):
+                    connector.add(
+                        (
+                            HollowUnit(
+                                hollow_comb_x + i * w_support,
+                                hollow_comb_y,
+                                0.05,
+                                1,
+                            ),
+                            Circle(
+                                hollow_comb_x + i * w_support,
+                                hollow_comb_y,
+                                0.075,
+                                0.001,
+                            ),
+                        )
                     )
-                )
+                    # intersection of vertical support
+                    if i < c and n < L_support - 1:
+                        connector.add(
+                            Circle(
+                                hollow_comb_x + w_support / 2 + i * w_support,
+                                hollow_comb_y + w_support / 2,
+                                0.075,
+                                0.001,
+                            ),
+                        )
                 if n == L_support - 1:
                     continue
-                connector.add(
-                    Circle(
-                        hollow_support_x + w_support / 2,
-                        hollow_support_y + w_support / 2,
-                        0.075,
-                        0.001,
-                    ),
-                )
+            # spring part
             for p in range(2):
                 # top
                 if p == 0:
@@ -476,87 +503,75 @@ for m in range(1):
                     )
             # pads
             connector.add("20 layer")
-            frame_x = x_beam - w_support / 2
-            frame_y = y_beam + L_support / 2 - L_2 - j * 1200 - 10
-            frame_height = (L_2 + gap_actuators_y + h_actuators) * 2 + w_beam + 20
-            frame_length = 1.5 * w_support + L_beam
-            x_actuator = x_beam + gap_actuators_x + w_support / 2
-            y_actuator = (
+            # "left, right, top, bottom"
+            x_start = [
+                x_comb - L_electrode,
+                x_beam - w_support + w_support / 2 * 3 + L_beam + w_support2,
+                x_beam - w_support + w_support / 2 + L_beam / 2 - L_electrode / 2,
+                x_beam - w_support + w_support / 2 + L_beam / 2 - L_electrode / 2,
+            ]
+            y_start = [
+                y_beam + L_support / 2 - L_electrode / 2,
+                y_beam + L_support / 2 - L_electrode / 2,
+                y_beam
+                + (L_support + w_beam) / 2
+                + gap_actuators_y
+                + L_1
+                + L_2
+                + h_actuators,
                 y_beam
                 + (L_support - w_beam) / 2
                 - gap_actuators_y
+                - L_1
+                - L_2
                 - h_actuators
-                - j * 1200
-            )
-            for i in range(2):
+                - L_electrode,
+            ]
+            if k == 0:
+                temp_text = [x_start, y_start]
+            for i in range(4):
                 connector.add(
-                    (
-                        # left
-                        RectangleLH(
-                            x_beam
-                            - w_support / 2
-                            - L_electrode_2
-                            - w_sub
-                            - L_comb
-                            - d_comb,
-                            y_beam + L_support / 2 - j * 1200 - L_electrode_2 / 2,
-                            L_electrode_2,
-                            L_electrode_2,
-                            0,
-                        ),
-                        # right
-                        RectangleLH(
-                            x_beam + w_support / 2 * 3 + L_beam + w_support2,
-                            y_beam + L_support / 2 - j * 1200 - L_electrode_2 / 2,
-                            L_electrode_2,
-                            L_electrode_2,
-                            0,
-                        ),
-                        # top
-                        RectangleLH(
-                            x_beam + w_support / 2 + L_beam / 2 - L_electrode_2 / 2,
-                            y_beam
-                            - j * 1200
-                            + (L_support + w_beam) / 2
-                            + gap_actuators_y
-                            + L_1
-                            + L_2
-                            + h_actuators,
-                            L_electrode_2,
-                            L_electrode_2,
-                            0,
-                        ),
-                        # bottom
-                        RectangleLH(
-                            x_beam + w_support / 2 + L_beam / 2 - L_electrode_2 / 2,
-                            y_beam
-                            - j * 1200
-                            + (L_support - w_beam) / 2
-                            - gap_actuators_y
-                            - L_1
-                            - L_2
-                            - h_actuators
-                            - L_electrode_2,
-                            L_electrode_2,
-                            L_electrode_2,
-                            0,
-                        ),
-                    )
+                    RectangleLH(
+                        x_start[i],
+                        y_start[i],
+                        L_electrode,
+                        L_electrode,
+                        0,
+                    ),
                 )
+
             # frame of actuator in layer 20
+            frame_x = x_beam - w_support - w_support / 2
+            frame_y = y_beam + L_support / 2 - L_2 - 10
+            frame_height = (L_2 + gap_actuators_y + h_actuators) * 2 + w_beam + 20
+            frame_length = 1.5 * w_support + L_beam
+            x_actuator = x_beam - w_support + gap_actuators_x + w_support / 2
+            y_actuator = (
+                y_beam + (L_support - w_beam) / 2 - gap_actuators_y - h_actuators
+            )
             connector.add(
                 (
                     # center
                     RectangleLH(
                         x_comb,
                         frame_y + 5,
-                        x_beam + w_support / 2 * 3 + L_beam + w_support2 - x_comb,
+                        x_beam
+                        - w_support
+                        + w_support / 2 * 3
+                        + L_beam
+                        + w_support2
+                        - x_comb,
                         frame_height - 10,
                         0,
                     ),
                     # down
                     RectangleLH(
-                        x_beam + w_support / 2 + L_beam / 2 + w_cable / 2 + 5,
+                        x_beam
+                        - w_support
+                        + w_support / 2
+                        + L_beam / 2
+                        + w_cable / 2
+                        + 5,
                         y_actuator - L_2 - L_1 - 10,
                         L_1 + 10,
                         w_cable + 10,
@@ -569,7 +584,12 @@ for m in range(1):
                 (
                     # up
                     RectangleLH(
-                        x_beam + w_support / 2 + L_beam / 2 - w_cable / 2 - 5,
+                        x_beam
+                        - w_support
+                        + w_support / 2
+                        + L_beam / 2
+                        - w_cable / 2
+                        - 5,
                         y_actuator + L_2 + h_actuators + L_1 + 10,
                         L_1 + 10,
                         w_cable + 10,
@@ -580,19 +600,33 @@ for m in range(1):
             # frame of text
             fontSize = 25
             spacing = 25
-            x_text = x_beam + w_support / 2 + L_beam / 2 + L_electrode_2 / 2 + 35
-            y_text = y_beam - j * 1200 + L_electrode_2 / 2 + 55
+            x_text = (
+                x_beam - w_support + w_support / 2 + L_beam / 2 + L_electrode / 2 + 35
+            )
+            y_text = y_beam + L_electrode / 2 + 55
             connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 315, 35, 0),))
 
 
-# alignment marks in layer 11
-connector.add("11 layer")
-connector.add(AlignCustC1(-600, y_beam + L_support / 2, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(800, y_beam + L_support / 2, 100, 2, 100, 0, 120, 120, 0))
+text = "Zhou Lab\nWei Sun 2024"
+fontSize = 50
+spacing = 50
+text_x = temp_text[0][3] + L_electrode + 1500
+text_y = temp_text[1][3] + 100
+connector.add((TextOutline(text, "Times New Roman", fontSize, text_x, text_y, spacing)))
+# frame of text in layer 20
+connector.add("20 layer")
+connector.add(
+    RectangleLH(
+        text_x - 20,
+        text_y - 2 * fontSize,
+        320,
+        2 * fontSize + 20 + spacing,
+        0,
+    )
+)
 
-# connector.add("21 layer")
-connector.add("21 layer")
 # frame of lithography
+connector.add("21 layer")
 connector.add(
     RectangleLH(
         -410,
@@ -602,30 +636,16 @@ connector.add(
         0,
     )
 )
-# alignment marks in layer 21
-connector.add(AlignCustC1(-600, y_beam + L_support / 2, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(800, y_beam + L_support / 2, 100, 2, 100, 0, 120, 120, 0))
 
-# signature
-#     text = ["Zhou Lab", "Wei Sun 2024"]
-#     fontSize = 50
-#     spacing = 50
-#     text_x = x_beam
-#     text_y = (
-#         y_beam
-#         + L_support / 2
-#         - gap_2 / 2
-#         - j * 1050
-#         - L_electrode
-#         - spacing * len(text)
-#     )
-#     connector.add(
-#         (
-#             multyTextOutline(
-#                 text, "Times New Roman", fontSize, spacing, text_x, text_y
-#             )
-#         )
-#     )
+# alignment marks
+# alignment marks in layer 11
+connector.add("11 layer")
+connector.add(AlignCustC1(-200, -5000, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8500, -5000, 100, 2, 100, 0, 120, 120, 0))
+# alignment marks in layer 21
+connector.add("21 layer")
+connector.add(AlignCustC1(-200, -5000, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8500, -5000, 100, 2, 100, 0, 120, 120, 0))
 
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)

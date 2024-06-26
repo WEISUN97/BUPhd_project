@@ -165,7 +165,7 @@ for m in range(1):
             # AFM Tip
             tip_center_x = x_beam + w_support / 2 + L_beam / 2
             tip_center_y = y_beam + L_support / 2 + w_beam / 2
-            tip_height = L_beam / 100
+            tip_height = L_beam / 200
             temp = tip_height * math.tan(math.pi / 12)
             points = [
                 (tip_center_x - temp, tip_center_y),
@@ -173,6 +173,20 @@ for m in range(1):
                 (tip_center_x + temp, tip_center_y),
             ]
             connector.add(Points2Shape(points))
+
+            # hollow part
+            connector.add("9 layer")
+            # AFM Tip
+            hollow_temp = temp - 0.1
+            hollo_tip_height = hollow_temp / math.tan(math.pi / 12)
+            print(hollo_tip_height)
+            points = [
+                (tip_center_x - hollow_temp, tip_center_y),
+                (tip_center_x, tip_center_y + hollo_tip_height),
+                (tip_center_x + hollow_temp, tip_center_y),
+            ]
+            connector.add(Points2Shape(points))
+
             # Text
             connector.add("11 layer")
             fontSize = 25

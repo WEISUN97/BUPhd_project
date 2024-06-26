@@ -76,41 +76,25 @@ for m in range(1):
             p5_2 = [(p4_2[0][0] + 0.75 * w_support2, p4_2[0][1])]
             p6_2 = [(p5_2[0][0], p1_2[0][1])]
             connector.add(
-                (
-                    # def support
-                    Points2Shape(p1_2 + p2_2 + p3_2 + p4_2 + p5_2 + p6_2),
-                ),
+                (Points2Shape(p1_2 + p2_2 + p3_2 + p4_2 + p5_2 + p6_2),),
             )
 
             # comb drive
-            # beam side
-            x_comb = x_beam - w_support / 2
-            y_comb = y_beam - j * 100
-            hollow_support_x = x_comb - w_support / 2
-            hollow_support_y = y_comb + 0.5
-            g_comb = 0.5
-            b_comb = 0.15
-            d_comb = 0.5
-            L_overlapping = 1
-            L_comb = d_comb + L_overlapping
-            # N = math.floor(L_support / 2 / (b_comb + g_comb))
-            N = 20
-            d = (L_support - N * 2 * (b_comb + g_comb) - b_comb) / 2
-            N += 1
-            s = b_comb + 2 * g_comb
-            connector.add(
-                Comb(x_comb, y_comb, L_support, w_support, L_comb, b_comb, d, s, N, 90)
-            )
-            # def left support
-            connector.add(
-                (
+            # left support
+            c = 3  # number of support except the beam support
+            for i in range(c):
+                connector.add(
                     RectangleLH(
-                        x_beam - w_support / 2,
-                        y_comb,
+                        x_beam - w_support / 2 - i * w_support,
+                        y_beam,
                         w_support,
                         L_support,
                         0,
                     ),
+                )
+            # round corner of left support
+            connector.add(
+                (
                     RoundedCorners(
                         x_beam + w_support / 2 + r,
                         y_beam + (L_support + w_beam) / 2 + r - j * 100,
@@ -125,10 +109,29 @@ for m in range(1):
                     ),
                 )
             )
+
+            # beam side
+            x_comb = x_beam - c * w_support + w_support / 2
+            y_comb = y_beam - j * 100
+            hollow_comb_x = x_comb - w_support / 2
+            hollow_comb_y = y_comb + 0.5
+            g_comb = 0.5
+            b_comb = 0.15
+            d_comb = 0.5
+            L_overlapping = 1
+            L_comb = d_comb + L_overlapping
+            # N = math.floor(L_support / 2 / (b_comb + g_comb))
+            N = 20
+            d = (L_support - N * 2 * (b_comb + g_comb) - b_comb) / 2
+            N += 1
+            s = b_comb + 2 * g_comb
+            connector.add(
+                Comb(x_comb, y_comb, L_support, w_support, L_comb, b_comb, d, s, N, 90)
+            )
             # fixed side
             L_sub = N * 2 * (b_comb + g_comb) + b_comb
             w_sub = w_cable
-            x_comb = x_beam - 1.5 * w_support - (d_comb + L_comb) - w_sub
+            x_comb = x_comb - w_support - (d_comb + L_comb) - w_sub
             y_comb = y_beam + L_support - d + g_comb + b_comb - j * 100
             d = 0
             N += 1
@@ -285,7 +288,7 @@ for m in range(1):
             # cables
             # cables of beam
             # cable of lefy support
-            center_start_x_1 = x_beam - 1.5 * w_support - d_comb - L_comb - w_sub / 2
+            center_start_x_1 = x_comb + w_cable / 2
             center_start_y_1 = y_beam + (L_sub + L_support) / 2 - j * 1050
             electrode_y_1 = y_beam + L_support / 2 + gap_2 / 2 - j * 1050 + cable_in
             point = [
@@ -332,7 +335,7 @@ for m in range(1):
             tip_center_x = x_beam + w_support / 2 + L_beam / 2
             print(f"center of the beam is 'tip_center_x'{tip_center_x}")
             tip_center_y = y_beam + L_support / 2 + w_beam / 2
-            tip_height = L_beam / 100
+            tip_height = L_beam / 200
             temp = tip_height * math.tan(math.pi / 12)
             points = [
                 (tip_center_x - temp, tip_center_y),
@@ -343,31 +346,55 @@ for m in range(1):
 
             # hollow part
             connector.add("9 layer")
+            # AFM Tip
+            hollow_temp = temp - 0.1
+            hollo_tip_height = hollow_temp / math.tan(math.pi / 12)
+            print(hollo_tip_height)
+            points = [
+                (tip_center_x - hollow_temp, tip_center_y),
+                (tip_center_x, tip_center_y + hollo_tip_height),
+                (tip_center_x + hollow_temp, tip_center_y),
+            ]
+            connector.add(Points2Shape(points))
+
             # hollow part of support
             for n in range(L_support):
                 if n > 0:
-                    hollow_support_y += 1
-                connector.add(
-                    (
-                        HollowUnit(hollow_support_x, hollow_support_y, 0.05, 1),
-                        HollowUnit(
-                            hollow_support_x + w_support, hollow_support_y, 0.05, 1
-                        ),
-                        Circle(hollow_support_x, hollow_support_y, 0.075, 0.001),
-                        Circle(
-                            hollow_support_x + w_support,
-                            hollow_support_y,
-                            0.075,
-                            0.001,
-                        ),
+                    hollow_comb_y += 1
+                # hollow part of all vertical support (number = c+1)
+                for i in range(c + 1):
+                    connector.add(
+                        (
+                            HollowUnit(
+                                hollow_comb_x + i * w_support,
+                                hollow_comb_y,
+                                0.05,
+                                1,
+                            ),
+                            Circle(
+                                hollow_comb_x + i * w_support,
+                                hollow_comb_y,
+                                0.075,
+                                0.001,
+                            ),
+                        )
                     )
-                )
+                    # intersection of vertical support
+                    if i < c and n < L_support - 1:
+                        connector.add(
+                            Circle(
+                                hollow_comb_x + w_support / 2 + i * w_support,
+                                hollow_comb_y + w_support / 2,
+                                0.075,
+                                0.001,
+                            ),
+                        )
                 if n == L_support - 1:
                     continue
                 connector.add(
                     Circle(
-                        hollow_support_x + w_support / 2,
-                        hollow_support_y + w_support / 2,
+                        hollow_comb_x + w_support / 2,
+                        hollow_comb_y + w_support / 2,
                         0.075,
                         0.001,
                     ),
