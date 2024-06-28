@@ -175,27 +175,27 @@ points2shape
 130.0 -4800
 points2shape
 
-            12.0 -4794.025 96 1 1 1 0 roundrect
+            12.0 -4792.025 96 1 1 1 0 roundrect
         
-60.0 -5004.025 50.0 160 95 50 90 rectTaper
+60.0 -5002.025 50.0 160 95 50 90 rectTaper
 
-            12.0 -4786.974999999999 96 1 1 1 0 roundrect
+            12.0 -4788.974999999999 96 1 1 1 0 roundrect
         
-60.0 -4575.974999999999 50.0 160 95 50 -90 rectTaper
+60.0 -4577.974999999999 50.0 160 95 50 -90 rectTaper
 11 layer
 
-<{{No.5.1.1 L=100 t=0.05 G=3}} {{Times New Roman}} 25 295.0 -4565.0 textOutline>
--10.0 -4850.0 140.0 128.05 0 rectangleLH
-95.0 -5004.025 160 70.0 90 rectangleLH
-25.0 -4575.974999999999 160 70.0 -90 rectangleLH
+<{{No.5.1.1 L=100 t=0.05 G=1}} {{Times New Roman}} 25 295.0 -4565.0 textOutline>
+-10.0 -4850.0 140.0 124.05 0 rectangleLH
+95.0 -5002.025 160 70.0 90 rectangleLH
+25.0 -4577.974999999999 160 70.0 -90 rectangleLH
 20 layer
 -360.0 -4965.0 350 350 0 rectangleLH
 130.0 -4965.0 350 350 0 rectangleLH
--115.0 -4585.975 350 350 0 rectangleLH
--115.0 -5344.025 350 350 0 rectangleLH
--10.0 -4845.0 140.0 118.05000000000001 0 rectangleLH
-90.0 -5004.025 160 60.0 90 rectangleLH
-30.0 -4575.974999999999 160 60.0 -90 rectangleLH
+-115.0 -4587.975 350 350 0 rectangleLH
+-115.0 -5342.025 350 350 0 rectangleLH
+-10.0 -4845.0 140.0 114.05 0 rectangleLH
+90.0 -5002.025 160 60.0 90 rectangleLH
+30.0 -4577.974999999999 160 60.0 -90 rectangleLH
 267.5 -4572.5 350 35 0 rectangleLH
 10 layer
 10.0 -5990.05 100 0.1 0 rectangleLH
@@ -214,27 +214,27 @@ points2shape
 130.0 -6000
 points2shape
 
-            12.0 -5994.05 96 1 1 1 0 roundrect
+            12.0 -5992.05 96 1 1 1 0 roundrect
         
-60.0 -6204.05 50.0 160 95 50 90 rectTaper
+60.0 -6202.05 50.0 160 95 50 90 rectTaper
 
-            12.0 -5986.95 96 1 1 1 0 roundrect
+            12.0 -5988.95 96 1 1 1 0 roundrect
         
-60.0 -5775.95 50.0 160 95 50 -90 rectTaper
+60.0 -5777.95 50.0 160 95 50 -90 rectTaper
 11 layer
 
-<{{No.6.1.1 L=100 t=0.1 G=3}} {{Times New Roman}} 25 295.0 -5765.0 textOutline>
--10.0 -6050.0 140.0 128.1 0 rectangleLH
-95.0 -6204.05 160 70.0 90 rectangleLH
-25.0 -5775.95 160 70.0 -90 rectangleLH
+<{{No.6.1.1 L=100 t=0.1 G=1}} {{Times New Roman}} 25 295.0 -5765.0 textOutline>
+-10.0 -6050.0 140.0 124.1 0 rectangleLH
+95.0 -6202.05 160 70.0 90 rectangleLH
+25.0 -5777.95 160 70.0 -90 rectangleLH
 20 layer
 -360.0 -6165.0 350 350 0 rectangleLH
 130.0 -6165.0 350 350 0 rectangleLH
--115.0 -5785.95 350 350 0 rectangleLH
--115.0 -6544.05 350 350 0 rectangleLH
--10.0 -6045.0 140.0 118.1 0 rectangleLH
-90.0 -6204.05 160 60.0 90 rectangleLH
-30.0 -5775.95 160 60.0 -90 rectangleLH
+-115.0 -5787.95 350 350 0 rectangleLH
+-115.0 -6542.05 350 350 0 rectangleLH
+-10.0 -6045.0 140.0 114.1 0 rectangleLH
+90.0 -6202.05 160 60.0 90 rectangleLH
+30.0 -5777.95 160 60.0 -90 rectangleLH
 267.5 -5772.5 350 35 0 rectangleLH
 10 layer
 10.0 -7190.1 100 0.2 0 rectangleLH
@@ -253,27 +253,27 @@ points2shape
 130.0 -7200
 points2shape
 
-            12.0 -7194.1 96 1 1 1 0 roundrect
+            12.0 -7192.1 96 1 1 1 0 roundrect
         
-60.0 -7404.1 50.0 160 95 50 90 rectTaper
+60.0 -7402.1 50.0 160 95 50 90 rectTaper
 
-            12.0 -7186.900000000001 96 1 1 1 0 roundrect
+            12.0 -7188.900000000001 96 1 1 1 0 roundrect
         
-60.0 -6975.900000000001 50.0 160 95 50 -90 rectTaper
+60.0 -6977.900000000001 50.0 160 95 50 -90 rectTaper
 11 layer
 
-<{{No.7.1.1 L=100 t=0.2 G=3}} {{Times New Roman}} 25 295.0 -6965.0 textOutline>
--10.0 -7250.0 140.0 128.2 0 rectangleLH
-95.0 -7404.1 160 70.0 90 rectangleLH
-25.0 -6975.900000000001 160 70.0 -90 rectangleLH
+<{{No.7.1.1 L=100 t=0.2 G=1}} {{Times New Roman}} 25 295.0 -6965.0 textOutline>
+-10.0 -7250.0 140.0 124.2 0 rectangleLH
+95.0 -7402.1 160 70.0 90 rectangleLH
+25.0 -6977.900000000001 160 70.0 -90 rectangleLH
 20 layer
 -360.0 -7365.0 350 350 0 rectangleLH
 130.0 -7365.0 350 350 0 rectangleLH
--115.0 -6985.9 350 350 0 rectangleLH
--115.0 -7744.1 350 350 0 rectangleLH
--10.0 -7245.0 140.0 118.19999999999999 0 rectangleLH
-90.0 -7404.1 160 60.0 90 rectangleLH
-30.0 -6975.900000000001 160 60.0 -90 rectangleLH
+-115.0 -6987.9 350 350 0 rectangleLH
+-115.0 -7742.1 350 350 0 rectangleLH
+-10.0 -7245.0 140.0 114.2 0 rectangleLH
+90.0 -7402.1 160 60.0 90 rectangleLH
+30.0 -6977.900000000001 160 60.0 -90 rectangleLH
 267.5 -6972.5 350 35 0 rectangleLH
 10 layer
 10.0 -8390.05 3000 0.1 0 rectangleLH
@@ -292,27 +292,27 @@ points2shape
 3030.0 -8400
 points2shape
 
-            12.0 -8394.05 2996 1 1 1 0 roundrect
+            12.0 -8392.05 2996 1 1 1 0 roundrect
         
-1510.0 -8604.05 200 160 2995 50 90 rectTaper
+1510.0 -8602.05 200 160 2995 50 90 rectTaper
 
-            12.0 -8386.949999999999 2996 1 1 1 0 roundrect
+            12.0 -8388.949999999999 2996 1 1 1 0 roundrect
         
-1510.0 -8175.949999999999 200 160 2995 50 -90 rectTaper
+1510.0 -8177.949999999999 200 160 2995 50 -90 rectTaper
 11 layer
 
-<{{No.8.1.1 L=3000 t=0.1 G=3}} {{Times New Roman}} 25 1745.0 -8165.0 textOutline>
--10.0 -8450.0 3040.0 128.1 0 rectangleLH
-1620.0 -8604.05 160 220 90 rectangleLH
-1400.0 -8175.949999999999 160 220 -90 rectangleLH
+<{{No.8.1.1 L=3000 t=0.1 G=1}} {{Times New Roman}} 25 1745.0 -8165.0 textOutline>
+-10.0 -8450.0 3040.0 124.1 0 rectangleLH
+1620.0 -8602.05 160 220 90 rectangleLH
+1400.0 -8177.949999999999 160 220 -90 rectangleLH
 20 layer
 -360.0 -8565.0 350 350 0 rectangleLH
 3030.0 -8565.0 350 350 0 rectangleLH
-1335.0 -8185.950000000001 350 350 0 rectangleLH
-1335.0 -8944.05 350 350 0 rectangleLH
--10.0 -8445.0 3040.0 118.1 0 rectangleLH
-1615.0 -8604.05 160 210 90 rectangleLH
-1405.0 -8175.949999999999 160 210 -90 rectangleLH
+1335.0 -8187.950000000001 350 350 0 rectangleLH
+1335.0 -8942.05 350 350 0 rectangleLH
+-10.0 -8445.0 3040.0 114.1 0 rectangleLH
+1615.0 -8602.05 160 210 90 rectangleLH
+1405.0 -8177.949999999999 160 210 -90 rectangleLH
 1717.5 -8172.5 350 35 0 rectangleLH
 10 layer
 1110.0 9.975 500 0.05 0 rectangleLH
@@ -449,27 +449,27 @@ points2shape
 1630.0 -4800
 points2shape
 
-            1112.0 -4794.025 496 1 1 1 0 roundrect
+            1112.0 -4792.025 496 1 1 1 0 roundrect
         
-1360.0 -5004.025 116.66666666666666 160 495 50 90 rectTaper
+1360.0 -5002.025 116.66666666666666 160 495 50 90 rectTaper
 
-            1112.0 -4786.974999999999 496 1 1 1 0 roundrect
+            1112.0 -4788.974999999999 496 1 1 1 0 roundrect
         
-1360.0 -4575.974999999999 116.66666666666666 160 495 50 -90 rectTaper
+1360.0 -4577.974999999999 116.66666666666666 160 495 50 -90 rectTaper
 11 layer
 
-<{{No.5.2.1 L=500 t=0.05 G=3}} {{Times New Roman}} 25 1595.0 -4565.0 textOutline>
-1090.0 -4850.0 540.0 128.05 0 rectangleLH
-1428.3333333333333 -5004.025 160 136.66666666666666 90 rectangleLH
-1291.6666666666667 -4575.974999999999 160 136.66666666666666 -90 rectangleLH
+<{{No.5.2.1 L=500 t=0.05 G=1}} {{Times New Roman}} 25 1595.0 -4565.0 textOutline>
+1090.0 -4850.0 540.0 124.05 0 rectangleLH
+1428.3333333333333 -5002.025 160 136.66666666666666 90 rectangleLH
+1291.6666666666667 -4577.974999999999 160 136.66666666666666 -90 rectangleLH
 20 layer
 740.0 -4965.0 350 350 0 rectangleLH
 1630.0 -4965.0 350 350 0 rectangleLH
-1185.0 -4585.975 350 350 0 rectangleLH
-1185.0 -5344.025 350 350 0 rectangleLH
-1090.0 -4845.0 540.0 118.05000000000001 0 rectangleLH
-1423.3333333333333 -5004.025 160 126.66666666666666 90 rectangleLH
-1296.6666666666667 -4575.974999999999 160 126.66666666666666 -90 rectangleLH
+1185.0 -4587.975 350 350 0 rectangleLH
+1185.0 -5342.025 350 350 0 rectangleLH
+1090.0 -4845.0 540.0 114.05 0 rectangleLH
+1423.3333333333333 -5002.025 160 126.66666666666666 90 rectangleLH
+1296.6666666666667 -4577.974999999999 160 126.66666666666666 -90 rectangleLH
 1567.5 -4572.5 350 35 0 rectangleLH
 10 layer
 1110.0 -5990.05 500 0.1 0 rectangleLH
@@ -488,27 +488,27 @@ points2shape
 1630.0 -6000
 points2shape
 
-            1112.0 -5994.05 496 1 1 1 0 roundrect
+            1112.0 -5992.05 496 1 1 1 0 roundrect
         
-1360.0 -6204.05 116.66666666666666 160 495 50 90 rectTaper
+1360.0 -6202.05 116.66666666666666 160 495 50 90 rectTaper
 
-            1112.0 -5986.95 496 1 1 1 0 roundrect
+            1112.0 -5988.95 496 1 1 1 0 roundrect
         
-1360.0 -5775.95 116.66666666666666 160 495 50 -90 rectTaper
+1360.0 -5777.95 116.66666666666666 160 495 50 -90 rectTaper
 11 layer
 
-<{{No.6.2.1 L=500 t=0.1 G=3}} {{Times New Roman}} 25 1595.0 -5765.0 textOutline>
-1090.0 -6050.0 540.0 128.1 0 rectangleLH
-1428.3333333333333 -6204.05 160 136.66666666666666 90 rectangleLH
-1291.6666666666667 -5775.95 160 136.66666666666666 -90 rectangleLH
+<{{No.6.2.1 L=500 t=0.1 G=1}} {{Times New Roman}} 25 1595.0 -5765.0 textOutline>
+1090.0 -6050.0 540.0 124.1 0 rectangleLH
+1428.3333333333333 -6202.05 160 136.66666666666666 90 rectangleLH
+1291.6666666666667 -5777.95 160 136.66666666666666 -90 rectangleLH
 20 layer
 740.0 -6165.0 350 350 0 rectangleLH
 1630.0 -6165.0 350 350 0 rectangleLH
-1185.0 -5785.95 350 350 0 rectangleLH
-1185.0 -6544.05 350 350 0 rectangleLH
-1090.0 -6045.0 540.0 118.1 0 rectangleLH
-1423.3333333333333 -6204.05 160 126.66666666666666 90 rectangleLH
-1296.6666666666667 -5775.95 160 126.66666666666666 -90 rectangleLH
+1185.0 -5787.95 350 350 0 rectangleLH
+1185.0 -6542.05 350 350 0 rectangleLH
+1090.0 -6045.0 540.0 114.1 0 rectangleLH
+1423.3333333333333 -6202.05 160 126.66666666666666 90 rectangleLH
+1296.6666666666667 -5777.95 160 126.66666666666666 -90 rectangleLH
 1567.5 -5772.5 350 35 0 rectangleLH
 10 layer
 1110.0 -7190.1 500 0.2 0 rectangleLH
@@ -527,27 +527,27 @@ points2shape
 1630.0 -7200
 points2shape
 
-            1112.0 -7194.1 496 1 1 1 0 roundrect
+            1112.0 -7192.1 496 1 1 1 0 roundrect
         
-1360.0 -7404.1 116.66666666666666 160 495 50 90 rectTaper
+1360.0 -7402.1 116.66666666666666 160 495 50 90 rectTaper
 
-            1112.0 -7186.900000000001 496 1 1 1 0 roundrect
+            1112.0 -7188.900000000001 496 1 1 1 0 roundrect
         
-1360.0 -6975.900000000001 116.66666666666666 160 495 50 -90 rectTaper
+1360.0 -6977.900000000001 116.66666666666666 160 495 50 -90 rectTaper
 11 layer
 
-<{{No.7.2.1 L=500 t=0.2 G=3}} {{Times New Roman}} 25 1595.0 -6965.0 textOutline>
-1090.0 -7250.0 540.0 128.2 0 rectangleLH
-1428.3333333333333 -7404.1 160 136.66666666666666 90 rectangleLH
-1291.6666666666667 -6975.900000000001 160 136.66666666666666 -90 rectangleLH
+<{{No.7.2.1 L=500 t=0.2 G=1}} {{Times New Roman}} 25 1595.0 -6965.0 textOutline>
+1090.0 -7250.0 540.0 124.2 0 rectangleLH
+1428.3333333333333 -7402.1 160 136.66666666666666 90 rectangleLH
+1291.6666666666667 -6977.900000000001 160 136.66666666666666 -90 rectangleLH
 20 layer
 740.0 -7365.0 350 350 0 rectangleLH
 1630.0 -7365.0 350 350 0 rectangleLH
-1185.0 -6985.9 350 350 0 rectangleLH
-1185.0 -7744.1 350 350 0 rectangleLH
-1090.0 -7245.0 540.0 118.19999999999999 0 rectangleLH
-1423.3333333333333 -7404.1 160 126.66666666666666 90 rectangleLH
-1296.6666666666667 -6975.900000000001 160 126.66666666666666 -90 rectangleLH
+1185.0 -6987.9 350 350 0 rectangleLH
+1185.0 -7742.1 350 350 0 rectangleLH
+1090.0 -7245.0 540.0 114.2 0 rectangleLH
+1423.3333333333333 -7402.1 160 126.66666666666666 90 rectangleLH
+1296.6666666666667 -6977.900000000001 160 126.66666666666666 -90 rectangleLH
 1567.5 -6972.5 350 35 0 rectangleLH
 10 layer
 10 layer
@@ -685,27 +685,27 @@ points2shape
 3530.0 -4800
 points2shape
 
-            2512.0 -4794.025 996 1 1 1 0 roundrect
+            2512.0 -4792.025 996 1 1 1 0 roundrect
         
-3010.0 -5004.025 200.0 160 995 50 90 rectTaper
+3010.0 -5002.025 200.0 160 995 50 90 rectTaper
 
-            2512.0 -4786.974999999999 996 1 1 1 0 roundrect
+            2512.0 -4788.974999999999 996 1 1 1 0 roundrect
         
-3010.0 -4575.974999999999 200.0 160 995 50 -90 rectTaper
+3010.0 -4577.974999999999 200.0 160 995 50 -90 rectTaper
 11 layer
 
-<{{No.5.3.1 L=1000 t=0.05 G=3}} {{Times New Roman}} 25 3245.0 -4565.0 textOutline>
-2490.0 -4850.0 1040.0 128.05 0 rectangleLH
-3120.0 -5004.025 160 220.0 90 rectangleLH
-2900.0 -4575.974999999999 160 220.0 -90 rectangleLH
+<{{No.5.3.1 L=1000 t=0.05 G=1}} {{Times New Roman}} 25 3245.0 -4565.0 textOutline>
+2490.0 -4850.0 1040.0 124.05 0 rectangleLH
+3120.0 -5002.025 160 220.0 90 rectangleLH
+2900.0 -4577.974999999999 160 220.0 -90 rectangleLH
 20 layer
 2140.0 -4965.0 350 350 0 rectangleLH
 3530.0 -4965.0 350 350 0 rectangleLH
-2835.0 -4585.975 350 350 0 rectangleLH
-2835.0 -5344.025 350 350 0 rectangleLH
-2490.0 -4845.0 1040.0 118.05000000000001 0 rectangleLH
-3115.0 -5004.025 160 210.0 90 rectangleLH
-2905.0 -4575.974999999999 160 210.0 -90 rectangleLH
+2835.0 -4587.975 350 350 0 rectangleLH
+2835.0 -5342.025 350 350 0 rectangleLH
+2490.0 -4845.0 1040.0 114.05 0 rectangleLH
+3115.0 -5002.025 160 210.0 90 rectangleLH
+2905.0 -4577.974999999999 160 210.0 -90 rectangleLH
 3217.5 -4572.5 350 35 0 rectangleLH
 10 layer
 2510.0 -5990.05 1000 0.1 0 rectangleLH
@@ -724,27 +724,27 @@ points2shape
 3530.0 -6000
 points2shape
 
-            2512.0 -5994.05 996 1 1 1 0 roundrect
+            2512.0 -5992.05 996 1 1 1 0 roundrect
         
-3010.0 -6204.05 200.0 160 995 50 90 rectTaper
+3010.0 -6202.05 200.0 160 995 50 90 rectTaper
 
-            2512.0 -5986.95 996 1 1 1 0 roundrect
+            2512.0 -5988.95 996 1 1 1 0 roundrect
         
-3010.0 -5775.95 200.0 160 995 50 -90 rectTaper
+3010.0 -5777.95 200.0 160 995 50 -90 rectTaper
 11 layer
 
-<{{No.6.3.1 L=1000 t=0.1 G=3}} {{Times New Roman}} 25 3245.0 -5765.0 textOutline>
-2490.0 -6050.0 1040.0 128.1 0 rectangleLH
-3120.0 -6204.05 160 220.0 90 rectangleLH
-2900.0 -5775.95 160 220.0 -90 rectangleLH
+<{{No.6.3.1 L=1000 t=0.1 G=1}} {{Times New Roman}} 25 3245.0 -5765.0 textOutline>
+2490.0 -6050.0 1040.0 124.1 0 rectangleLH
+3120.0 -6202.05 160 220.0 90 rectangleLH
+2900.0 -5777.95 160 220.0 -90 rectangleLH
 20 layer
 2140.0 -6165.0 350 350 0 rectangleLH
 3530.0 -6165.0 350 350 0 rectangleLH
-2835.0 -5785.95 350 350 0 rectangleLH
-2835.0 -6544.05 350 350 0 rectangleLH
-2490.0 -6045.0 1040.0 118.1 0 rectangleLH
-3115.0 -6204.05 160 210.0 90 rectangleLH
-2905.0 -5775.95 160 210.0 -90 rectangleLH
+2835.0 -5787.95 350 350 0 rectangleLH
+2835.0 -6542.05 350 350 0 rectangleLH
+2490.0 -6045.0 1040.0 114.1 0 rectangleLH
+3115.0 -6202.05 160 210.0 90 rectangleLH
+2905.0 -5777.95 160 210.0 -90 rectangleLH
 3217.5 -5772.5 350 35 0 rectangleLH
 10 layer
 2510.0 -7190.1 1000 0.2 0 rectangleLH
@@ -763,27 +763,27 @@ points2shape
 3530.0 -7200
 points2shape
 
-            2512.0 -7194.1 996 1 1 1 0 roundrect
+            2512.0 -7192.1 996 1 1 1 0 roundrect
         
-3010.0 -7404.1 200.0 160 995 50 90 rectTaper
+3010.0 -7402.1 200.0 160 995 50 90 rectTaper
 
-            2512.0 -7186.900000000001 996 1 1 1 0 roundrect
+            2512.0 -7188.900000000001 996 1 1 1 0 roundrect
         
-3010.0 -6975.900000000001 200.0 160 995 50 -90 rectTaper
+3010.0 -6977.900000000001 200.0 160 995 50 -90 rectTaper
 11 layer
 
-<{{No.7.3.1 L=1000 t=0.2 G=3}} {{Times New Roman}} 25 3245.0 -6965.0 textOutline>
-2490.0 -7250.0 1040.0 128.2 0 rectangleLH
-3120.0 -7404.1 160 220.0 90 rectangleLH
-2900.0 -6975.900000000001 160 220.0 -90 rectangleLH
+<{{No.7.3.1 L=1000 t=0.2 G=1}} {{Times New Roman}} 25 3245.0 -6965.0 textOutline>
+2490.0 -7250.0 1040.0 124.2 0 rectangleLH
+3120.0 -7402.1 160 220.0 90 rectangleLH
+2900.0 -6977.900000000001 160 220.0 -90 rectangleLH
 20 layer
 2140.0 -7365.0 350 350 0 rectangleLH
 3530.0 -7365.0 350 350 0 rectangleLH
-2835.0 -6985.9 350 350 0 rectangleLH
-2835.0 -7744.1 350 350 0 rectangleLH
-2490.0 -7245.0 1040.0 118.19999999999999 0 rectangleLH
-3115.0 -7404.1 160 210.0 90 rectangleLH
-2905.0 -6975.900000000001 160 210.0 -90 rectangleLH
+2835.0 -6987.9 350 350 0 rectangleLH
+2835.0 -7742.1 350 350 0 rectangleLH
+2490.0 -7245.0 1040.0 114.2 0 rectangleLH
+3115.0 -7402.1 160 210.0 90 rectangleLH
+2905.0 -6977.900000000001 160 210.0 -90 rectangleLH
 3217.5 -6972.5 350 35 0 rectangleLH
 10 layer
 10 layer
@@ -803,27 +803,27 @@ points2shape
 4630.0 0
 points2shape
 
-            4512.0 7.975 96 1 1 1 0 roundrect
+            4512.0 5.975 96 1 1 1 0 roundrect
         
-4560.0 -202.025 50.0 160 95 50 90 rectTaper
+4560.0 -204.025 50.0 160 95 50 90 rectTaper
 
-            4512.0 11.024999999999999 96 1 1 1 0 roundrect
+            4512.0 13.024999999999999 96 1 1 1 0 roundrect
         
-4560.0 222.025 50.0 160 95 50 -90 rectTaper
+4560.0 224.025 50.0 160 95 50 -90 rectTaper
 11 layer
 
-<{{No.1.1.2 L=100 t=0.05 G=1}} {{Times New Roman}} 25 4795.0 235.0 textOutline>
-4490.0 -50.0 140.0 124.05 0 rectangleLH
-4595.0 -202.025 160 70.0 90 rectangleLH
-4525.0 222.025 160 70.0 -90 rectangleLH
+<{{No.1.1.2 L=100 t=0.05 G=3}} {{Times New Roman}} 25 4795.0 235.0 textOutline>
+4490.0 -50.0 140.0 128.05 0 rectangleLH
+4595.0 -204.025 160 70.0 90 rectangleLH
+4525.0 224.025 160 70.0 -90 rectangleLH
 20 layer
 4140.0 -165.0 350 350 0 rectangleLH
 4630.0 -165.0 350 350 0 rectangleLH
-4385.0 212.025 350 350 0 rectangleLH
-4385.0 -542.025 350 350 0 rectangleLH
-4490.0 -45.0 140.0 114.05 0 rectangleLH
-4590.0 -202.025 160 60.0 90 rectangleLH
-4530.0 222.025 160 60.0 -90 rectangleLH
+4385.0 214.025 350 350 0 rectangleLH
+4385.0 -544.025 350 350 0 rectangleLH
+4490.0 -45.0 140.0 118.05000000000001 0 rectangleLH
+4590.0 -204.025 160 60.0 90 rectangleLH
+4530.0 224.025 160 60.0 -90 rectangleLH
 4767.5 227.5 350 35 0 rectangleLH
 10 layer
 4510.0 -1190.05 100 0.1 0 rectangleLH
@@ -842,27 +842,27 @@ points2shape
 4630.0 -1200
 points2shape
 
-            4512.0 -1192.05 96 1 1 1 0 roundrect
+            4512.0 -1194.05 96 1 1 1 0 roundrect
         
-4560.0 -1402.05 50.0 160 95 50 90 rectTaper
+4560.0 -1404.05 50.0 160 95 50 90 rectTaper
 
-            4512.0 -1188.95 96 1 1 1 0 roundrect
+            4512.0 -1186.95 96 1 1 1 0 roundrect
         
-4560.0 -977.95 50.0 160 95 50 -90 rectTaper
+4560.0 -975.95 50.0 160 95 50 -90 rectTaper
 11 layer
 
-<{{No.2.1.2 L=100 t=0.1 G=1}} {{Times New Roman}} 25 4795.0 -965.0 textOutline>
-4490.0 -1250.0 140.0 124.1 0 rectangleLH
-4595.0 -1402.05 160 70.0 90 rectangleLH
-4525.0 -977.95 160 70.0 -90 rectangleLH
+<{{No.2.1.2 L=100 t=0.1 G=3}} {{Times New Roman}} 25 4795.0 -965.0 textOutline>
+4490.0 -1250.0 140.0 128.1 0 rectangleLH
+4595.0 -1404.05 160 70.0 90 rectangleLH
+4525.0 -975.95 160 70.0 -90 rectangleLH
 20 layer
 4140.0 -1365.0 350 350 0 rectangleLH
 4630.0 -1365.0 350 350 0 rectangleLH
-4385.0 -987.95 350 350 0 rectangleLH
-4385.0 -1742.05 350 350 0 rectangleLH
-4490.0 -1245.0 140.0 114.1 0 rectangleLH
-4590.0 -1402.05 160 60.0 90 rectangleLH
-4530.0 -977.95 160 60.0 -90 rectangleLH
+4385.0 -985.95 350 350 0 rectangleLH
+4385.0 -1744.05 350 350 0 rectangleLH
+4490.0 -1245.0 140.0 118.1 0 rectangleLH
+4590.0 -1404.05 160 60.0 90 rectangleLH
+4530.0 -975.95 160 60.0 -90 rectangleLH
 4767.5 -972.5 350 35 0 rectangleLH
 10 layer
 4510.0 -2390.1 100 0.2 0 rectangleLH
@@ -881,27 +881,27 @@ points2shape
 4630.0 -2400
 points2shape
 
-            4512.0 -2392.1 96 1 1 1 0 roundrect
+            4512.0 -2394.1 96 1 1 1 0 roundrect
         
-4560.0 -2602.1 50.0 160 95 50 90 rectTaper
+4560.0 -2604.1 50.0 160 95 50 90 rectTaper
 
-            4512.0 -2388.9 96 1 1 1 0 roundrect
+            4512.0 -2386.9 96 1 1 1 0 roundrect
         
-4560.0 -2177.9 50.0 160 95 50 -90 rectTaper
+4560.0 -2175.9 50.0 160 95 50 -90 rectTaper
 11 layer
 
-<{{No.3.1.2 L=100 t=0.2 G=1}} {{Times New Roman}} 25 4795.0 -2165.0 textOutline>
-4490.0 -2450.0 140.0 124.2 0 rectangleLH
-4595.0 -2602.1 160 70.0 90 rectangleLH
-4525.0 -2177.9 160 70.0 -90 rectangleLH
+<{{No.3.1.2 L=100 t=0.2 G=3}} {{Times New Roman}} 25 4795.0 -2165.0 textOutline>
+4490.0 -2450.0 140.0 128.2 0 rectangleLH
+4595.0 -2604.1 160 70.0 90 rectangleLH
+4525.0 -2175.9 160 70.0 -90 rectangleLH
 20 layer
 4140.0 -2565.0 350 350 0 rectangleLH
 4630.0 -2565.0 350 350 0 rectangleLH
-4385.0 -2187.9 350 350 0 rectangleLH
-4385.0 -2942.1 350 350 0 rectangleLH
-4490.0 -2445.0 140.0 114.2 0 rectangleLH
-4590.0 -2602.1 160 60.0 90 rectangleLH
-4530.0 -2177.9 160 60.0 -90 rectangleLH
+4385.0 -2185.9 350 350 0 rectangleLH
+4385.0 -2944.1 350 350 0 rectangleLH
+4490.0 -2445.0 140.0 118.19999999999999 0 rectangleLH
+4590.0 -2604.1 160 60.0 90 rectangleLH
+4530.0 -2175.9 160 60.0 -90 rectangleLH
 4767.5 -2172.5 350 35 0 rectangleLH
 10 layer
 4510.0 -3590.05 3000 0.1 0 rectangleLH
@@ -920,27 +920,27 @@ points2shape
 7530.0 -3600
 points2shape
 
-            4512.0 -3592.05 2996 1 1 1 0 roundrect
+            4512.0 -3594.05 2996 1 1 1 0 roundrect
         
-6010.0 -3802.05 200 160 2995 50 90 rectTaper
+6010.0 -3804.05 200 160 2995 50 90 rectTaper
 
-            4512.0 -3588.9500000000003 2996 1 1 1 0 roundrect
+            4512.0 -3586.9500000000003 2996 1 1 1 0 roundrect
         
-6010.0 -3377.9500000000003 200 160 2995 50 -90 rectTaper
+6010.0 -3375.9500000000003 200 160 2995 50 -90 rectTaper
 11 layer
 
-<{{No.4.1.2 L=3000 t=0.1 G=1}} {{Times New Roman}} 25 6245.0 -3365.0 textOutline>
-4490.0 -3650.0 3040.0 124.1 0 rectangleLH
-6120.0 -3802.05 160 220 90 rectangleLH
-5900.0 -3377.9500000000003 160 220 -90 rectangleLH
+<{{No.4.1.2 L=3000 t=0.1 G=3}} {{Times New Roman}} 25 6245.0 -3365.0 textOutline>
+4490.0 -3650.0 3040.0 128.1 0 rectangleLH
+6120.0 -3804.05 160 220 90 rectangleLH
+5900.0 -3375.9500000000003 160 220 -90 rectangleLH
 20 layer
 4140.0 -3765.0 350 350 0 rectangleLH
 7530.0 -3765.0 350 350 0 rectangleLH
-5835.0 -3387.95 350 350 0 rectangleLH
-5835.0 -4142.05 350 350 0 rectangleLH
-4490.0 -3645.0 3040.0 114.1 0 rectangleLH
-6115.0 -3802.05 160 210 90 rectangleLH
-5905.0 -3377.9500000000003 160 210 -90 rectangleLH
+5835.0 -3385.95 350 350 0 rectangleLH
+5835.0 -4144.05 350 350 0 rectangleLH
+4490.0 -3645.0 3040.0 118.1 0 rectangleLH
+6115.0 -3804.05 160 210 90 rectangleLH
+5905.0 -3375.9500000000003 160 210 -90 rectangleLH
 6217.5 -3372.5 350 35 0 rectangleLH
 10 layer
 4510.0 -4790.025 100 0.05 0 rectangleLH
@@ -1115,27 +1115,27 @@ points2shape
 6130.0 0
 points2shape
 
-            5612.0 7.975 496 1 1 1 0 roundrect
+            5612.0 5.975 496 1 1 1 0 roundrect
         
-5860.0 -202.025 116.66666666666666 160 495 50 90 rectTaper
+5860.0 -204.025 116.66666666666666 160 495 50 90 rectTaper
 
-            5612.0 11.024999999999999 496 1 1 1 0 roundrect
+            5612.0 13.024999999999999 496 1 1 1 0 roundrect
         
-5860.0 222.025 116.66666666666666 160 495 50 -90 rectTaper
+5860.0 224.025 116.66666666666666 160 495 50 -90 rectTaper
 11 layer
 
-<{{No.1.2.2 L=500 t=0.05 G=1}} {{Times New Roman}} 25 6095.0 235.0 textOutline>
-5590.0 -50.0 540.0 124.05 0 rectangleLH
-5928.333333333333 -202.025 160 136.66666666666666 90 rectangleLH
-5791.666666666667 222.025 160 136.66666666666666 -90 rectangleLH
+<{{No.1.2.2 L=500 t=0.05 G=3}} {{Times New Roman}} 25 6095.0 235.0 textOutline>
+5590.0 -50.0 540.0 128.05 0 rectangleLH
+5928.333333333333 -204.025 160 136.66666666666666 90 rectangleLH
+5791.666666666667 224.025 160 136.66666666666666 -90 rectangleLH
 20 layer
 5240.0 -165.0 350 350 0 rectangleLH
 6130.0 -165.0 350 350 0 rectangleLH
-5685.0 212.025 350 350 0 rectangleLH
-5685.0 -542.025 350 350 0 rectangleLH
-5590.0 -45.0 540.0 114.05 0 rectangleLH
-5923.333333333333 -202.025 160 126.66666666666666 90 rectangleLH
-5796.666666666667 222.025 160 126.66666666666666 -90 rectangleLH
+5685.0 214.025 350 350 0 rectangleLH
+5685.0 -544.025 350 350 0 rectangleLH
+5590.0 -45.0 540.0 118.05000000000001 0 rectangleLH
+5923.333333333333 -204.025 160 126.66666666666666 90 rectangleLH
+5796.666666666667 224.025 160 126.66666666666666 -90 rectangleLH
 6067.5 227.5 350 35 0 rectangleLH
 10 layer
 5610.0 -1190.05 500 0.1 0 rectangleLH
@@ -1154,27 +1154,27 @@ points2shape
 6130.0 -1200
 points2shape
 
-            5612.0 -1192.05 496 1 1 1 0 roundrect
+            5612.0 -1194.05 496 1 1 1 0 roundrect
         
-5860.0 -1402.05 116.66666666666666 160 495 50 90 rectTaper
+5860.0 -1404.05 116.66666666666666 160 495 50 90 rectTaper
 
-            5612.0 -1188.95 496 1 1 1 0 roundrect
+            5612.0 -1186.95 496 1 1 1 0 roundrect
         
-5860.0 -977.95 116.66666666666666 160 495 50 -90 rectTaper
+5860.0 -975.95 116.66666666666666 160 495 50 -90 rectTaper
 11 layer
 
-<{{No.2.2.2 L=500 t=0.1 G=1}} {{Times New Roman}} 25 6095.0 -965.0 textOutline>
-5590.0 -1250.0 540.0 124.1 0 rectangleLH
-5928.333333333333 -1402.05 160 136.66666666666666 90 rectangleLH
-5791.666666666667 -977.95 160 136.66666666666666 -90 rectangleLH
+<{{No.2.2.2 L=500 t=0.1 G=3}} {{Times New Roman}} 25 6095.0 -965.0 textOutline>
+5590.0 -1250.0 540.0 128.1 0 rectangleLH
+5928.333333333333 -1404.05 160 136.66666666666666 90 rectangleLH
+5791.666666666667 -975.95 160 136.66666666666666 -90 rectangleLH
 20 layer
 5240.0 -1365.0 350 350 0 rectangleLH
 6130.0 -1365.0 350 350 0 rectangleLH
-5685.0 -987.95 350 350 0 rectangleLH
-5685.0 -1742.05 350 350 0 rectangleLH
-5590.0 -1245.0 540.0 114.1 0 rectangleLH
-5923.333333333333 -1402.05 160 126.66666666666666 90 rectangleLH
-5796.666666666667 -977.95 160 126.66666666666666 -90 rectangleLH
+5685.0 -985.95 350 350 0 rectangleLH
+5685.0 -1744.05 350 350 0 rectangleLH
+5590.0 -1245.0 540.0 118.1 0 rectangleLH
+5923.333333333333 -1404.05 160 126.66666666666666 90 rectangleLH
+5796.666666666667 -975.95 160 126.66666666666666 -90 rectangleLH
 6067.5 -972.5 350 35 0 rectangleLH
 10 layer
 5610.0 -2390.1 500 0.2 0 rectangleLH
@@ -1193,27 +1193,27 @@ points2shape
 6130.0 -2400
 points2shape
 
-            5612.0 -2392.1 496 1 1 1 0 roundrect
+            5612.0 -2394.1 496 1 1 1 0 roundrect
         
-5860.0 -2602.1 116.66666666666666 160 495 50 90 rectTaper
+5860.0 -2604.1 116.66666666666666 160 495 50 90 rectTaper
 
-            5612.0 -2388.9 496 1 1 1 0 roundrect
+            5612.0 -2386.9 496 1 1 1 0 roundrect
         
-5860.0 -2177.9 116.66666666666666 160 495 50 -90 rectTaper
+5860.0 -2175.9 116.66666666666666 160 495 50 -90 rectTaper
 11 layer
 
-<{{No.3.2.2 L=500 t=0.2 G=1}} {{Times New Roman}} 25 6095.0 -2165.0 textOutline>
-5590.0 -2450.0 540.0 124.2 0 rectangleLH
-5928.333333333333 -2602.1 160 136.66666666666666 90 rectangleLH
-5791.666666666667 -2177.9 160 136.66666666666666 -90 rectangleLH
+<{{No.3.2.2 L=500 t=0.2 G=3}} {{Times New Roman}} 25 6095.0 -2165.0 textOutline>
+5590.0 -2450.0 540.0 128.2 0 rectangleLH
+5928.333333333333 -2604.1 160 136.66666666666666 90 rectangleLH
+5791.666666666667 -2175.9 160 136.66666666666666 -90 rectangleLH
 20 layer
 5240.0 -2565.0 350 350 0 rectangleLH
 6130.0 -2565.0 350 350 0 rectangleLH
-5685.0 -2187.9 350 350 0 rectangleLH
-5685.0 -2942.1 350 350 0 rectangleLH
-5590.0 -2445.0 540.0 114.2 0 rectangleLH
-5923.333333333333 -2602.1 160 126.66666666666666 90 rectangleLH
-5796.666666666667 -2177.9 160 126.66666666666666 -90 rectangleLH
+5685.0 -2185.9 350 350 0 rectangleLH
+5685.0 -2944.1 350 350 0 rectangleLH
+5590.0 -2445.0 540.0 118.19999999999999 0 rectangleLH
+5923.333333333333 -2604.1 160 126.66666666666666 90 rectangleLH
+5796.666666666667 -2175.9 160 126.66666666666666 -90 rectangleLH
 6067.5 -2172.5 350 35 0 rectangleLH
 10 layer
 10 layer
@@ -1351,27 +1351,27 @@ points2shape
 8030.0 0
 points2shape
 
-            7012.0 7.975 996 1 1 1 0 roundrect
+            7012.0 5.975 996 1 1 1 0 roundrect
         
-7510.0 -202.025 200.0 160 995 50 90 rectTaper
+7510.0 -204.025 200.0 160 995 50 90 rectTaper
 
-            7012.0 11.024999999999999 996 1 1 1 0 roundrect
+            7012.0 13.024999999999999 996 1 1 1 0 roundrect
         
-7510.0 222.025 200.0 160 995 50 -90 rectTaper
+7510.0 224.025 200.0 160 995 50 -90 rectTaper
 11 layer
 
-<{{No.1.3.2 L=1000 t=0.05 G=1}} {{Times New Roman}} 25 7745.0 235.0 textOutline>
-6990.0 -50.0 1040.0 124.05 0 rectangleLH
-7620.0 -202.025 160 220.0 90 rectangleLH
-7400.0 222.025 160 220.0 -90 rectangleLH
+<{{No.1.3.2 L=1000 t=0.05 G=3}} {{Times New Roman}} 25 7745.0 235.0 textOutline>
+6990.0 -50.0 1040.0 128.05 0 rectangleLH
+7620.0 -204.025 160 220.0 90 rectangleLH
+7400.0 224.025 160 220.0 -90 rectangleLH
 20 layer
 6640.0 -165.0 350 350 0 rectangleLH
 8030.0 -165.0 350 350 0 rectangleLH
-7335.0 212.025 350 350 0 rectangleLH
-7335.0 -542.025 350 350 0 rectangleLH
-6990.0 -45.0 1040.0 114.05 0 rectangleLH
-7615.0 -202.025 160 210.0 90 rectangleLH
-7405.0 222.025 160 210.0 -90 rectangleLH
+7335.0 214.025 350 350 0 rectangleLH
+7335.0 -544.025 350 350 0 rectangleLH
+6990.0 -45.0 1040.0 118.05000000000001 0 rectangleLH
+7615.0 -204.025 160 210.0 90 rectangleLH
+7405.0 224.025 160 210.0 -90 rectangleLH
 7717.5 227.5 350 35 0 rectangleLH
 10 layer
 7010.0 -1190.05 1000 0.1 0 rectangleLH
@@ -1390,27 +1390,27 @@ points2shape
 8030.0 -1200
 points2shape
 
-            7012.0 -1192.05 996 1 1 1 0 roundrect
+            7012.0 -1194.05 996 1 1 1 0 roundrect
         
-7510.0 -1402.05 200.0 160 995 50 90 rectTaper
+7510.0 -1404.05 200.0 160 995 50 90 rectTaper
 
-            7012.0 -1188.95 996 1 1 1 0 roundrect
+            7012.0 -1186.95 996 1 1 1 0 roundrect
         
-7510.0 -977.95 200.0 160 995 50 -90 rectTaper
+7510.0 -975.95 200.0 160 995 50 -90 rectTaper
 11 layer
 
-<{{No.2.3.2 L=1000 t=0.1 G=1}} {{Times New Roman}} 25 7745.0 -965.0 textOutline>
-6990.0 -1250.0 1040.0 124.1 0 rectangleLH
-7620.0 -1402.05 160 220.0 90 rectangleLH
-7400.0 -977.95 160 220.0 -90 rectangleLH
+<{{No.2.3.2 L=1000 t=0.1 G=3}} {{Times New Roman}} 25 7745.0 -965.0 textOutline>
+6990.0 -1250.0 1040.0 128.1 0 rectangleLH
+7620.0 -1404.05 160 220.0 90 rectangleLH
+7400.0 -975.95 160 220.0 -90 rectangleLH
 20 layer
 6640.0 -1365.0 350 350 0 rectangleLH
 8030.0 -1365.0 350 350 0 rectangleLH
-7335.0 -987.95 350 350 0 rectangleLH
-7335.0 -1742.05 350 350 0 rectangleLH
-6990.0 -1245.0 1040.0 114.1 0 rectangleLH
-7615.0 -1402.05 160 210.0 90 rectangleLH
-7405.0 -977.95 160 210.0 -90 rectangleLH
+7335.0 -985.95 350 350 0 rectangleLH
+7335.0 -1744.05 350 350 0 rectangleLH
+6990.0 -1245.0 1040.0 118.1 0 rectangleLH
+7615.0 -1404.05 160 210.0 90 rectangleLH
+7405.0 -975.95 160 210.0 -90 rectangleLH
 7717.5 -972.5 350 35 0 rectangleLH
 10 layer
 7010.0 -2390.1 1000 0.2 0 rectangleLH
@@ -1429,27 +1429,27 @@ points2shape
 8030.0 -2400
 points2shape
 
-            7012.0 -2392.1 996 1 1 1 0 roundrect
+            7012.0 -2394.1 996 1 1 1 0 roundrect
         
-7510.0 -2602.1 200.0 160 995 50 90 rectTaper
+7510.0 -2604.1 200.0 160 995 50 90 rectTaper
 
-            7012.0 -2388.9 996 1 1 1 0 roundrect
+            7012.0 -2386.9 996 1 1 1 0 roundrect
         
-7510.0 -2177.9 200.0 160 995 50 -90 rectTaper
+7510.0 -2175.9 200.0 160 995 50 -90 rectTaper
 11 layer
 
-<{{No.3.3.2 L=1000 t=0.2 G=1}} {{Times New Roman}} 25 7745.0 -2165.0 textOutline>
-6990.0 -2450.0 1040.0 124.2 0 rectangleLH
-7620.0 -2602.1 160 220.0 90 rectangleLH
-7400.0 -2177.9 160 220.0 -90 rectangleLH
+<{{No.3.3.2 L=1000 t=0.2 G=3}} {{Times New Roman}} 25 7745.0 -2165.0 textOutline>
+6990.0 -2450.0 1040.0 128.2 0 rectangleLH
+7620.0 -2604.1 160 220.0 90 rectangleLH
+7400.0 -2175.9 160 220.0 -90 rectangleLH
 20 layer
 6640.0 -2565.0 350 350 0 rectangleLH
 8030.0 -2565.0 350 350 0 rectangleLH
-7335.0 -2187.9 350 350 0 rectangleLH
-7335.0 -2942.1 350 350 0 rectangleLH
-6990.0 -2445.0 1040.0 114.2 0 rectangleLH
-7615.0 -2602.1 160 210.0 90 rectangleLH
-7405.0 -2177.9 160 210.0 -90 rectangleLH
+7335.0 -2185.9 350 350 0 rectangleLH
+7335.0 -2944.1 350 350 0 rectangleLH
+6990.0 -2445.0 1040.0 118.19999999999999 0 rectangleLH
+7615.0 -2604.1 160 210.0 90 rectangleLH
+7405.0 -2175.9 160 210.0 -90 rectangleLH
 7717.5 -2172.5 350 35 0 rectangleLH
 10 layer
 10 layer
@@ -1585,6 +1585,12 @@ points2shape
 
        <8510 -3600 100 2 100 0 120 120 0 alignCustC1>
     
+
+       <-510 -6600 100 2 100 0 120 120 0 alignCustC1>
+    
+
+       <8510 -6600 100 2 100 0 120 120 0 alignCustC1>
+    
 21 layer
 
        <-510 -3600 100 2 100 0 120 120 0 alignCustC1>
@@ -1592,3 +1598,14 @@ points2shape
 
        <8510 -3600 100 2 100 0 120 120 0 alignCustC1>
     
+
+       <-510 -6600 100 2 100 0 120 120 0 alignCustC1>
+    
+
+       <8510 -6600 100 2 100 0 120 120 0 alignCustC1>
+    
+<Array struct>
+
+<Tunable 0 0 N 1 0 instance>
+<Tunable 10000 0 N 1 0 instance>
+<Tunable 20000 0 N 1 0 instance>

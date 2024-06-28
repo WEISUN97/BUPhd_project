@@ -11,13 +11,15 @@ from cnstpy.geo import (
     Points2Shape,
     AlignCustC1,
     Structure,
+    Instance,
 )
 
 connector = Structure("Tunable")
 L_beam_list = [100, 500, 1000]
 w_beam_list = [0.05, 0.1, 0.2, 0.1, 0.05, 0.1, 0.2, 0.1]
-
+gap_actuators_y_list = [1, 3]  # gap between actuators and beams
 for m in range(2):
+    gap_actuators_y = gap_actuators_y_list[m]
     for k in range(3):
         y_beam = 1200
         r = 0.5  # round corner of beam
@@ -27,16 +29,6 @@ for m in range(2):
         gap_1 = 10  # gap between electrodes and beams
         gap_2 = 50  # gap between electrodes in y direction
         gap_actuators_x = 2  # gap between actuators
-        gap_actuators_y_list = [
-            1,
-            1,
-            1,
-            1,
-            3,
-            3,
-            3,
-            3,
-        ]  # gap between actuators and beams
         h_actuators = 1
         L_electrode = 350
         cable_in = 10  # length enter the electrode in y direction
@@ -59,7 +51,6 @@ for m in range(2):
             x_actuator = x_beam + gap_actuators_x + w_support / 2
             L_actuator = L_beam - 2 * gap_actuators_x
             w_beam = w_beam_list[j]
-            gap_actuators_y = gap_actuators_y_list[j]
             # def beam
             connector.add(
                 (
@@ -328,14 +319,25 @@ connector.add(
 connector.add("11 layer")
 connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
 connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
 # alignment marks in layer 21
 connector.add("21 layer")
 connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
 connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
+
+
+# Array
+array = Structure("Array")
+for i in range(3):
+    array.add(Instance(connector, 10000 * i, 0, "N", 1, 0))
 
 
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)
+gen.add(array)
 gen.generate(
     "result_wei/tunable_device/thermal/Tunable_thermal.cnst",
     "result_wei/tunable_device/thermal/Tunable_thermal.gds",

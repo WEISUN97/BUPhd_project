@@ -18,6 +18,7 @@ from cnstpy.geo import (
     HollowUnit,
     Circle,
     Structure,
+    Instance,
     AlignCustC1,
 )
 
@@ -25,7 +26,9 @@ from cnstpy.geo import (
 connector = Structure("Tunable")
 L_beam_list = [100, 500, 1000]
 w_beam_list = [0.05, 0.1, 0.2, 0.1, 0.05, 0.1, 0.2, 0.1]
+gap_actuators_y_list = [1, 3]  # gap between actuators and beams
 for m in range(2):
+    gap_actuators_y = gap_actuators_y_list[m]
     for k in range(3):
         # y_beam = -562.025 + 1200
         y_beam = 1200
@@ -43,17 +46,6 @@ for m in range(2):
         gap_2 = 100  # gap between electrodes in y direction
         gap_3 = L_beam  # gap between electrodes in x direction
         gap_actuators_x = 2  # gap between actuators
-        # gap_actuators_y = 1  # gap between actuators and beams
-        gap_actuators_y_list = [
-            1,
-            1,
-            1,
-            1,
-            3,
-            3,
-            3,
-            3,
-        ]  # gap between actuators and beams
         h_actuators = 0.5
         cable_in = 10  # length enter the electrode in y direction
         cable_offset = 10  # offset of cable in x direction
@@ -75,7 +67,6 @@ for m in range(2):
             gap_3 = L_beam  # gap between electrodes in x direction
             x_actuator = x_beam + gap_actuators_x + w_support / 2
             w_beam = w_beam_list[j]
-            gap_actuators_y = gap_actuators_y_list[j]
             # beam
             connector.add(
                 RectangleLH(
@@ -642,13 +633,24 @@ connector.add(
 connector.add("11 layer")
 connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
 connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
 # alignment marks in layer 21
 connector.add("21 layer")
 connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
 connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
+
+# Array
+array = Structure("Array")
+for i in range(3):
+    array.add(Instance(connector, 10000 * i, 0, "N", 1, 0))
+
 
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)
+gen.add(array)
 gen.generate(
     "result_wei/tunable_device/comb/Tunable_comb.cnst",
     "result_wei/tunable_device/comb/Tunable_comb.gds",

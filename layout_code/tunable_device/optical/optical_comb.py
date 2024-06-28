@@ -25,7 +25,7 @@ from cnstpy.geo import (
 # connector = Structure("Tunable")
 
 
-def optical_comb(gen, connector, x, y, pos, is_AFM=False):
+def optical_comb(connector, x, y, pos, is_AFM=False):
     # gap_actuators_y_list = [1, 3]
     result = []
     w_beam_list = [0.05, 0.075, 0.1]
@@ -45,16 +45,16 @@ def optical_comb(gen, connector, x, y, pos, is_AFM=False):
         L_electrode = 350
         cable_in = 10  # length enter the electrode in y direction
         cable_offset = 10 + w_cable / 2  # offset of cable in x direction
-        L_1 = 0  # length of rectaper
-        L_2 = 5  # length of rectaper
         w_beam = w_beam_list[k]
         for j in range(3):
-            x_beam = k * distance - L_beam_list[j] / 2
+            x_beam = k * distance - L_beam_list[j] / 2 + x
             y_beam = y - j * 1050
             L_beam = L_beam_list[j]
             L_actuator = (L_beam - 2 * gap_actuators_x) / 3
-            connector.add("10 layer")
+            L_1 = 0  # length of rectaper
+            L_2 = 5 * (L_beam / 200)  # length of rectaper
             gap_actuators_y = 1
+            connector.add("10 layer")
             # beam
             connector.add(
                 RectangleLH(
@@ -156,7 +156,7 @@ def optical_comb(gen, connector, x, y, pos, is_AFM=False):
             # Spring
             t_spring = 0.15
             L_spring = 20
-            t_side = 0.9
+            t_side = 0.85
             L_anchor = w_anchor = 5
             gap_anchor = 2
             gap_anchor_buttom = 1
@@ -507,7 +507,7 @@ def optical_comb(gen, connector, x, y, pos, is_AFM=False):
                     0,
                 ),
             )
-            # pad
+            # pads
             connector.add("20 layer")
             x_start = [
                 center_start_x_1 + cable_offset - L_electrode,
@@ -544,9 +544,9 @@ def optical_comb(gen, connector, x, y, pos, is_AFM=False):
                     # waveguide part
                     RectangleLH(
                         center_start_x_3 + w_cable / 2 + 15,
-                        electrode_y_3 + cable_in - L_electrode,
+                        electrode_y_3 + cable_in - L_electrode - 20,
                         center_start_x_4 - center_start_x_3 - w_cable - 30,
-                        L_electrode,
+                        L_electrode + 20,
                         0,
                     ),
                 )
@@ -567,7 +567,6 @@ def optical_comb(gen, connector, x, y, pos, is_AFM=False):
     # connector.add("11 layer")
     # connector.add(AlignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
     # connector.add(AlignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
-    gen.add(connector)
     return result
 
 
@@ -576,11 +575,12 @@ if __name__ == "__main__":
     gen = CNSTGenerator(shapeReso=0.01)
     connector = Structure("Tunable")
     # top right
-    position_2 = optical_comb(gen, connector, 7500, 0, "C", True)
+    position_2 = optical_comb(connector, 7500, 0, "C", True)
     print(position_2)
     # buttom left
-    position_4 = optical_comb(gen, connector, 7500, -3000, "D", False)
+    position_4 = optical_comb(connector, 7500, -3000, "D", False)
     print(position_4)
+    gen.add(connector)
     gen.generate(
         "result_wei/tunable_device/optical/optical_thermal/optical_thermal.cnst",
         "result_wei/tunable_device/optical/optical_thermal/optical_thermal.gds",

@@ -18,7 +18,7 @@ from cnstpy.geo import (
 
 
 # connector = Structure("Tunable")
-def optical_thermal(gen, connector, x, y, pos, is_AFM=False):
+def optical_thermal(connector, x, y, pos, is_AFM=False):
     result = []
     # gap_actuators_y_list = [1, 3]
     for k in range(3):
@@ -36,15 +36,15 @@ def optical_thermal(gen, connector, x, y, pos, is_AFM=False):
         L_electrode = 350
         cable_in = 10  # length enter the electrode in y direction
         cable_offset = 10 + w_cable / 2  # offset of cable in x direction
-        L_1 = 0  # length of rectaper
-        L_2 = 5  # length of rectaper
+        w_beam = w_beam_list[k]
         for j in range(3):
             y_beam = y - j * 1050
             L_beam = L_beam_list[j]
             L_actuator = (L_beam - 2 * gap_actuators_x) / 3
-            x_beam = k * distance - L_beam_list[j] / 2
+            x_beam = k * distance - L_beam_list[j] / 2 + x
+            L_1 = 0  # length of rectaper
+            L_2 = 5 * (L_beam / 200)  # length of rectaper
             connector.add("10 layer")
-            w_beam = w_beam_list[j]
             # beam
             connector.add(
                 RectangleLH(
@@ -240,9 +240,9 @@ def optical_thermal(gen, connector, x, y, pos, is_AFM=False):
                     # waveguide part
                     RectangleLH(
                         center_start_x_3 + w_cable / 2 + 15,
-                        electrode_y_3 + cable_in - L_electrode,
+                        electrode_y_3 + cable_in - L_electrode - 20,
                         center_start_x_4 - center_start_x_3 - w_cable - 30,
-                        L_electrode,
+                        L_electrode + 20,
                         0,
                     ),
                 )
@@ -264,7 +264,6 @@ def optical_thermal(gen, connector, x, y, pos, is_AFM=False):
     # connector.add("11 layer")
     # connector.add(AlignCustC1(-350, -3150, 100, 2, 100, 0, 120, 120, 0))
     # connector.add(AlignCustC1(7000, -3150, 100, 2, 100, 0, 120, 120, 0))
-    gen.add(connector)
     return result
 
 
@@ -273,11 +272,12 @@ if __name__ == "__main__":
     gen = CNSTGenerator(shapeReso=0.01)
     connector = Structure("Tunable")
     # top left
-    position_1 = optical_thermal(gen, connector, 0, 0, "A", True)
+    position_1 = optical_thermal(connector, 0, 0, "A", True)
     print(position_1)
     # buttom left
-    position_3 = optical_thermal(gen, connector, 0, -3000, "B", False)
+    position_3 = optical_thermal(connector, 0, -3000, "B", False)
     print(position_3)
+    gen.add(connector)
     gen.generate(
         "result_wei/tunable_device/optical/optical_thermal/optical_thermal.cnst",
         "result_wei/tunable_device/optical/optical_thermal/optical_thermal.gds",

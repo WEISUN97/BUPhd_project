@@ -15,14 +15,19 @@ from cnstpy.geo import (
 gen = CNSTGenerator(shapeReso=0.01)
 connector = Structure("Tunable")
 # top left
-position_1 = optical_thermal(gen, connector, 0, 0, "A", True)
+position_1 = optical_thermal(connector, 0, 0, "A", True)
 # buttom left
-position_3 = optical_thermal(gen, connector, 0, -3000, "B", False)
+position_3 = optical_thermal(connector, 0, -3150, "B", False)
 # top right
-position_2 = optical_comb(gen, connector, 7500, 0, "C", True)
+position_2 = optical_comb(connector, 7500, -4, "C", True)
 # buttom left
-position_4 = optical_comb(gen, connector, 7500, -3000, "D", False)
+position_4 = optical_comb(connector, 7500, -3154, "D", False)
+gen.add(connector)
 
+print("position_1:", position_1)
+print("position_2:", position_2)
+print("position_3:", position_3)
+print("position_4:", position_4)
 
 gen.generate(
     "result_wei/tunable_device/combination/combination.cnst",
