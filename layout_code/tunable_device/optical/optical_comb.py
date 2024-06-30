@@ -517,7 +517,7 @@ def optical_comb(connector, x, y, pos, is_AFM=False):
             ]
             y_start = [
                 electrode_y_1 - cable_in,
-                electrode_y_2 - cable_in,
+                electrode_y_2 - cable_in + 5,
                 electrode_y_3 - L_electrode + cable_in,
                 electrode_y_3 - L_electrode + cable_in,
             ]
@@ -536,9 +536,9 @@ def optical_comb(connector, x, y, pos, is_AFM=False):
                 (
                     RectangleLH(
                         center_start_x_1 - w_cable / 2 - 5,
-                        electrode_y_3,
+                        electrode_y_3 + 5,
                         center_start_x_2 - center_start_x_1 + w_cable + 10,
-                        electrode_y_1 - electrode_y_3,
+                        electrode_y_1 - electrode_y_3 - 10,
                         0,
                     ),
                     # waveguide part

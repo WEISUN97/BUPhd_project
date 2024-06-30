@@ -597,7 +597,7 @@ for m in range(2):
             y_text = y_beam + L_electrode / 2 + 55
             connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 315, 35, 0),))
 
-
+connector.add("11 layer")
 text = "Zhou Lab\nWei Sun 2024"
 fontSize = 50
 spacing = 50
@@ -628,25 +628,23 @@ connector.add(
     )
 )
 
-# alignment marks
-# alignment marks in layer 11
-connector.add("11 layer")
-connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
-# alignment marks in layer 21
-connector.add("21 layer")
-connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
-
 # Array
 array = Structure("Array")
 for i in range(3):
     array.add(Instance(connector, 10000 * i, 0, "N", 1, 0))
 
+# alignment marks in layer 11
+array.add("11 layer")
+array.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(28510, -3600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(28510, -6600, 100, 2, 100, 0, 120, 120, 0))
+# alignment marks in layer 21
+array.add("21 layer")
+array.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(28510, -3600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(28510, -6600, 100, 2, 100, 0, 120, 120, 0))
 
 gen = CNSTGenerator(shapeReso=0.01)
 gen.add(connector)

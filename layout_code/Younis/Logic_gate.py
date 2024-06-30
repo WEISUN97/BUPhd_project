@@ -9,9 +9,10 @@ from cnstpy.geo import (
     RectSUshape,
     BendWaveguide,
     TextOutline,
-    Circlethree,
+    Circle,
     Points2Shape,
     Structure,
+    Instance,
     AlignCustC1,
 )
 
@@ -40,25 +41,15 @@ for m in range(2):
         gap_2 = 50  # gap between electrodes in y direction
         gap_3 = 20  # gap between electrodes in x direction
         gap_cell_x = 740  # gap between cells in x direction
-        gap_actuators_x = 0.25  # gap between actuators
-        # gap_actuators_y = 0.2 + k * 0.2  # gap between actuators and beams
-        # L_actuators = [
-        #     [3 + k * 2.5, 3 + k * 2.5, 3],
-        #     [3 + k * 2.5, 3 + k * 2.5, 3],
-        #     [3 + k * 2.5, 3, 3 + k * 2.5],
-        #     [3 + k * 2.5, 3, 3 + k * 2.5],
-        #     [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
-        #     [7 + k * 2.5, 4 + k * 2.5, 7 + k * 2.5],
-        #     [4.75 + k * 2.5, 4.75 + k * 2.5],
-        # ]
+        gap_actuators_x = 1  # gap between actuators
         L_actuators = [
-            [14 / 3, 14 / 3, 14 / 3],
-            [14 / 3, 14 / 3, 14 / 3],
-            [14 / 3, 14 / 3, 14 / 3],
-            [14 / 3, 14 / 3, 14 / 3],
-            [9.5, 6.5, 9.5],
-            [9.5, 6.5, 9.5],
-            [4.75 + 2.5, 4.75 + 2.5],
+            [4, 4, 4],
+            [4, 4, 4],
+            [11 / 3, 11 / 3, 11 / 3],
+            [11 / 3, 11 / 3, 11 / 3],
+            [8.5, 5.5, 8.5],
+            [8.5, 5.5, 8.5],
+            [6.5, 6.5],
         ]
         h_actuators = 3
         L_electrode = 350
@@ -73,18 +64,7 @@ for m in range(2):
         for i in range(7):
             # beams and supports
             gap_actuators_y = gap_actuators_y_list[m]
-            # def beam
-            connector.add(
-                (
-                    RectangleLH(
-                        x_beam + w_support / 2,
-                        y_beam - i * 850 + (L_support - w_beam) / 2,
-                        L_beam,
-                        w_beam,
-                        0,
-                    ),
-                )
-            )
+
             if i != 2 and i != 3:
                 x1 = x_beam + w_support / 2 + L_beam
                 y1 = y_beam + (L_support - w_beam) / 2 - i * 740
@@ -98,26 +78,30 @@ for m in range(2):
                     (
                         # def support
                         Points2Shape(p1 + p2 + p3 + p4 + p5 + p6),
-                        Circlethree(
-                            x1,
-                            y1,
-                            x1 + w_beam / 2,
-                            y1 + w_beam / 2,
-                            x1,
-                            y1 + w_beam,
-                            50,
+                        # def round corner of beam
+                        Circle(
+                            x_beam + w_support / 2 + L_beam - w_beam / 2,
+                            y_beam + L_support / 2 - i * 850,
+                            w_beam / 2,
+                        ),
+                        # def beam
+                        RectangleLH(
+                            x_beam + w_support / 2,
+                            y_beam - i * 850 + (L_support - w_beam) / 2,
+                            L_beam - w_beam / 2,
+                            w_beam,
+                            0,
                         ),
                     ),
                 )
             else:
-                x1 = x_beam + w_support / 2 + L_beam
-                y1 = y_beam + (L_support - w_beam) / 2 - i * 740
                 p1_1 = [(x_beam + 2, y_beam - i * 850)]
                 p2_1 = [(p1_1[0][0] + 3, p1_1[0][1] + (w_support - w_beam) / 2)]
                 p3_1 = [(p2_1[0][0], p2_1[0][1] + w_beam)]
                 p4_1 = [(p1_1[0][0], p1_1[0][1] + L_support)]
                 p5_1 = [(p3_1[0][0] - w_support, p4_1[0][1])]
                 p6_1 = [(p5_1[0][0], p5_1[0][1] - L_support)]
+
                 p1_2 = [(x_beam + w_support / 2 + L_beam + 3, p1_1[0][1])]
                 p2_2 = [(p1_2[0][0] - 3, p2_1[0][1])]
                 p3_2 = [(p2_2[0][0], p3_1[0][1])]
@@ -129,6 +113,14 @@ for m in range(2):
                         # def support
                         Points2Shape(p1_1 + p2_1 + p3_1 + p4_1 + p5_1 + p6_1),
                         Points2Shape(p1_2 + p2_2 + p3_2 + p4_2 + p5_2 + p6_2),
+                        # def beam
+                        RectangleLH(
+                            x_beam + w_support / 2,
+                            y_beam - i * 850 + (L_support - w_beam) / 2,
+                            L_beam,
+                            w_beam,
+                            0,
+                        ),
                     ),
                 )
 
@@ -348,32 +340,10 @@ for m in range(2):
                     (electrode_x, electrode_y),
                 ]
                 connector.add((BendWaveguide(point, r_cable, w_cable, 30),))
-        # # Text
-        # if k == 2 and m == 1:
-        #     text = ["Zhou Lab", "Wei Sun 2024"]
-        #     fontSize = 50
-        #     spacing = 50
-        #     text_x = x_beam
-        #     text_y = (
-        #         y_beam
-        #         + L_support / 2
-        #         - gap_2 / 2
-        #         - j * 850
-        #         - L_electrode
-        #         - spacing * len(text)
-        #     )
-        #     connector.add(
-        #         (
-        #             multyTextOutline(
-        #                 text, "Times New Roman", fontSize, spacing, text_x, text_y
-        #             )
-        #         )
-        #     )
+
 
 # E-beam frame in layer 11
 connector.add("11 layer")
-connector.add(AlignCustC1(-200, -2925, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(4620, -2925, 100, 2, 100, 0, 120, 120, 0))
 for m in range(2):
     gap_actuators_y = gap_actuators_y_list[m]
     for k in range(3):
@@ -561,8 +531,6 @@ for m in range(2):
             connector.add((RectangleLH(x_text - 5, y_text - 5, 240, 30, 0),))
 # electrode frame in layer 21
 connector.add("21 layer")
-connector.add(AlignCustC1(-200, -2925, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(4620, -2925, 100, 2, 100, 0, 120, 120, 0))
 connector.add(
     RectangleLH(
         -10,
@@ -574,11 +542,42 @@ connector.add(
 )
 
 
-#
+# Array
+x_gap = 4800
+y_gap = -6200
+array = Structure("Array")
+for i in range(3):
+    for j in range(2):
+        array.add(Instance(connector, x_gap * i, y_gap * j, "N", 1, 0))
+        # marker
+        array.add("11 layer")
+        array.add(AlignCustC1(-200, -2925 + y_gap * j, 100, 2, 100, 0, 120, 120, 0))
+        array.add(
+            AlignCustC1(
+                4620 + 2 * x_gap, -2925 + y_gap * j, 100, 2, 100, 0, 120, 120, 0
+            )
+        )
+        array.add("21 layer")
+        array.add(AlignCustC1(-200, -2925 + y_gap * j, 100, 2, 100, 0, 120, 120, 0))
+        array.add(
+            AlignCustC1(
+                4620 + 2 * x_gap, -2925 + y_gap * j, 100, 2, 100, 0, 120, 120, 0
+            )
+        )
+
+# Signature
+array.add("11 layer")
+text = "Zhou Lab\n 2024 Wei Sun"
+fontSize = 50
+spacing = 50
+text_x = 13700
+text_y = -12100
+array.add((TextOutline(text, "Times New Roman", fontSize, text_x, text_y)))
+
 
 gen = CNSTGenerator(shapeReso=0.01)
-
 gen.add(connector)
+gen.add(array)
 gen.generate(
     "result_wei/logicgate/logicgate.cnst",
     "result_wei/logicgate/logicgate.gds",

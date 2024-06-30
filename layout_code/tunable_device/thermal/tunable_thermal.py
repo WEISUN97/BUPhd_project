@@ -285,7 +285,7 @@ for m in range(2):
 
 # signature in layer 11
 connector.add("11 layer")
-text = "Zhou Lab\nWei Sun 2024"
+text = "Zhou Lab\n2024 Wei Sun"
 fontSize = 50
 spacing = 50
 text_x = temp_text[0][3] + L_electrode + 1500
@@ -315,24 +315,23 @@ connector.add(
     )
 )
 
-# alignment marks in layer 11
-connector.add("11 layer")
-connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
-# alignment marks in layer 21
-connector.add("21 layer")
-connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
-
-
 # Array
 array = Structure("Array")
 for i in range(3):
     array.add(Instance(connector, 10000 * i, 0, "N", 1, 0))
+
+# alignment marks in layer 11
+array.add("11 layer")
+array.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(28510, -3600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(28510, -6600, 100, 2, 100, 0, 120, 120, 0))
+# alignment marks in layer 21
+array.add("21 layer")
+array.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(28510, -3600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+array.add(AlignCustC1(28510, -6600, 100, 2, 100, 0, 120, 120, 0))
 
 
 gen = CNSTGenerator(shapeReso=0.01)
