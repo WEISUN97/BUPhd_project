@@ -174,7 +174,7 @@ for m in range(2):
                     ),
                     RoundedCorners(
                         x_beam + w_support / 2 + r,
-                        y_beam + (L_support - w_beam) / 2 - r - j * 100,
+                        y_beam + (L_support - w_beam) / 2 - r,
                         r,
                         90,
                     ),
@@ -319,10 +319,10 @@ for m in range(2):
             fontSize = 25
             spacing = 25
             x_text = (
-                x_beam - w_support + w_support / 2 + L_beam / 2 + L_electrode / 2 + 60
+                x_beam - w_support + w_support / 2 + L_beam / 2 + L_electrode / 2 + 50
             )
             y_text = y_beam + L_electrode / 2 + 60
-            text = f"No.{k+1}.{j+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
+            text = f"No.{j+1}.{k+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
 
             connector.add(
                 (TextOutline(text, "Times New Roman", fontSize, x_text, y_text))
@@ -597,24 +597,24 @@ for m in range(2):
             y_text = y_beam + L_electrode / 2 + 55
             connector.add((RectangleLH(x_text - 2.5, y_text - 2.5, 315, 35, 0),))
 
-connector.add("11 layer")
-text = "Zhou Lab\nWei Sun 2024"
-fontSize = 50
-spacing = 50
-text_x = temp_text[0][3] + L_electrode + 1500
-text_y = temp_text[1][3] + 100
-connector.add((TextOutline(text, "Times New Roman", fontSize, text_x, text_y, spacing)))
+# connector.add("11 layer")
+# text = "Zhou Lab 2024\nWei Sun"
+# fontSize = 50
+# spacing = 50
+# text_x = temp_text[0][3] + L_electrode + 1500
+# text_y = temp_text[1][3] + 100
+# connector.add((TextOutline(text, "Times New Roman", fontSize, text_x, text_y, spacing)))
 # frame of text in layer 20
-connector.add("20 layer")
-connector.add(
-    RectangleLH(
-        text_x - 20,
-        text_y - 2 * fontSize,
-        320,
-        2 * fontSize + 20 + spacing,
-        0,
-    )
-)
+# connector.add("20 layer")
+# connector.add(
+#     RectangleLH(
+#         text_x - 20,
+#         text_y - 2 * fontSize,
+#         500,
+#         2 * fontSize + 20 + spacing,
+#         0,
+#     )
+# )
 
 # frame of lithography
 connector.add("21 layer")
@@ -628,27 +628,27 @@ connector.add(
     )
 )
 
-# Array
-array = Structure("Array")
-for i in range(3):
-    array.add(Instance(connector, 10000 * i, 0, "N", 1, 0))
+# connector
+# connector = Structure("connector")
+# for i in range(3):
+#     connector.add(Instance(connector, 10000 * i, 0, "N", 1, 0))
 
 # alignment marks in layer 11
-array.add("11 layer")
-array.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(28510, -3600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(28510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add("11 layer")
+connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
 # alignment marks in layer 21
-array.add("21 layer")
-array.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(28510, -3600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(28510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add("21 layer")
+connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
 
 gen = CNSTGenerator(shapeReso=0.01)
+# gen.add(array)
 gen.add(connector)
-gen.add(array)
 gen.generate(
     "result_wei/tunable_device/comb/Tunable_comb.cnst",
     "result_wei/tunable_device/comb/Tunable_comb.gds",

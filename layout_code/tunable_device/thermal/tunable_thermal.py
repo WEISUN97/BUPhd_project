@@ -284,24 +284,24 @@ for m in range(2):
 
 
 # signature in layer 11
-connector.add("11 layer")
-text = "Zhou Lab\n2024 Wei Sun"
-fontSize = 50
-spacing = 50
-text_x = temp_text[0][3] + L_electrode + 1500
-text_y = temp_text[1][3] + 100
-connector.add((TextOutline(text, "Times New Roman", fontSize, text_x, text_y, spacing)))
+# connector.add("11 layer")
+# text = "Zhou Lab 2024\nWei Sun"
+# fontSize = 50
+# spacing = 50
+# text_x = temp_text[0][3] + L_electrode + 1500
+# text_y = temp_text[1][3] + 100
+# connector.add((TextOutline(text, "Times New Roman", fontSize, text_x, text_y, spacing)))
 # frame of text
-connector.add("20 layer")
-connector.add(
-    RectangleLH(
-        text_x - 20,
-        text_y - 2 * fontSize,
-        500,
-        2 * fontSize + 20 + spacing,
-        0,
-    )
-)
+# connector.add("20 layer")
+# connector.add(
+#     RectangleLH(
+#         text_x - 20,
+#         text_y - 2 * fontSize,
+#         500,
+#         2 * fontSize + 20 + spacing,
+#         0,
+#     )
+# )
 
 
 connector.add("21 layer")
@@ -315,28 +315,28 @@ connector.add(
     )
 )
 
-# Array
-array = Structure("Array")
-for i in range(3):
-    array.add(Instance(connector, 10000 * i, 0, "N", 1, 0))
+# connector
+# connector = Structure("connector")
+# for i in range(3):
+#     connector.add(Instance(connector, 10000 * i, 0, "N", 1, 0))
 
 # alignment marks in layer 11
-array.add("11 layer")
-array.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(28510, -3600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(28510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add("11 layer")
+connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
 # alignment marks in layer 21
-array.add("21 layer")
-array.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(28510, -3600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
-array.add(AlignCustC1(28510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add("21 layer")
+connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
 
 
 gen = CNSTGenerator(shapeReso=0.01)
+# gen.add(connector)
 gen.add(connector)
-gen.add(array)
 gen.generate(
     "result_wei/tunable_device/thermal/Tunable_thermal.cnst",
     "result_wei/tunable_device/thermal/Tunable_thermal.gds",
