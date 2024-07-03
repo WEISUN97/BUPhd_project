@@ -341,7 +341,7 @@ def optical_comb(connector, x, y, pos, is_AFM=False):
             tip_center_x = x_beam + w_support / 2 + L_beam / 2
             # print(f"center of the beam is 'tip_center_x'{tip_center_x}")
             tip_center_y = y_beam + L_support / 2 + w_beam / 2
-            tip_height = L_beam / 200
+            tip_height = L_beam / 400
             temp = tip_height * math.tan(math.pi / 12)
             points = [
                 (tip_center_x - temp, tip_center_y),
@@ -355,7 +355,7 @@ def optical_comb(connector, x, y, pos, is_AFM=False):
             # hollow part
             connector.add("9 layer")
             # AFM Tip
-            hollow_temp = temp - 0.1
+            hollow_temp = temp - 0.075
             hollo_tip_height = hollow_temp / math.tan(math.pi / 12)
             # print(hollo_tip_height)
             points = [
