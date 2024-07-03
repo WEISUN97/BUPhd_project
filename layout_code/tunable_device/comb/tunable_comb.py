@@ -50,11 +50,11 @@ for m in range(2):
         cable_in = 10  # length enter the electrode in y direction
         cable_offset = 10  # offset of cable in x direction
         temp_x = 0 if k == 0 else L_beam_list[k - 1]
-        x_beam = m * 4500 + k * 1000 + temp_x
+        x_beam = m * 6500 + k * 1000 + temp_x
         L_1 = 150  # length of rectaper
         L_2 = 50  # length of rectaper
         for j in range(8):
-            y_beam -= 1200
+            y_beam -= 1200 if j != 4 else 3200
             connector.add("10 layer")
             L_beam = L_beam_list[k]
             w_cable = 50 + (150 / 900) * (L_beam - 100)
@@ -116,9 +116,9 @@ for m in range(2):
                     ),
                     RectTaper(
                         x_actuator + L_actuator / 2,
-                        y_actuator - L_2 - L_1 - 10,
+                        y_actuator - L_2 - L_1,
                         w_cable,
-                        L_1 + 10,
+                        L_1,
                         L_actuator - h_actuators,
                         L_2,
                         90,
@@ -141,9 +141,9 @@ for m in range(2):
                     ),
                     RectTaper(
                         x_actuator + L_actuator / 2,
-                        y_actuator + L_2 + h_actuators + L_1 + 10,
+                        y_actuator + L_2 + h_actuators + L_1,
                         w_cable,
-                        L_1 + 10,
+                        L_1,
                         L_actuator - h_actuators,
                         L_2,
                         -90,
@@ -322,7 +322,7 @@ for m in range(2):
                 x_beam - w_support + w_support / 2 + L_beam / 2 + L_electrode / 2 + 50
             )
             y_text = y_beam + L_electrode / 2 + 60
-            text = f"No.{j+1}.{k+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
+            text = f"  {k+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
 
             connector.add(
                 (TextOutline(text, "Times New Roman", fontSize, x_text, y_text))
@@ -356,8 +356,8 @@ for m in range(2):
                         + L_beam / 2
                         + w_cable / 2
                         + 10,
-                        y_actuator - L_2 - L_1 - 10,
-                        L_1 + 10,
+                        y_actuator - L_2 - L_1,
+                        L_1,
                         w_cable + 20,
                         90,
                     ),
@@ -374,8 +374,8 @@ for m in range(2):
                         + L_beam / 2
                         - w_cable / 2
                         - 10,
-                        y_actuator + L_2 + h_actuators + L_1 + 10,
-                        L_1 + 10,
+                        y_actuator + L_2 + h_actuators + L_1,
+                        L_1,
                         w_cable + 20,
                         -90,
                     ),
@@ -618,15 +618,27 @@ for m in range(2):
 
 # frame of lithography
 connector.add("21 layer")
-connector.add(
-    RectangleLH(
-        -391.5 - 10,
-        -8939.55 - 10,
-        8390.5 + 391.5 + 20,
-        565.525 + 8939.55 + 20,
-        0,
-    )
-)
+for i in range(2):
+    for j in range(2):
+        # connector.add(
+        #     RectangleLH(
+        #         -360 - 10,
+        #         -10944.050 - 10,
+        #         10380 + 360 + 20,
+        #         562.025 + 10944.050 + 20,
+        #         0,
+        #     )
+        # )
+        connector.add(
+            RectangleLH(
+                -370 - 31.5 + 6500 * i,
+                -4152.05 - 6800 * j,
+                4260 + 42,
+                4724.02,
+                0,
+            )
+        )
+
 
 # connector
 # connector = Structure("connector")
@@ -636,15 +648,15 @@ connector.add(
 # alignment marks in layer 11
 connector.add("11 layer")
 connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(10510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -8600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(10510, -8600, 100, 2, 100, 0, 120, 120, 0))
 # alignment marks in layer 21
 connector.add("21 layer")
 connector.add(AlignCustC1(-510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -3600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(-510, -6600, 100, 2, 100, 0, 120, 120, 0))
-connector.add(AlignCustC1(8510, -6600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(10510, -3600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(-510, -8600, 100, 2, 100, 0, 120, 120, 0))
+connector.add(AlignCustC1(10510, -8600, 100, 2, 100, 0, 120, 120, 0))
 
 gen = CNSTGenerator(shapeReso=0.01)
 # gen.add(array)
