@@ -147,7 +147,7 @@ for m in range(2):
             spacing = 25
             x_text = x_beam + w_support / 2 + L_beam / 2 + L_electrode / 2 + 60
             y_text = y_beam + L_electrode / 2 + 60
-            text = f"  {k+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
+            text = f"  {j+1}.{k+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
 
             # L/t={int(L_beam/w_beam)}
             connector.add(

@@ -211,7 +211,7 @@ for m in range(2):
             # Spring
             t_spring = 0.15
             L_spring = 20
-            t_side = 0.9
+            t_side = 0.85  # t_spring + t_side = 1
             L_anchor = w_anchor = 5
             gap_anchor = 2
             gap_anchor_buttom = 1
@@ -222,7 +222,7 @@ for m in range(2):
                 # top spring
                 if n == 0:
                     theta = 0
-                    x_start = x_beam - w_support + w_support / 2
+                    x_start = x_beam - w_support / 2
                     y_start = y_beam + L_support - 7
                     hollow_side_x_1 = x_start + 0.5
                     hollow_side_y_1 = y_start + 0.5 + 0.05
@@ -322,7 +322,7 @@ for m in range(2):
                 x_beam - w_support + w_support / 2 + L_beam / 2 + L_electrode / 2 + 50
             )
             y_text = y_beam + L_electrode / 2 + 60
-            text = f"  {k+1}.{m+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
+            text = f"  {j+1}.{k+1} L={L_beam} t={w_beam} G={gap_actuators_y}"
 
             connector.add(
                 (TextOutline(text, "Times New Roman", fontSize, x_text, y_text))
